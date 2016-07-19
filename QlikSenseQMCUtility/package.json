@@ -1,0 +1,9 @@
+{
+  "name": "qlik-sense-qmcutility",
+  "version": "0.0.0",
+  "description": "QlikSenseQMCUtility",
+  "main": "server.js",
+  "author": {
+    "name": "msi"
+  }
+}
