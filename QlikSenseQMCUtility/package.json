@@ -5,5 +5,9 @@
   "main": "server.js",
   "author": {
     "name": "msi"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "qrs-interact": "^1.0.0"
   }
 }

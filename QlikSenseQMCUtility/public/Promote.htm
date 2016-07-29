@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<head lang="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="leonardo-ui.css" type="text/css"/>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="prism.css" type="text/css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <title>Qlik Sense QMC Utility - Promote Sheets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+
+        var selectedid = "";
+        var sheetdata;  //store the returned json object from refresh()
+
+        function clearsearch() {
+            $("#search").val('');
+            selectedid = "";
+            $("#buttonapprove").removeClass('lui-button--toolbar-inverse');
+            $("#buttonunapprove").removeClass('lui-button--toolbar-inverse');
+            refresh();
+        };
+
+        function refresh() {
+
+            //alert($("#search").val());
+
+            var url = "http://localhost:8186/getsheets";
+            if($("#search").val() != "") url += "?search=" + $("#search").val();
+            
+            $.get(url, function (data, status) {
+                //alert(JSON.stringify(data));
+                //console.log(JSON.parse(data));
+
+                /*<td>Name</td>
+                <td>Owner</td>
+                <td>Approved</td>
+                <td>Published</td>
+                <td>Last Modified</td>
+                <td>App</td>
+                <td>Stream</td>
+                <td>ID</td>*/
+
+                $('#tabledata tbody').remove();
+
+                sheetdata = JSON.parse(data);
+
+                var tb = document.createElement("tbody");
+                $('#tabledata').append(tb);
+
+                var tabledata = "";
+                for (var i = 0; i < sheetdata.rows.length; i++) {
+                    var row = sheetdata.rows[i];
+                    var tr = document.createElement("tr");
+                    //tr.addClass('clickable-row');
+
+                    var a = "Not approved"; if (row[5] == true) a = "Approved";
+                    var p = "Not published"; if (row[6] == true) p = "Published";
+                    
+
+                    var td = document.createElement("td"); td.innerHTML = row[2]; tr.appendChild(td);
+                    var td = document.createElement("td"); td.innerHTML = row[4].name; tr.appendChild(td);
+                    var td = document.createElement("td"); td.innerHTML = a; tr.appendChild(td);
+                    var td = document.createElement("td"); td.innerHTML = p; tr.appendChild(td);
+                    var td = document.createElement("td"); td.innerHTML = row[7]; tr.appendChild(td);
+                    var td = document.createElement("td"); td.innerHTML = row[8]; tr.appendChild(td);
+                    var td = document.createElement("td"); td.innerHTML = row[9]; tr.appendChild(td);
+                    var td = document.createElement("td"); td.innerHTML = row[0]; tr.appendChild(td);
+
+                    $('#tabledata > tbody').append(tr);
+                }
+            });
+        };  
+
+	$(document).ready(function()
+	{
+        //highlighting and finding ID of selected row
+	    $("#tabledata").delegate('tr', 'click', function (e) {
+	        e.preventDefault();
+	        e.stopImmediatePropagation();
+
+	        $tr = $(this);
+
+	        $tr.siblings().removeClass("highlighted");
+	        $tr.toggleClass("highlighted");
+	        //$tr.attr('id', 'highlighted');
+	        if ($tr.hasClass("highlighted"))
+	        {
+	            var tr = $(this);
+	            console.log(sheetdata);
+	            selectedid = sheetdata.rows[tr[0].rowIndex - 1][0];
+
+	            if(sheetdata.rows[tr[0].rowIndex - 1][6] == true)
+	            {
+	                $("#buttonapprove").addClass('lui-button--toolbar-inverse');
+	                $("#buttonunapprove").addClass('lui-button--toolbar-inverse');
+	            }
+	            else
+	            {
+	                $("#buttonapprove").removeClass('lui-button--toolbar-inverse');
+	                $("#buttonunapprove").removeClass('lui-button--toolbar-inverse');
+	            }
+
+	        }
+	        else
+	        {
+	            selectedid = "";
+	            $("#buttonapprove").removeClass('lui-button--toolbar-inverse');
+	            $("#buttonunapprove").removeClass('lui-button--toolbar-inverse');
+	        }
+	        //alert(selectedid);
+	    });
+
+        refresh();
+	    
+
+         
+	});
+
+	function updateappboject(method)
+	{
+	    if (selectedid != "") {
+	        var url = "http://localhost:8186/" + method + "?id=" + selectedid;
+	        $.post(url, null, function (result, strStatus, xhr) {
+	            //alert(xhr.status);
+	            //refresh();
+	        });
+	    }
+	}
+
+	function approve()
+	{
+	    if($("#buttonapprove").hasClass('lui-button--toolbar-inverse'))
+	    {
+	        updateappboject("approve");
+	        refresh();
+	    }
+	}
+
+	function unapprove()
+	{
+	    if($("#buttonunapprove").hasClass('lui-button--toolbar-inverse'))
+	    {
+	        updateappboject("unapprove");
+	        refresh();
+	    }
+	}
+	
+  
+	/*function publish() {
+	    updateappboject("publish");
+	}
+
+	function unpublish() {
+	    updateappboject("unpublish");
+	}*/
+
+</script>
+	
+</head>
+<body>
+    
+    
+    <div>
+        <br />
+        <input id="search" type="text" name="search" placeholder="Search app/sheet name.." />
+        <button class="lui-button  lui-button--toolbar-inverse" onclick="refresh()">Search</button>
+        <button class="lui-button  lui-button--toolbar-inverse" onclick="clearsearch()">Clear Search</button>
+        <br />
+    </div>
+    <div id="table-scroll">
+	    <table id="tabledata" class="table table-bordered table-hover" >
+            <thead id="tableheader">
+                <th>Name</th>
+			    <th>Owner</th>
+			    <th>Approved</th>
+			    <th>Published</th>
+			    <th>Last Modified</th>
+			    <th>App</th>
+			    <th>Stream</th>
+                <th>ID</th>
+            <thead>
+        </table>
+    </div>
+        
+    <div id="utilityfooter">
+        <div id="button-bar">
+            <!----button class="lui-button  lui-button--toolbar-inverse" onclick="approve()">Approve Sheet</!--button-->
+            <!----button-- class="lui-button  lui-button--toolbar-inverse" onclick="unapprove()">Un-Approve Sheet</!--button-->
+            <!----button-- class="lui-button  lui-button--toolbar-inverse" id="dialog">?</!--button-->
+            <button id="buttonapprove" class="lui-button" onclick="approve()">Approve Sheet</button>
+            <button id="buttonunapprove" class="lui-button" onclick="unapprove()">Un-Approve Sheet</button>
+            <button class="lui-button  lui-button--toolbar-inverse" id="dialog">?</button>
+
+            <!----button class="lui-button  lui-button--toolbar-inverse" onclick="publish()" id="dialog">Publish Sheet</!--button-->
+            <!----button-- class="lui-button  lui-button--toolbar-inverse" onclick="unpublish()" id="dialog">Un-Publish</!--button-->
+            
+            <div class="dialog-content" style="display: none;">
+                <div class="lui-dialog  lui-dialog--inverse" style="width: 600px;">
+                    <div class="lui-dialog__header">
+                        <div class="lui-dialog__title">Usage</div>
+                    </div>
+                    <div class="lui-dialog__body">
+                        You can only approve or un-approve published sheets.  <br /><br />
+                            Published and Approved = Base Sheets <br />
+                            Published and Not Approved = Community Sheets <br />
+                            Not Published and Not Approved = My Sheets
+                    </div>
+                    <div class="lui-dialog__footer">
+                        <button class="lui-button  lui-button--inverse  close-button">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script>
+        var dialogTriggers = document.querySelectorAll( "#dialog" );
+    dialogTriggers = [].slice.apply( dialogTriggers ); // convert to array
+    dialogTriggers.forEach( function ( element ) {
+        element.addEventListener( "click", function() {
+            var dialog = leonardoui.dialog( {
+                content: element.nextElementSibling.innerHTML,
+                shadow: true,
+                closeOnEscape: true
+            } );
+            // Dialog was shown
+            var closeButton = dialog.element.querySelectorAll( ".close-button" )[0];
+            closeButton.focus();
+            closeButton.addEventListener( "click", function() {
+                dialog.close();
+            } );
+        } );
+    } );
+</script>
+
+<script src="js/leonardo-ui.js"></script>
+<script src="js/prism.js"></script>
+
+	
+
+</html>
+		

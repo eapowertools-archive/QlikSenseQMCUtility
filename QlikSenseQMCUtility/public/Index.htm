@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<head lang="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="leonardo-ui.css" type="text/css"/>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="prism.css" type="text/css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <title>Qlik Sense QMC Utility</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header" class="frame">
+            <div id="header-text" style="width:100%;padding-right:40px;padding-top:40px ">
+                <h1 style='color: #FFFFFF; font-size: 23pt; font-weight: bold; font-family: Arial; float:left'>Qlik Sense QMC Utility</h1>
+                <select id="utility">
+                    <option value="Promote.htm">Approve Sheets</option>
+                    <!---option value="Promote2.htm">Test Page</!--option-->
+                </select>
+                <button class="lui-button  lui-button--toolbar-inverse" id="dialog" style="float:right">?</button>
+                <div class="dialog-content" style="display: none;">
+                    <div class="lui-dialog  lui-dialog--inverse" style="width: 600px;">
+                        <div class="lui-dialog__header">
+                            <div class="lui-dialog__title">About Qlik Sense QMC Utility</div>
+                        </div>
+                        <div class="lui-dialog__body">
+                            Use this Qlik Power Tool at your own risk.  It is not supported by Qlik.
+                        </div>
+                        <div class="lui-dialog__footer">
+                            <button class="lui-button  lui-button--inverse  close-button">OK</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+                    
+            </div>
+                </tr>
+            </table>
+            
+            <!----select><option value="Sheet Promotion"></option></!--select-->
+        </div>
+
+        <div id="content" >
+            <iframe src="Promote.htm" width="100%" height="100%"></iframe>
+        </div>
+    </div>
+</body>
+
+
+<script>
+        var dialogTriggers = document.querySelectorAll( "#dialog" );
+    dialogTriggers = [].slice.apply( dialogTriggers ); // convert to array
+    dialogTriggers.forEach( function ( element ) {
+        element.addEventListener( "click", function() {
+            var dialog = leonardoui.dialog( {
+                content: element.nextElementSibling.innerHTML,
+                shadow: true,
+                closeOnEscape: true
+            } );
+            // Dialog was shown
+            var closeButton = dialog.element.querySelectorAll( ".close-button" )[0];
+            closeButton.focus();
+            closeButton.addEventListener( "click", function() {
+                dialog.close();
+            } );
+        } );
+    });
+
+    $("#utility").change(function () {
+        $("#content iframe").attr("src", this.value);
+    });
+
+
+</script>
+    
+<script src="js/leonardo-ui.js"></script>
+<script src="js/prism.js"></script>
+	
+</body>
+</html>
+		

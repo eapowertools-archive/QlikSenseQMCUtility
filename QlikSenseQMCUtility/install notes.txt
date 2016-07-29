@@ -1,0 +1,14 @@
+copy to QlikSenseQMCUtility
+C:\Program Files\Qlik\Sense\QlikSenseQMCUtility
+
+services.conf
+
+[qliksenseqmcutility]
+
+Identity=Qlik.qliksenseqmcutility
+
+DisplayName=QLik Sense QMC Utility
+
+ExePath=Node\node.exe
+Script=..\QlikSense
+QMCUtility\server.js
