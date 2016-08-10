@@ -1,0 +1,11 @@
+<div id="sidebar-header">
+  <h6 class="header">QMC Utilities</h6>
+
+</div>
+<div id="sidebar-wrapper">
+  <ol class="sidebar-nav">
+    <li ng-repeat="menu in model.menuItems">
+      <a href="#{{menu.templateUrl}}">{{menu.title}}</a>
+    </li>
+  </ol>
+</div>

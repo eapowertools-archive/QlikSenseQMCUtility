@@ -1,0 +1,32 @@
+[
+  {
+    "id":1,
+    "title":"Governed Metrics Service",
+    "templateUrl": "/gms"
+  },
+  {
+    "id":2,
+    "title":"Sheet Approver",
+    "templateUrl": "/sheetApprover"
+  },
+  {
+    "id":3,
+    "title":"Custom Property Bulk Loader",
+    "templateUrl": "/customProp"
+  },
+  {
+    "id":4,
+    "title":"Source Control Light",
+    "templateUrl": "/sourceControl"
+  },
+  {
+    "id":5,
+    "title":"Purge Applications",
+    "templateUrl": "/purgeApps"
+  },
+  {
+    "id":6,
+    "title":"About",
+    "templateUrl": "/about"
+  }
+]

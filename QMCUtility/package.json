@@ -1,0 +1,33 @@
+{
+  "name": "qs-qmc-utilities",
+  "version": "1.0.0",
+  "description": "QMC Utilities is a collection of tools for automating QMC operations.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "qlik",
+    "qliksense",
+    "qlik_sense",
+    "qmc",
+    "utilities",
+    "powertools",
+    "eapowertools"
+  ],
+  "author": "eapowertools",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eapowertools/QlikSenseQMCUtility/issues"
+  },
+  "homepage": "https://github.com/eapowertools/QlikSenseQMCUtility#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
+    "express": "^4.14.0",
+    "fs": "0.0.2",
+    "path": "^0.12.7",
+    "qrs-interact": "^1.0.0",
+    "winston": "^2.2.0"
+  }
+}
