@@ -190,6 +190,7 @@ ClientBin/
 *.publishsettings
 node_modules/
 bower_components/
+.vscode/
 orleans.codegen.cs
 
 # RIA/Silverlight projects
