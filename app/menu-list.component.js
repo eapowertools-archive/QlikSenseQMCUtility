@@ -25,7 +25,7 @@
   
   
   module.component("menuList", {
-    templateUrl:"/qmcutils/app/menu-list.component.html",
+    templateUrl:"app/menu-list.component.html",
     controllerAs: "model",
     controller: ["$http", controller]
   });

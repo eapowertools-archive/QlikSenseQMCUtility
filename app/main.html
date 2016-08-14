@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="" href="public/css/leonardo-ui.css">
     <link rel="stylesheet" type="" href="public/css/prism.css">
     <link rel="stylesheet" type="" href="public/css/menu.css">
+    <link rel="stylesheet" type="" href="app/sheetapprover/css/sheet-approver.css">
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
@@ -15,6 +16,7 @@
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="app/main.js"></script>
     <script src="app/menu-list.component.js"></script>
+    <script src="app/sheetapprover/sheet-approver.component.js"></script>
 </head>
 
 <body>
@@ -24,17 +26,10 @@
         <!-- Sidebar -->
         <!--Page-content Wrapper-->
         <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <ng-view></ng-view>
-                    </div>
-                </div>
-            </div>
+            <ng-view></ng-view>
         </div>
-        <!--Page-content Wrapper-->
     </div>
-    <!-- /container -->
+
 </body>
 
 </html>

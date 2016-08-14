@@ -7,7 +7,7 @@
   {
     "id":2,
     "title":"Sheet Approver",
-    "templateUrl": "/sheetApprover"
+    "templateUrl": "/sheetapprover"
   },
   {
     "id":3,

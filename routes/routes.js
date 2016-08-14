@@ -4,6 +4,11 @@ var bodyParser = require('body-parser');
 var parseUrlencoded = bodyParser.urlencoded({extended: false});
 var winston = require('winston');
 var config = require('../config/config');
+var fs = require('fs');
+var qrsInteract = require('qrs-interact');
+
+//var qrs = new qrsInteract("localhost");
+
 
 //set up logging
 var logger = new (winston.Logger)({
@@ -26,7 +31,7 @@ router.route('/')
         var options = {
             root: config.thisServer.appPath
         };
-        response.sendFile('index.html', options, function(err)
+        response.sendFile('main.html', options, function(err)
         {
             if(err)
             {
@@ -36,6 +41,26 @@ router.route('/')
         })
     });
 
+router.route('/getSheets')
+    .get(function(request,response)
+    {
+        //first get the table file;
+/*        var tableDef = fs.readFileSync(config.thisServer.dataPath + "tableDef.json");
+
+        var filter = "((objectType+eq+%27sheet%27))";
+
+        qrs.Post("app/object/table?filter=" + filter + "&orderAscending=true&skip=0&sortColumn=name", JSON.parse(tableDef),"json")
+        .then(function(result)
+        {
+            var s = JSON.stringify(result);
+            response.send(s);
+        })
+        .catch(function(error)
+        {
+            response.send(error);
+        });
+*/
+    });
 
     
 module.exports = router;

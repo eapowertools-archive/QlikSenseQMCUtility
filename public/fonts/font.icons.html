@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>List of font icons and their character code</title>
+	<style type="text/css">
+		@font-face {
+			font-family: 'LUI icons';
+			src: url('../fonts/lui-icons.eot');
+			src: url('../fonts/lui-icons.eot?#iefix') format('embedded-opentype'), url('../fonts/lui-icons.ttf') format('truetype'), url('../fonts/lui-icons.svg#QlikbetathreeRegular') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		td, th {
+			min-width: 100px;
+			text-align: left;
+		}
+
+		td:nth-child(3) {
+			font-family: 'LUI icons';
+			font-size: 34px;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>charCode</th>
+				<th>ASCII</th>
+				<th>Icon</th>
+				<th>CSS icon name</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<script>
+		(function () {
+			function getCSS( callback ) {
+				var httpRequest = new XMLHttpRequest();
+				httpRequest.onreadystatechange = function () {
+					if ( httpRequest.readyState === 4 ) {
+						if ( httpRequest.status === 200 ) {
+							callback( httpRequest.responseText );
+						} else {
+							alert( 'Failed to retrieve CSS icons' );
+						}
+					}
+				}
+				httpRequest.open( 'GET', '../css/base/icons.css' );
+				httpRequest.send();
+			}
+
+			function createCSSMap( str ) {
+				var re = new RegExp( "\\.icon-([a-z0-9-]+):before \\{[\\s\\S]*?content:\\s*(?:['\"]{1})(.+?)(?:['\"]{1});", "gi" );
+				var map = {};
+				var m;
+				while ( m = re.exec( str ) ) {
+					map[m[2]] = m[1];
+				}
+				return map;
+			}
+
+			getCSS( function ( css ) {
+				var html, arr = [], map = createCSSMap(css);
+				for ( var i = 33; i < 300; i++ ) arr[i] = i;
+				html = arr.map( function ( item, i ) {
+					var ch = String.fromCharCode( item );
+					var qvName = map[ch] || map[item] || "N/A";
+					return '<tr><td>' + i + '</td><td>' + ch + '</td><td>' + ch + '</td><td>' + qvName + '</td></tr>';
+				} ).join( '' );
+				document.querySelector( 'tbody' ).innerHTML = html;
+			} );
+		} )();
+	</script>
+</body>

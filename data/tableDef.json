@@ -1,0 +1,77 @@
+{
+    "entity": "App.Object",
+    "columns": [
+        {
+            "colNum": 1,
+            "friendlyName": "Sheet Name",
+            "display": true,
+            "name": "name",
+            "columnType": "Property",
+            "definition": "name"
+        },
+        {
+            "colNum": 2,
+            "friendlyName": "Sheet Owner",
+            "display": true,
+            "name": "owner",
+            "columnType": "Property",
+            "definition": "owner.name"
+        },
+        {
+            "colNum": 3,
+            "friendlyName": "Approved?",
+            "display": true,
+            "name": "approved",
+            "columnType": "Property",
+            "definition": "approved"
+        },
+        {
+            "colNum": 4,
+            "friendlyName": "Published?",
+            "display": true,
+            "name": "published",
+            "columnType": "Property",
+            "definition": "published"
+        },
+        {
+            "colNum": 5,
+            "friendlyName": "Last Modified",
+            "display": true,
+            "name": "modifiedDate",
+            "columnType": "Property",
+            "definition": "modifiedDate"
+        },
+        {
+            "colNum": 6,
+            "friendlyName": "App",
+            "display": true,
+            "name": "app.name",
+            "columnType": "Property",
+            "definition": "app.name"
+        },
+        {
+            "colNum": 7,
+            "friendlyName": "Stream",
+            "display": true,
+            "name": "app.stream.name",
+            "columnType": "Property",
+            "definition": "app.stream.name"
+        },
+        {
+            "colNum": 8,
+            "friendlyName": "Sheet ID",
+            "display": true,
+            "name": "id",
+            "columnType": "Property",
+            "definition": "id"
+        },
+        {
+            "colNum": 1,
+            "friendlyName": "Object Type",
+            "display": false,
+            "name": "objectType",
+            "columnType": "Property",
+            "definition": "objectType"
+        }
+    ]
+}

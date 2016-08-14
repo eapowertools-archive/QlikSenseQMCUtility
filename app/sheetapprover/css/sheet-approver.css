@@ -1,3 +1,42 @@
+.title {
+    color: rgba(255,255,255,0.8);
+    float:left;
+    font-size: 36px;
+    margin-top:15px;
+}
+
+.support {
+    float:right;
+    margin-top:20px;
+    margin-right:20px;
+}
+
+
+
+#page-content{
+    left:250px;
+    right:400px;
+}
+
+.page-content-header {
+    background:#404040;
+    height:70px;
+    line-height: 65px;
+    padding-left: 10px;
+    
+}
+
+.page-content-section {
+     width:100%;
+}
+
+#tableSection {
+    width:100%;
+    height:100%;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
 #header {
    position:fixed;
    left:0px;
@@ -16,7 +55,20 @@
    width:100%;
 }
 
+.dialog-content {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    right:0;
+    display:table;
+    margin: 0 auto;
+}
 
+.dialog-usage{
+    position: absolute;
+    top: -400px;
+    left: 400px;    
+}
 
 #utilityheader {
    position:fixed;
@@ -38,7 +90,7 @@
 
 #utilityfooter {
    position:fixed;
-   left:0px;
+   left:250px;
    bottom:0px;
    height:50px;
    width:100%;
@@ -50,14 +102,23 @@
     background-color: #A0A0A0;
 }
 
-tr.hover#highlighted{
+
+
+thead tr {
+  background-color: #808080;
+  color: white;
+}
+
+tbody tr.hover#highlighted{
     color: #595959;
     background-color: #A0A0A0;
 }
 
+tbody tr td{
+  width:100px;
+}
 
-
-tr:hover, tr.alt:hover {
+tbody tr:hover, tr.alt:hover {
     color: #595959;
     background-color: #A0A0A0;
 }
@@ -69,15 +130,7 @@ tr:hover, tr.alt:hover {
   transform: translateY(-50%);
 }
 
-#table {
-   position:fixed;
-   left:0px;
-   top:50px;
-   bottom:50px;
-   width: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
+
 
 #footer {
    position:fixed;
