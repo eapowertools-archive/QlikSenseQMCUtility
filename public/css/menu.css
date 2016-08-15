@@ -43,11 +43,10 @@ body {
 
 #sidebar-wrapper
 {
-  left:250px;
+  left:0px;
   z-index:1000;
   position:fixed;
   width:250px;
-  margin-left:-250px;
   overflow-y:auto;
   height:100%;
   background:#404040;
@@ -64,15 +63,12 @@ body {
   height:100%;
   padding: 10px;
 }
-/*
+
+
 #page-content-wrapper {
     width: 100%;
     position: absolute;
-   
-    margin-top: -10px;
 }
-*/
-
 
 .header
 {

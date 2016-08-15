@@ -71,6 +71,10 @@
         templateUrl:"app/sheetapprover/support-statement.component.html" 
     });
 
+    module.component("usageStatement", {
+        templateUrl:"app/sheetapprover/usage-statement.component.html"
+    })
+
     module.component("sheetApproverBody", {
         templateUrl:"app/sheetapprover/sheet-approver-body.html",
         controllerAs: "model",

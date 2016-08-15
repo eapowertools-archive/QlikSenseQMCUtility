@@ -1,46 +1,32 @@
-<div id="searchSection" class="frame lui-bg-inverse">
-    <div class="lui-search lui-search--inverse">
-        <span class="lui-search__search-icon"></span>
-        <input type="text" class="lui-search__input" maxlength="255" spellcheck="false" placeholder="Search" />
-        <span class="lui-search__clear-icon"></span>
-    </div>
-</div>
-<div id="tableSection">
-    <table class="table table-bordered table-hover">
+<div class="table-columns">
+    <table class="column-header">
         <thead>
             <tr>
-                <th ng-repeat="column in model.columnNames | orderBy: '+colNum' | filter:{display:true}  ">
-                    {{column.friendlyName}}
+                <th class="column" ng-repeat="column in model.columnNames | filter: display=true | orderBy: '+colNum' ">
+                    <div class="header-column">
+                        {{column.friendlyName}}
+                    </div>
                 </th>
             </tr>
-            <tbody>
-                <tr ng-repeat="row in model.tableRows track by $index">
-                    <td ng-repeat="col in row track by $index">
-                        {{col}}
-                    </td>
-                </tr>
-            </tbody>
         </thead>
     </table>
 </div>
-<div id="utilityfooter">
-    <div id="button-bar">
-        <button id="buttonapprove" class="lui-button" onclick="approve()">Approve Sheet</button>
-        <button id="buttonunapprove" class="lui-button" onclick="unapprove()">Un-Approve Sheet</button>
-        <button class="lui-button  lui-button--toolbar-inverse" id="dialog" ng-click="goHelp = !goHelp">?</button>
-    </div>
-</div>
-<div class="dialog-content" ng-show="goHelp">
-    <div class="lui-dialog  lui-dialog--inverse" style="width: 600px;">
-        <div class="lui-dialog__header">
-            <div class="lui-dialog__title">Usage</div>
-        </div>
-        <div class="lui-dialog__body">
-            You can only approve or un-approve published sheets. <br /><br /> Published and Approved = Base Sheets
-            <br /> Published and Not Approved = Community Sheets <br /> Not Published and Not Approved = My Sheets
-        </div>
-        <div class="lui-dialog__footer">
-            <button class="lui-button  lui-button--inverse  close-button" ng-click="goHelp = !goHelp">OK</button>
-        </div>
-    </div>
+<div class="table-rows">
+    <table class="row-data">
+        <tbody>
+            <tr class="row" ng-repeat="row in model.tableRows track by $index">
+                <td>
+                    <label class="lui-checkbox  lui-checkbox--inverse">
+                        <input class="lui-checkbox__input" type="checkbox" />
+                        <div class="lui-checkbox__check-wrap">
+                            <span class="lui-checkbox__check"></span>
+                        </div>
+	                </label>
+                </td>
+                <td ng-if="!$last" ng-repeat="col in row track by $index">
+                    {{col}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

@@ -1,0 +1,19 @@
+<div id="button-bar">
+    <button id="buttonapprove" class="lui-button" onclick="approve()">Approve Sheet</button>
+    <button id="buttonunapprove" class="lui-button" onclick="unapprove()">Un-Approve Sheet</button>
+    <button class="lui-button  lui-button--toolbar-inverse" id="dialog" ng-click="goHelp = !goHelp">?</button>
+</div>
+<div class="usage-content" ng-show="goHelp">
+    <div class="lui-dialog  lui-dialog--inverse" style="width: 600px;">
+        <div class="lui-dialog__header">
+            <div class="lui-dialog__title">Usage</div>
+        </div>
+        <div class="lui-dialog__body">
+            You can only approve or un-approve published sheets. <br /><br /> Published and Approved = Base Sheets
+            <br /> Published and Not Approved = Community Sheets <br /> Not Published and Not Approved = My Sheets
+        </div>
+        <div class="lui-dialog__footer">
+            <button class="lui-button  lui-button--inverse  close-button" ng-click="goHelp = !goHelp">OK</button>
+        </div>
+    </div>
+</div>
