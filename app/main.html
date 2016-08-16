@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="" href="public/css/prism.css">
     <link rel="stylesheet" type="" href="public/css/menu.css">
     <link rel="stylesheet" type="" href="app/sheetapprover/css/sheet-approver.css">
+    <script src="public/js/leonardo-ui.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
@@ -20,12 +21,12 @@
 </head>
 
 <body>
-    <div id="wrapper">
+    <div>
         <!-- Sidebar -->
         <menu-list></menu-list>
         <!-- Sidebar -->
         <!--Page-content Wrapper-->
-        <div id="page-content-wrapper">
+        <div class="container-fluid">
             <ng-view></ng-view>
         </div>
     </div>

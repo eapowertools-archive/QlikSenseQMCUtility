@@ -13,22 +13,42 @@
 
     function fetchTableRows($http)
     {
-        //return $http.get('/qmcutils/getSheets')
-        return $http.get("data/testData.json")
+        return $http.get('/getSheets')
+        //return $http.get("data/testData.json")
         .then(function(response)
         {
             return response.data;
         });
     }
 
+    function approveSheets($http, sheetIds)
+    {
+        console.log('running approveSheets');
+        return $http.post('/approveSheets', sheetIds)
+        .then(function(response)
+        {
+            return response;
+        });
+    }
+
+    function unapproveSheets($http, sheetIds)
+    {
+        return $http.post('/unapproveSheets',sheetIds)
+        .then(function(response)
+        {
+            return response;
+        });
+    }
 
     function sheetBodyController($http)
     {
         var model = this;
         var colNames = [];
         model.columnNames= [];
+        model.tableRows = []
+        model.outputs = [];
+        model.searchSheets = '';
 
-        model.rows = []
 
         model.$onInit = function() {
             fetchTableHeaders($http).then(function(table)
@@ -44,6 +64,80 @@
                 return null;
             });
         };
+
+        model.checkme = function(checkme)
+        {
+            if(checkme)
+            {
+               return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        model.setValue = function(checkme, $index, sheetId)
+        {
+            if(checkme)
+            {
+                model.outputs.push(sheetId);
+            }
+            else
+            {
+                var index = model.outputs.indexOf(sheetId);
+                model.outputs.splice(index,1);
+            }
+            console.log(model.outputs);
+        };
+
+        model.approve = function()
+        {
+            approveSheets($http, model.outputs)
+            .then(function(response)
+            {
+                console.log(response);
+                if(response.data.success)
+                {
+                    model.outputs = [];
+                    response.data.items.forEach(function(item)
+                    {
+                        model.tableRows.forEach(function(row, index)
+                        {
+                            if(item.id==row[7])
+                            {
+                                model.tableRows[index][2] = item.approved;
+                                model.checkme(false);
+                            }
+                        });
+                    });
+                }
+            });
+        };
+
+        model.unapprove = function()
+        {
+            unapproveSheets($http, model.outputs)
+            .then(function(response)
+            {
+                console.log(response);
+                if(response.data.success)
+                {
+                    model.outputs = [];
+                    response.data.items.forEach(function(item)
+                    {
+                        model.tableRows.forEach(function(row, index)
+                        {
+                            if(item.id==row[7])
+                            {
+                                model.tableRows[index][2] = item.approved;   
+                            }
+                        });
+                    });
+                }
+            });
+        };
+
     }
 
     function controller(){
@@ -59,26 +153,17 @@
         };
     }
 
-    
-
-    module.component("sheetApprover", {
-        templateUrl:"app/sheetapprover/sheet-approver.component.html",
-        controllerAs: "model",
-        controller: [controller]
-    });
-
     module.component("supportStatement", {
         templateUrl:"app/sheetapprover/support-statement.component.html" 
     });
 
-    module.component("usageStatement", {
-        templateUrl:"app/sheetapprover/usage-statement.component.html"
-    })
-
     module.component("sheetApproverBody", {
+        transclude: true,
+    
         templateUrl:"app/sheetapprover/sheet-approver-body.html",
         controllerAs: "model",
         controller: ["$http", sheetBodyController]
     });
+   
 
 }());

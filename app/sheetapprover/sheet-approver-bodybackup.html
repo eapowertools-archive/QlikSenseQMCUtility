@@ -1,0 +1,69 @@
+    <div id="page-content-header">
+            <h1 class="title">Sheet Approver</h1>    
+            <support-statement></support-statement>
+    </div>
+    <div id="page-content-search">
+        <div class="lui-bg-inverse">
+            <div class="lui-search lui-search--inverse">
+                <span class="lui-search__search-icon"></span>
+                <input type="text" class="lui-search__input" maxlength="255" spellcheck="false" placeholder="Search" ng-model="searchSheets"/>
+                <span class="lui-search__clear-icon"></span>
+            </div>
+        </div>
+    </div>
+    <div id="page-content-body">
+        <div class="table-columns">
+            <table class="column-header">
+                <thead>
+                    <tr>
+                        <th class="column" ng-repeat="column in model.columnNames | filter: display=true | orderBy: '+colNum' ">
+                            <div class="header-column">
+                                {{column.friendlyName}}
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="table-rows">
+            <table class="row-data">
+                <tbody>
+                    <tr class="row" ng-repeat="row in model.tableRows | filter: searchSheets track by $index">
+                        <td>
+                            <label class="lui-checkbox  lui-checkbox--inverse">
+                                <input name="name" id="row[7]" class="lui-checkbox__input" type="checkbox" ng-disabled="!row[3]" ng-model="checkme" ng-click="model.checkme(checkme)" ng-change="model.setValue(checkme, $index, row[7])"/>
+                                <div class="lui-checkbox__check-wrap">
+                                    <span class="lui-checkbox__check" ></span>
+                                </div>
+                            </label>
+                        </td>
+                        <td ng-if="!$last" ng-repeat="col in row | filter: searchKeyword track by $index">
+                            {{col}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="page-content-footer">
+        <div id="button-bar">
+            <button id="buttonapprove" class="lui-button" ng-class="model.outputs.length > 0 ? 'lui-button--toolbar-inverse' : 'lui-disabled'" ng-click="model.approve()">Approve Sheet</button>
+            <button id="buttonunapprove" class="lui-button" ng-class="model.outputs.length > 0 ? 'lui-button--toolbar-inverse' : 'lui-disabled'" ng-click="model.unapprove()">Un-Approve Sheet</button>
+            <button class="lui-button  lui-button--toolbar-inverse" id="dialog" ng-click="goHelp = !goHelp">?</button>
+
+        </div>
+        <div class="usage-content" ng-show="goHelp">
+            <div class="lui-dialog  lui-dialog--inverse" style="width: 600px;">
+                <div class="lui-dialog__header">
+                    <div class="lui-dialog__title">Usage</div>
+                </div>
+                <div class="lui-dialog__body">
+                    You can only approve or un-approve published sheets. <br /><br /> Published and Approved = Base Sheets
+                    <br /> Published and Not Approved = Community Sheets <br /> Not Published and Not Approved = My Sheets
+                </div>
+                <div class="lui-dialog__footer">
+                    <button class="lui-button  lui-button--inverse  close-button" ng-click="goHelp = !goHelp">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -31,15 +31,17 @@
   font-style: normal;
 }
 
+.container-fluid
+{
+    margin-left: 250px;
+    padding-left:0px;
+    padding-right:0px;
+}
 
 body {
-    overflow-x: hidden;
     font-family: 'QlikView Sans', Fallback, Arial, Helvetica, sans-serif;
  }
 
-#wrapper {
-    padding-left:250px;
-}
 
 #sidebar-wrapper
 {
@@ -65,10 +67,7 @@ body {
 }
 
 
-#page-content-wrapper {
-    width: 100%;
-    position: absolute;
-}
+
 
 .header
 {
