@@ -21,10 +21,12 @@
 
 }
 
+
 #page-content-body {
     margin-top: 108px;
-
+    margin-bottom: 50px;
 }
+
 
 #page-content-footer {
    position:fixed;
@@ -54,12 +56,6 @@
     padding-left:15px;
 }
 
-.column
-{
-    max-width: 224px;
-}
-
-
 .dialog-content {
     position: absolute;
     width:600px;
@@ -82,6 +78,8 @@
     background-color: #A0A0A0;
 }
 
+
+
 tbody tr.hover#highlighted{
     color: #ffffff;
     background-color: #595959;
@@ -90,4 +88,30 @@ tbody tr.hover#highlighted{
 tbody tr:hover, tr.alt:hover {
     color: #ffffff;
     background-color: #595959;
+}
+
+.column{
+    word-wrap: break-word;
+    width:200px;
+
+}
+
+.small-column
+{
+    width:100px;
+}
+
+.table-data
+{
+    margin-top:145px;
+    overflow-y:auto;
+    table-layout:fixed;
+    overflow-x:hidden;
+}
+
+.table-head
+{
+    margin-bottom:0px;
+    background: white;
+    table-layout:fixed;
 }

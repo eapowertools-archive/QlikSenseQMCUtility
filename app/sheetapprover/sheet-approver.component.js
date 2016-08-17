@@ -60,8 +60,7 @@
                 fetchTableRows($http).then(function(response)
                 {
                     model.tableRows = response.rows;
-                }); 
-                return null;
+                });   
             });
         };
 
@@ -76,6 +75,13 @@
                 return false;
             }
         }
+
+        model.getWidth = function(){
+            $(".th-column").each(function()
+            {
+                console.log($(this).css('width'));
+            });
+        };
 
         model.setValue = function(checkme, $index, sheetId)
         {
@@ -99,6 +105,7 @@
                 console.log(response);
                 if(response.data.success)
                 {
+                    $('.approveUnapprove').prop('checked', false);
                     model.outputs = [];
                     response.data.items.forEach(function(item)
                     {
@@ -107,7 +114,8 @@
                             if(item.id==row[7])
                             {
                                 model.tableRows[index][2] = item.approved;
-                                model.checkme(false);
+                               // model.checkme(false);
+
                             }
                         });
                     });
@@ -123,6 +131,7 @@
                 console.log(response);
                 if(response.data.success)
                 {
+                    $('.approveUnapprove').prop('checked', false);
                     model.outputs = [];
                     response.data.items.forEach(function(item)
                     {

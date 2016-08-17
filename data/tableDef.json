@@ -5,7 +5,7 @@
             "colNum": 1,
             "friendlyName": "Sheet Name",
             "display": true,
-            "colWidth":224,
+            "colWidth":200,
             "name": "name",
             "columnType": "Property",
             "definition": "name"
@@ -14,7 +14,7 @@
             "colNum": 2,
             "friendlyName": "Sheet Owner",
             "display": true,
-            "colWidth":224,
+            "colWidth":200,
             "name": "owner",
             "columnType": "Property",
             "definition": "owner.name"
@@ -41,7 +41,7 @@
             "colNum": 5,
             "friendlyName": "Last Modified",
             "display": true,
-            "colWidth":224,
+            "colWidth":200,
             "name": "modifiedDate",
             "columnType": "Property",
             "definition": "modifiedDate"
@@ -50,7 +50,7 @@
             "colNum": 6,
             "friendlyName": "App",
             "display": true,
-            "colWidth":224,
+            "colWidth":200,
             "name": "app.name",
             "columnType": "Property",
             "definition": "app.name"
@@ -58,7 +58,7 @@
         {
             "colNum": 7,
             "friendlyName": "Stream",
-            "colWidth":224,
+            "colWidth":200,
             "display": true,
             "name": "app.stream.name",
             "columnType": "Property",
@@ -68,7 +68,7 @@
             "colNum": 8,
             "friendlyName": "Sheet ID",
             "display": true,
-            "colWidth":224,
+            "colWidth":200,
             "name": "id",
             "columnType": "Property",
             "definition": "id"
