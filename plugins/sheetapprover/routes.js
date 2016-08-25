@@ -4,22 +4,22 @@ var bodyParser = require('body-parser');
 var parseUrlencoded = bodyParser.urlencoded({extended: false});
 var fs = require('fs');
 var qrsInteract = require('qrs-interact');
-
+var config = require('./config');
 
 var qrsConfig = {
-    hostname: 'sense3.112adams.local',
-    localCertPath: "F:/My Documents/_Git/QlikSenseQMCUtility/certs"
+    hostname: config.qrs.hostname,
+    localCertPath: config.qrs.localCertPath
 }
 
 var qrs = new qrsInteract(qrsConfig);
 
-router.use('/data', express.static("F:/My Documents/_Git/QlikSenseQMCUtility/plugins/sheetapprover/data"));
+router.use('/data', express.static(config.thisServer.pluginPath + "/sheetapprover/data"));
 
 router.route('/getSheets')
     .get(function(request,response)
     {
         //first get the table file;
-        var tableDef = fs.readFileSync("F:/My Documents/_Git/QlikSenseQMCUtility/plugins/sheetapprover/data/tableDef.json");
+        var tableDef = fs.readFileSync(config.thisServer.pluginPath + "/sheetapprover/data/tableDef.json");
 
         var filter = "((objectType+eq+%27sheet%27))";
 

@@ -29,7 +29,11 @@ var config = {
         dataPath: path.join(__dirname, '/../data/'),
 		appPath: path.join(__dirname, '/../app/'),
 		pluginPath: path.join(__dirname, '/../plugins/')
-    }
+    },
+	qrsServer:{
+		hostname: 'sense3.112adams.local'
+		
+	}
 }
 
 module.exports = config;

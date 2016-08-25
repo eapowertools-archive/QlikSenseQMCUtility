@@ -5,15 +5,6 @@ var parseUrlencoded = bodyParser.urlencoded({extended: false});
 var winston = require('winston');
 var config = require('../config/config');
 var fs = require('fs');
-var qrsInteract = require('qrs-interact');
-
-
-var qrsConfig = {
-    hostname: 'sense3.112adams.local',
-    localCertPath: "F:/My Documents/_Git/QlikSenseQMCUtility/certs"
-}
-
-var qrs = new qrsInteract(qrsConfig);
 
 
 //set up logging

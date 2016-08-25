@@ -1,6 +1,7 @@
 var fs = require('fs');
+var config = require('./config/config');
 
-var path = "F:/My Documents/_Git/QlikSenseQMCUtility/plugins";
+var path = config.thisServer.pluginPath;
 
 var results = fs.readdirSync(path);
 var routes = [];
