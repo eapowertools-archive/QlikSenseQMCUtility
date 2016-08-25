@@ -29,6 +29,7 @@
     "bootstrap": "^3.3.7",
     "jquery": "jquery-1.11.1#1.11.3",
     "angular-bootstrap": "^2.0.1",
-    "angular": "^1.5.8"
+    "angular": "^1.5.8",
+    "angular-load": "^0.4.1"
   }
 }

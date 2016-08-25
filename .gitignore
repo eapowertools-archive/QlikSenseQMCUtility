@@ -245,3 +245,8 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+#install Directory
+install/
+log/
+*.bak

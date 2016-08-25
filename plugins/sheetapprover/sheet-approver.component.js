@@ -4,7 +4,7 @@
 
 
     function fetchTableHeaders($http){
-        return $http.get("data/tableDef.json")
+        return $http.get("/sheetapprover/data/tableDef.json")
         .then(function(response)
         {
             return response.data;
@@ -13,7 +13,7 @@
 
     function fetchTableRows($http)
     {
-        return $http.get('/getSheets')
+        return $http.get('/sheetapprover/getSheets')
         //return $http.get("data/testData.json")
         .then(function(response)
         {
@@ -24,7 +24,7 @@
     function approveSheets($http, sheetIds)
     {
         console.log('running approveSheets');
-        return $http.post('/approveSheets', sheetIds)
+        return $http.post('/sheetapprover/approveSheets', sheetIds)
         .then(function(response)
         {
             return response;
@@ -33,7 +33,7 @@
 
     function unapproveSheets($http, sheetIds)
     {
-        return $http.post('/unapproveSheets',sheetIds)
+        return $http.post('/sheetapprover/unapproveSheets',sheetIds)
         .then(function(response)
         {
             return response;
@@ -163,13 +163,13 @@
     }
 
     module.component("supportStatement", {
-        templateUrl:"app/sheetapprover/support-statement.component.html" 
+        templateUrl:"plugins/sheetapprover/support-statement.component.html" 
     });
 
     module.component("sheetApproverBody", {
         transclude: true,
     
-        templateUrl:"app/sheetapprover/sheet-approver-body.html",
+        templateUrl:"plugins/sheetapprover/sheet-approver-body.html",
         controllerAs: "model",
         controller: ["$http", sheetBodyController]
     });

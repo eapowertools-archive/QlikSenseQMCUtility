@@ -27,7 +27,8 @@ var config = {
 		publicPath: path.join(__dirname, '/../public/'),
         bowerPath: path.join(__dirname, '/../bower_components/'),
         dataPath: path.join(__dirname, '/../data/'),
-		appPath: path.join(__dirname, '/../app/')
+		appPath: path.join(__dirname, '/../app/'),
+		pluginPath: path.join(__dirname, '/../plugins/')
     }
 }
 
