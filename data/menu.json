@@ -1,1 +1,1 @@
-[{"id":1,"title":"Hello World","templateUrl":"/hworld"},{"id":2,"title":"Sheet Approver","templateUrl":"/sheetapprover"}]
+[{"id":1,"title":"Custom Property Bulk Loader","templateUrl":"/customproploader"},{"id":2,"title":"Hello World","templateUrl":"/hworld"},{"id":3,"title":"Security Rule Import/Export","templateUrl":"/rulemanager"},{"id":4,"title":"Sheet Approver","templateUrl":"/sheetapprover"}]

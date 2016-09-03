@@ -1,0 +1,104 @@
+{
+    "entity": "SystemRule",
+    "columns": [
+        {
+            "name": "name",
+            "colNum": 1,
+            "display": true,
+            "colWidth":200,
+            "friendlyName":"Rule Name",
+            "columnType": "Property",
+            "definition": "name"
+        },
+        {
+            "name": "comment",
+            "colNum": 2,
+            "display": true,
+            "colWidth":200,
+            "friendlyName":"Description",
+            "columnType": "Property",
+            "definition": "comment"
+        },
+        {
+            "name": "resourceFilter",
+            "colNum": 3,
+            "display": true,
+            "colWidth":200,
+            "friendlyName":"Resource Filter",
+            "columnType": "Property",
+            "definition": "resourceFilter"
+        },
+        {
+            "name": "actions",
+            "colNum": 4,
+            "display": true,
+            "colWidth":200,
+            "friendlyName":"Actions",
+            "columnType": "Property",
+            "definition": "actions"
+        },
+        {
+            "name": "disabled",
+            "colNum": 5,
+            "display": true,
+            "colWidth":200,
+            "friendlyName":"Disabled?",
+            "columnType": "Property",
+            "definition": "disabled"
+        },
+        {
+            "name": "ruleContext",
+            "colNum": 6,
+            "display": true,
+            "colWidth":200,
+            "friendlyName":"Context",
+            "columnType": "Property",
+            "definition": "ruleContext"
+        },
+        {
+            "name": "type",
+            "colNum": 7,
+            "display": true,
+            "colWidth":200,
+            "friendlyName":"Rule Type",
+            "columnType": "Property",
+            "definition": "type"
+        },
+        {
+            "name": "createdDate",
+            "colNum": 8,
+            "display": true,
+            "colWidth":200,
+            "friendlyName":"Created Date",
+            "columnType": "Property",
+            "definition": "createdDate"
+        },
+        {
+            "name": "modifiedDate",
+            "colNum": 9,
+            "display": true,
+            "colWidth":200,
+            "friendlyName":"Last Modified Date",
+            "columnType": "Property",
+            "definition": "modifiedDate"
+        },
+        {
+            "name": "modifiedByUserName",
+            "colNum": 10,
+            "display": true,
+            "colWidth":200,
+            "friendlyName":"Modified By",
+            "columnType": "Property",
+            "definition": "modifiedByUserName"
+        },
+                {
+            "name": "id",
+            "colNum": 11,
+            "display": true,
+            "colWidth":200,
+            "friendlyName":"ID",
+            "columnType": "Property",
+            "definition": "id"
+        }
+    ]
+}

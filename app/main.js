@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-   var module = angular.module("QMCUtilities",["ngRoute","angularLoad"]);
+   var module = angular.module("QMCUtilities",["ngRoute","ngFileUpload"]);
   
   module.config(function($routeProvider){
     $routeProvider

@@ -1,0 +1,17 @@
+<div id="import-body">
+    <h1>I am the import body</h1>
+
+    <div class="btn" ngf-select ng-model="file" ngf-multiple="false">Select File</div>
+    on file change multiple:
+    <div class="btn" ngf-select="upload($files)" ngf-multiple="true">Select File</div>
+    Drop File:
+    <div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+        accept="image/*,application/pdf" ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
+    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+    Files:
+    <ul>
+        <li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
+    </ul>
+    Upload Log:
+    <pre>{{log}}</pre>
+</div>

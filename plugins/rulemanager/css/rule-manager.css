@@ -1,0 +1,204 @@
+
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color:white;
+    background-color: #494949;
+}
+
+#tabs .tab-content {
+ /* color : white; */
+  /*background-color: #428bca; */
+  padding : 5px 15px;
+}
+
+
+#tabs .nav-pills > li > a {
+  border-radius: 0;
+}
+
+#tabs {
+    background-color: white;
+    z-index: 1000;
+    margin-left:0px;
+}
+
+.export-table{
+    
+    margin-bottom: 50px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    table-layout:fixed;
+}
+
+#export-table-body 
+{
+    margin-top:180px;
+    table-layout:fixed;    
+}
+
+#select-box
+{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.rule-search{
+    margin-top:108px;
+    
+}
+
+#export-rules-header
+{
+    margin-top:146px;
+    margin-bottom: 0px;
+    border-collapse: collapse;
+}
+
+th{
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.rule-row{
+  overflow-x: hidden;
+  overflow-y: auto;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  border-collapse: separate;
+
+}
+
+.rule-row > td {
+    vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  /*overflow-wrap: break-word; */
+ /*white-space: nowrap; */
+  cursor: default;
+  line-height: 20px;
+}
+
+.resource .foo{
+     overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100px;
+  width:100px;
+}
+
+.rule-row > td::last-child {
+    border-right: 1px solid #D9D9D9;
+  box-sizing: border-box;
+}
+
+/*
+thead
+{
+    position:fixed;
+    background-color: white;
+    z-index:1040;
+    left:250px;
+    top:146px;
+}
+
+#th1
+{
+    width:85px;
+}
+
+#th2
+{
+    width:401px;
+}
+
+#th3
+{
+    width:134px;
+}
+
+#th4
+{
+    width:114px;
+}
+
+#th5
+{
+    width:86px;
+}
+
+#th6
+{
+    width:86px;
+}
+
+#th7
+{
+    width:114px;
+}
+
+#th8
+{
+    width:143px;
+}
+
+#th9
+{
+    width:143px;
+}
+
+#th10
+{
+    width:115px;
+}
+
+#th11
+{
+    width:231px;
+}
+/*
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 3px;
+}
+
+*/
+
+.foo2 {
+    visibility:hidden;
+    position:absolute;
+    z-index:1;
+    background-color:white;
+    border: 1px solid #595959;
+    border-radius:3px;
+    padding: 8px;
+    width:300px;
+    color:#595959;
+    white-space: pre-line;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+}
+
+.foo:hover .foo2{
+    
+    visibility:visible;
+}
+
+#import-body
+{
+    margin-top:146px;
+}
+
+.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 200px;
+    height: 65px;
+    text-align: center;
+    padding-top: 25px;
+    margin: 10px;
+}
+.dragover {
+    border: 5px dashed blue;
+}
