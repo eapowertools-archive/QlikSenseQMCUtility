@@ -115,3 +115,7 @@ tbody tr:hover, tr.alt:hover {
     background: white;
     table-layout:fixed;
 }
+
+.highlightedText {
+    background:yellow;
+}

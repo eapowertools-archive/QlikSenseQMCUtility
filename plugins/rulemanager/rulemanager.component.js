@@ -256,7 +256,7 @@
         transclude: true,
         templateUrl: "plugins/rulemanager/import-body.html",
         controllerAs: "importModel",
-        controller: ["$http", "Upload", importBodyController]
+        controller: ["$http", importBodyController]
     });
 
 

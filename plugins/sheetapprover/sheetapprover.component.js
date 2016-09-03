@@ -64,6 +64,20 @@
             });
         };
 
+        model.highlight = function(string, searchString)
+        {
+            console.log(string);
+            console.log(searchString);
+           /* if(!searchString)
+            {
+                //$sce.trustAsHtml(string);
+            }
+            return $sce.trustAsHtml(string.replace(new RegExp(searchString, "gi"), function(match)
+            {
+                return '<span class="lui-texthighlight">' + match + '</span>'
+            })) */
+        }
+
         model.checkme = function(checkme)
         {
             if(checkme)
@@ -174,5 +188,22 @@
         controller: ["$http", sheetBodyController]
     });
    
+   module.filter('highlight',function()
+   {
+       return function(text, search)
+       {
+           if(text && search)
+           {
+            text = text.toString();
+            search = search.toString();
+            return text.replace(new RegExp(search, 'gi'), '<span class="lui-texthighlight">$&</span>');
+           }
+           else {
+               return text;
+           }
+
+       }
+        
+   });
 
 }());

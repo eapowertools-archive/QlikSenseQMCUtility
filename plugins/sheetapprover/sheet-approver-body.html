@@ -37,7 +37,7 @@
                     </tr>
                 </thead> -->
                 <tbody>
-                    <tr ng-repeat="row in model.tableRows | filter: searchSheets track by $index">
+                    <tr ng-repeat="row in model.tableRows | filter: searchSheets track by $index" >
                         <td class="column" style="width:71px">
                             <label class="lui-checkbox">
                                 <input name="name" id="row[7]" class="lui-checkbox__input approveUnapprove" type="checkbox" ng-disabled="!row[3]" ng-model="checkme" ng-click="model.checkme(checkme)" ng-change="model.setValue(checkme, $index, row[7])"/>
@@ -46,7 +46,7 @@
                                 </div>
                             </label>
                         </td>
-                        <td ng-if="!$last" ng-repeat="col in row track by $index" ng-class="$index==2 || $index==3 ? 'small-column' : 'column'">
+                        <td ng-if="!$last" ng-repeat="col in row track by $index" ng-class="$index==2 || $index==3 ? 'small-column' : 'column'" ng-bind-html="col | highlight:searchSheets">
                             {{col}}
                         </td>
                     </tr>

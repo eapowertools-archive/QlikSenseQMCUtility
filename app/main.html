@@ -15,16 +15,19 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="bower_components/angular-load/angular-load.js"></script>
-    <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    
+<!--    <script src="bower_components/angular-load/angular-load.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script> -->
+    <script src="bower_components/oclazyload/dist/ocLazyLoad.js"></script>
     <script src="app/main.js"></script>
     <script src="app/menu-list.component.js"></script>
-    <script src="plugins/sheetapprover/sheet-approver.component.js"></script>
+<!--    <script src="plugins/sheetapprover/sheet-approver.component.js"></script>
     <script src="plugins/hworld/hello-world.component.js"></script>
     <script src="plugins/rulemanager/rule-manager.component.js"></script>
     <script src="plugins/customproploader/customprop-loader.component.js"></script>
-    
+-->    
 </head>
 
 <body>
@@ -34,7 +37,8 @@
         <!-- Sidebar -->
         <!--Page-content Wrapper-->
         <div class="container-fluid">
-            <ng-view></ng-view>
+           <!-- <ng-view></ng-view> -->
+            <ui-view></ui-view>
         </div>
     </div>
 
