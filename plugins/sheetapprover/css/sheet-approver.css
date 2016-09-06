@@ -1,0 +1,121 @@
+/*main component*/
+
+.navbar-fixed-top
+{
+    margin-left:250px;
+}
+
+#page-content-header {
+    background:#404040;
+    top:0;
+    height:69px;
+    width:100%;
+    line-height: 69px;
+    z-index:1000;
+}
+
+#page-content-search {
+    top:70px;
+    height: 38px;
+    z-index:1000;
+
+}
+
+
+#page-content-body {
+    margin-top: 108px;
+    margin-bottom: 50px;
+}
+
+
+#page-content-footer {
+   position:fixed;
+   bottom:0px;
+   height:50px;
+   width:100%;
+   background: #8C8C8C;
+}
+
+#button-bar {
+  position: absolute;
+  top: 50%;
+  left:10px;
+  transform: translateY(-50%);
+}
+
+.support {
+    left: 400px;
+}
+
+
+.title {
+    color: rgba(255,255,255,0.8);
+    float:left;
+    font-size: 36px;
+    margin-top:15px;
+    padding-left:15px;
+}
+
+.dialog-content {
+    position: absolute;
+    width:600px;
+    height: 250px;
+    top:70%;
+    margin-left:20%;
+    margin-top:10%;
+}
+
+.usage-content {
+    position: absolute;
+    width:600px;
+    height: 250px;
+    margin-top:-15%;
+    margin-left:20%;
+}
+
+.highlighted {
+    color: #595959;
+    background-color: #A0A0A0;
+}
+
+
+
+tbody tr.hover#highlighted{
+    color: #ffffff;
+    background-color: #595959;
+}
+
+tbody tr:hover, tr.alt:hover {
+    color: #ffffff;
+    background-color: #595959;
+}
+
+.column{
+    word-wrap: break-word;
+    width:200px;
+
+}
+
+.small-column
+{
+    width:100px;
+}
+
+.table-data
+{
+    margin-top:145px;
+    overflow-y:auto;
+    table-layout:fixed;
+    overflow-x:hidden;
+}
+
+.table-head
+{
+    margin-bottom:0px;
+    background: white;
+    table-layout:fixed;
+}
+
+.highlightedText {
+    background:yellow;
+}

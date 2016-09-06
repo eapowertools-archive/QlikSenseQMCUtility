@@ -189,6 +189,8 @@ ClientBin/
 *.pfx
 *.publishsettings
 node_modules/
+bower_components/
+.vscode/
 orleans.codegen.cs
 
 # RIA/Silverlight projects
@@ -243,3 +245,8 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+#install Directory
+install/
+log/
+*.bak

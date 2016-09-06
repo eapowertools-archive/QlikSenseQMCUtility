@@ -1,0 +1,42 @@
+[
+  {
+    "id": "729dee06-09d2-4c58-9d59-1afee601fcf2",
+    "createdDate": "2016-06-30T00:11:07.530Z",
+    "modifiedDate": "2016-06-30T00:11:07.530Z",
+    "modifiedByUserName": "SENSE3\\administrator",
+    "category": "Security",
+    "type": "Custom",
+    "name": "_gss - Publishing Rights by Role",
+    "rule": "((user.group = \"QlikRootAdmin\" or user.group=\"QlikContributor\" or user.group=\"QlikDeveloper\" or user.group=\"QlikDesigner\")) and (user.group = resource.@QlikGroup)",
+    "resourceFilter": "Stream_*",
+    "actions": 32,
+    "comment": "This rule allows Contributors, Designers and Developers to publish to streams.  The stream rule will cover which streams they have access to.  And other rules govern which object types they can publish.",
+    "disabled": false,
+    "ruleContext": 0,
+    "seedId": "00000000-0000-0000-0000-000000000000",
+    "version": 0,
+    "tags": [],
+    "privileges": null,
+    "schemaPath": "SystemRule"
+  },
+  {
+    "id": "a5359bfe-b60c-472e-af72-095e5fe4f4d5",
+    "createdDate": "2016-06-30T00:12:26.744Z",
+    "modifiedDate": "2016-08-17T17:18:57.222Z",
+    "modifiedByUserName": "SENSE3\\administrator",
+    "category": "Security",
+    "type": "Custom",
+    "name": "_gss - Root Admin Group Rule",
+    "rule": "((user.group=\"QlikRootAdmin\" or user.roles=\"RootAdmin\"))",
+    "resourceFilter": "*",
+    "actions": 511,
+    "comment": "This allows you to control the role of \"RootAdmin\" from outside of Qlik if you'd like.  Meaning, you can grant the RootAdmin role to people within your directory catalog instead of through the Qlik Roles.",
+    "disabled": false,
+    "ruleContext": 2,
+    "seedId": "00000000-0000-0000-0000-000000000000",
+    "version": 0,
+    "tags": [],
+    "privileges": null,
+    "schemaPath": "SystemRule"
+  }
+]
