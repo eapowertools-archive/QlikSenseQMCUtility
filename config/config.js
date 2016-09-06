@@ -40,7 +40,7 @@ var config = {
 		pluginPath: path.join(__dirname, '/../plugins/')
     },
 	qrs: {
-		hostname: 'sense3.112adams.local'
+		hostname: friendlyHostname !== undefined ? friendlyHostname : globalHostname
 	}
 }
 

@@ -43,7 +43,8 @@ var routeBuilder = require('./routeBuilder');
     {
       "id": index+1,
       "title": route.title,
-      "templateUrl": "/" + route.name
+      "templateUrl": "/" + route.name,
+      "stage": route.stage
     };
     menu.push(item);
   });

@@ -22,7 +22,8 @@ results.forEach(function(result)
                     var obj = {
                         name: content.pluginDir,
                         path: "./plugins/" + content.pluginDir + "/routes",
-                        title: content.title
+                        title: content.title,
+                        stage: content.stage
                     };
                     routes.push(obj);
                 }

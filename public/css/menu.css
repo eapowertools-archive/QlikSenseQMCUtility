@@ -90,9 +90,9 @@ body {
 }
  
 .sidebar-nav li {
-    font-size: 13px;
+    font-size: 16px;
     text-indent: 10px;
-    line-height: 20px;
+    line-height: 50px;
     background:#595959;
     color:rgba(255,255,255,0.8);
     border-left: orange 4px solid;

@@ -1,4 +1,5 @@
 {
     "title":"Sheet Approver",
-    "pluginDir": "sheetapprover"
+    "pluginDir": "sheetapprover",
+    "stage": "alpha"
 }

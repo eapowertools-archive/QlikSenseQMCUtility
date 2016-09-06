@@ -4,7 +4,7 @@
       <a href="#">QMC Utilities</a>
     </li>
     <li ng-repeat="menu in model.menuItems">
-      <a href="#{{menu.templateUrl}}">{{menu.title}}</a>
+      <a href="#{{menu.templateUrl}}">{{menu.title}}<span style="color:lightgreen;font-size:10px;">     {{menu.stage}}</span></a>
     </li>
   </ol>
 </div>
