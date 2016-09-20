@@ -1,0 +1,17 @@
+<div id="uploader">
+    <div class="page-header">
+        <h1>Uploader</h1>
+        <h1>{{model.hw}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            Upload on form submit or button click
+            <form name="form" enctype="multipart/form-data">
+                Single Image with validations
+                <input type="file" ngf-select="model.upload($file)" name="file">
+                Drop files:
+                <div ngf-drop ng-model="files" class="drop-box">Drop</div>
+                <button type="submit" ng-click="model.submit()">submit</button>
+            </form>
+
+        </div>
