@@ -8,7 +8,7 @@ var logFile = logPath + 'QMCUtilities.log';
 
 var globalHostname='localhost';
 var friendlyHostname;
-var certPathBackup = "f:/my documents/_git/qliksenseqmcutility/certs";
+var certPathBackup;
 
 if(certPathBackup !== undefined)
 {
