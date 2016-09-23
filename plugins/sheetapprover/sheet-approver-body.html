@@ -12,33 +12,55 @@
                 </div>
             </div>
         </div>
-        <div>
-            <table class="table table-bordered table-head">
+<!--        <div>
+          <table id="headerrow" class="table table-bordered table-head">
+                <colgroup>
+                    <col style="width:85px;min-width:85px;max-width:85px;">
+                    <col style="width:150px;min-width:100px;max-width:200px;">
+                    <col style="width:100px;min-width:100px;max-width:150px;">
+                    <col style="width:100px;min-width:100px;max-width:100px;">
+                    <col style="width:100px;min-width:100px;max-width:100px;">
+                    <col style="width:100px;min-width:150px;max-width:150px;">
+                    <col style="width:200px;min-width:150px;max-width:200px;">
+                    <col style="width:200px;min-width:150px;max-width:200px;">
+                    <col style="width:200px;min-width:150px;max-width:200px;">
+                </colgroup>
                     <thead>
                         <tr>
-                            <th class="column th-column" style="width:71px;">Selected</th>
+                            <th class="column th-column">Selected</th>
                             <th class="column th-column" ng-repeat="column in model.columnNames | filter: display=true | orderBy: '+colNum' " ng-style="{'width': column.colWidth + 'px'}">                        
                                 {{column.friendlyName}}
                             </th>
                         </tr>
                     </thead>
             </table>            
-        </div>
+        </div> -->
     </div>
     <div id="page-content-body" >
         <div>
             <table class="table table-bordered table-data">
-   <!--             <thead>
+                <colgroup>
+                    <col style="width:85px;min-width:85px;max-width:85px;">
+                    <col style="width:150px;min-width:100px;max-width:200px;">
+                    <col style="width:100px;min-width:100px;max-width:150px;">
+                    <col style="width:100px;min-width:100px;max-width:100px;">
+                    <col style="width:100px;min-width:100px;max-width:100px;">
+                    <col style="width:100px;min-width:150px;max-width:150px;">
+                    <col style="width:200px;min-width:150px;max-width:200px;">
+                    <col style="width:200px;min-width:150px;max-width:200px;">
+                    <col style="width:200px;min-width:150px;max-width:200px;">
+                </colgroup>
+              <thead>
                     <tr>
-                        <th class="column">Selected</th>
+                        <th class="column" style="width:85px;min-width:85px;max-width:85px;">Selected</th>
                         <th class="column" ng-repeat="column in model.columnNames | filter: display=true | orderBy: '+colNum' ">                        
                             {{column.friendlyName}}
                         </th>
                     </tr>
-                </thead> -->
+                </thead>
                 <tbody>
                     <tr ng-repeat="row in model.tableRows | filter: searchSheets track by $index" >
-                        <td class="column" style="width:71px">
+                        <td class="column">
                             <label class="lui-checkbox">
                                 <input name="name" id="row[7]" class="lui-checkbox__input approveUnapprove" type="checkbox" ng-disabled="!row[3]" ng-model="checkme" ng-click="model.checkme(checkme)" ng-change="model.setValue(checkme, $index, row[7])"/>
                                 <div class="lui-checkbox__check-wrap">
@@ -46,7 +68,7 @@
                                 </div>
                             </label>
                         </td>
-                        <td ng-if="!$last" ng-repeat="col in row track by $index" ng-class="$index==2 || $index==3 ? 'small-column' : 'column'" ng-bind-html="col | highlight:searchSheets">
+                        <td class="column" ng-if="!$last" ng-repeat="col in row track by $index" ng-bind-html="col | highlight:searchSheets">
                             {{col}}
                         </td>
                     </tr>

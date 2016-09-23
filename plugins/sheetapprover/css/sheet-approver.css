@@ -103,7 +103,7 @@ tbody tr:hover, tr.alt:hover {
 
 .table-data
 {
-    margin-top:145px;
+    /*margin-top:145px;*/
     overflow-y:auto;
     table-layout:fixed;
     overflow-x:hidden;
