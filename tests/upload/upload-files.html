@@ -10,7 +10,7 @@
                 Single Image with validations
                 <input type="file" ngf-select="model.upload($file)" name="file">
                 Drop files:
-                <div ngf-drop ng-model="files" class="drop-box">Drop</div>
+                <div ngf-drop="model.checkFiles($file)" ng-model="files" class="drop-box">Drop</div>
                 <button type="submit" ng-click="model.submit()">submit</button>
             </form>
 

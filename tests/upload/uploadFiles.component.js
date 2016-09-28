@@ -33,7 +33,24 @@
                 {
                     console.log(resp.config.data.file.name);
                 });
-            }
+        };
+
+        model.checkFiles = function(files)
+        {
+            console.log("trying to upload");
+            console.log(files);
+            Upload.upload({
+                    url: "http://localhost:8432/upload",
+                    data: {
+                        file: files
+                    },
+                    arrayKey:''
+                })
+                .then(function(resp)
+                {
+                    console.log(resp.config.data.file.name);
+                });
+        }
     }
 
     module.component('uploadFiles',

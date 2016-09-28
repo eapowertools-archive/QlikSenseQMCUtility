@@ -1,0 +1,77 @@
+[
+	{
+		"name": "Apps",
+		"definition": "App",
+		"column": 1
+	},
+	{
+		"name": "Content libraries",
+		"definition": "ContentLibrary",
+		"column": 1
+	},
+	{
+		"name": "Data connections",
+		"definition": "DataConnection",
+		"column": 1
+	},
+	{
+		"name": "Engines",
+		"definition": "EngineService",
+		"column": 1
+	},
+	{
+		"name": "Extensions",
+		"definition": "Extension",
+		"column": 1
+	},
+	{
+		"name": "Nodes",
+		"definition": "ServerNodeConfiguration",
+		"column": 1
+	},
+	{
+		"name": "Printing",
+		"definition": "PrintingService",
+		"column": 1
+	},
+	{
+		"name": "Proxies",
+		"definition": "ProxyService",
+		"column": 1
+	},
+	{
+		"name": "Reload tasks",
+		"definition": "ReloadTask",
+		"column": 2
+	},
+	{
+		"name": "Repositories",
+		"definition": "RepositoryService",
+		"column": 2
+	},
+	{
+		"name": "Schedulers",
+		"definition": "SchedulerService",
+		"column": 2
+	},
+	{
+		"name": "Streams",
+		"definition": "Stream",
+		"column": 2
+	},
+	{
+		"name": "User Synchronization tasks",
+		"definition": "UserSyncTask",
+		"column": 2
+	},
+	{
+		"name": "Users",
+		"definition": "User",
+		"column": 2
+	},
+	{
+		"name": "Virtual proxies",
+		"definition": "VirtualProxyConfig",
+		"column": 2
+	}
+]
