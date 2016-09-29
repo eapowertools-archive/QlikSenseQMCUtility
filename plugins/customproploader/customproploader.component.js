@@ -86,4 +86,8 @@
         controller: ["$http", customPropController]
     });
 
+    module.component("supportStatement", {
+        templateUrl:"plugins/customproploader/support-statement.component.html" 
+    });
+
 }());

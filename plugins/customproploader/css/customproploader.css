@@ -1,3 +1,40 @@
+.navbar-fixed-top
+{
+    margin-left:250px;
+}
+
+#page-content-header {
+    background:#404040;
+    top:0;
+    height:69px;
+    width:100%;
+    line-height: 69px;
+    z-index:1000;
+}
+
+#page-content-body {
+    margin-top: 108px;
+    margin-bottom: 50px;
+}
+
+.title {
+    color: rgba(255,255,255,0.8);
+    float:left;
+    font-size: 36px;
+    margin-top:15px;
+    padding-left:15px;
+}
+
+#btn-support
+{
+    float:right;
+}
+
+.help-text
+{
+    line-height: normal;
+}
+
 .panel-heading {
     background-color: #535D5A;
     border-color: #535D5A;

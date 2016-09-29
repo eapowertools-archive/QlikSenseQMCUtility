@@ -1,95 +1,85 @@
-<form name="form" novalidate>
-    <div class="container-fluid">
-        <div class="row" style="padding-left: 15px;">
-            <div class="col-md-3 sidebar">
-                <div class="row">
+<div class="navbar-fixed-top">
+    <div id="page-content-header">
+        <h1 class="title">Custom Property Bulk Loader</h1>
+        <support-statement></support-statement>
+    </div>
+</div>
+<div id="page-content-body">
+    <div>
+        <div class="row" style="padding-left: 15px;padding-right: 15px;">
+            <form name="form" novalidate>
+                <div class="col-md-8">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            Instructions
+                            Name the Custom Property:
                         </div>
-                        <div class="panel-body">
-                            <p>The custom property bulk loader enables you to create custom properties and import custom property
-                                values from a comma separated value (csv) file.</p>
-                            <p>Enter a name for the custom property you want to create, select the resources that will use the
-                                custom property, and upload the csv file.</p>
-                            <p>Click the submit button and watch magic happen!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <button [disabled]="!customPropName.valid || !resourceSelected || !fileUploaded" type="submit" class="btn btn-success btn-block">Create!</button>
-                </div>
-                <div class="row">
-                    <div *ngIf="QRSMessage" class="alert alert-success">{{QRSMessage}}</div>
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-
-                        <div class="form-group">
-                            Name the Custom Property: <input type="text" class="form-control" placeholder="Enter a name for the custom property"
-                                ng-model="model.customPropName" id="customPropName" name="customPropName" ng-change="model.validateName()" required>
+                        <div class="form-group" style="padding-top:15px;padding-left:15px;padding-right:15px">
+                            <input type="text" class="form-control" placeholder="Enter a name for the custom property" ng-model="model.customPropName"
+                                id="customPropName" name="customPropName" ng-change="model.validateName()" required>
                             <div ng-show="form.customPropName.$error.required" class="alert alert-danger" id="mandatory">This field is mandatory.</div>
                             <div ng-show="model.invalidName" class="alert alert-danger" id="invalid">This field accepts only letters and numbers.</div>
                         </div>
                     </div>
-                </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        Select Qlik Sense Resources:
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-4">
-                                <div class="row" ng-repeat="resource in model.resources1">
-                                    <div>
-                                        <div class="checkbox">
-                                            <label>
-                                    <input type="checkbox" value="{{resource.definition}}" id="{{resource.definition}}" 
-                                    ng-click="model.checkedResources(resource.definition)" 
-                                    >{{resource.name}}      
-                                 </label>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Select Qlik Sense Resources:
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-4">
+                                    <div class="row" ng-repeat="resource in model.resources1">
+                                        <div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="{{resource.definition}}" id="{{resource.definition}}" 
+                                                    ng-click="model.checkedResources(resource.definition)" 
+                                                    >{{resource.name}}      
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="row" ng-repeat="resource in model.resources2">
-                                    <div>
-                                        <div class="checkbox">
-                                            <label>
+                                <div class="col-md-4">
+                                    <div class="row" ng-repeat="resource in model.resources2">
+                                        <div>
+                                            <div class="checkbox">
+                                                <label>
                             <input type="checkbox" ng-click="model.checkedResources(resource.definition)"
                             value="{{resource.definition}}" id="{{resource.definition}}" class="checky">{{resource.name}}
                                 </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-2">
+                                </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="row" style="padding-left:15px;padding-right:15px;">
+                                <p ng-if="!model.selectedResources.length" class="alert alert-danger">Please select at least one resource.</p>
                             </div>
-                        </div>
-                        <div class="row">
-                            <p ng-if="!model.selectedResources.length" class="alert alert-danger">Please select at least one resource.</p>
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        Upload a File:
-                    </div>
-                    <div class="panel-body">
-                        <div class="form-inline">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="uploadButton">Select file to upload:</label>
+                <div class="col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Upload a File:
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-inline">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="uploadButton">Select file to upload:</label>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input class="form-control-file" id="uploadButton" type="file" (change)="fileChangeEvent($event)" name="fileRequested">
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <input class="form-control-file" id="uploadButton" type="file" (change)="fileChangeEvent($event)" name="fileRequested">
-                                </div>
-                                <div class="col-md-2">
-                                    <button type="button" (click)="upload()" class="btn btn-primary btn-block" style="padding-top:5px">Upload</button>
+                                <div class="row">
+                                    <div style="padding-left:15px;padding-right:15px;">
+                                        <button type="button" (click)="upload()" class="lui-button  lui-button--success btn-block lui-disabled">Upload</button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -110,14 +100,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" *ngIf="!filesToUpload.length && !propValues.length">
+                            <div class="row" *ngIf="!filesToUpload.length && !propValues.length" style="padding-left:15px;padding-right:15px;">
                                 <p class="alert alert-danger">Please upload a file.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
         </div>
+        </form>
     </div>
-</form>
+</div>
+
+
+</div>
