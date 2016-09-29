@@ -15,6 +15,46 @@ var qrs = new qrsInteract(qrsConfig);
 
 router.use('/data', express.static(config.thisServer.pluginPath + "/sheetapprover/data"));
 
+var updateApprovedPublishedValue = function(data) {
+    var approvedColumn = -1;
+    var publishedColumn = -1;
+    for(var i = 0; i < data.columnNames.length; i++){
+        if (data.columnNames[i] == "approved")
+        {
+            approvedColumn = i;
+        }
+        if (data.columnNames[i] == "published")
+        {
+            publishedColumn = i;
+        }
+    }
+
+    for(var i = 0; i < data.rows.length; i++){
+        if (approvedColumn >= 0) {
+            if (data.rows[i][approvedColumn] == true)
+            {
+                data.rows[i][approvedColumn] = "Approved";
+            }
+            else if (data.rows[i][approvedColumn] == false)
+            {
+                data.rows[i][approvedColumn] = "Not approved";
+            }
+        }
+
+        if (publishedColumn >= 0) {
+            if (data.rows[i][publishedColumn] == true)
+            {
+                data.rows[i][publishedColumn] = "Published";
+            }
+            else if (data.rows[i][publishedColumn] == false)
+            {
+                data.rows[i][publishedColumn] = "Not published";
+            }
+        }
+    }
+    return data;
+};
+
 router.route('/getSheets')
     .get(function(request,response)
     {
@@ -26,6 +66,7 @@ router.route('/getSheets')
         qrs.Post("app/object/table?filter=" + filter + "&orderAscending=true&skip=0&sortColumn=name", JSON.parse(tableDef),"json")
         .then(function(result)
         {
+            result = updateApprovedPublishedValue(result);
             var s = JSON.stringify(result);
             response.send(s);
         })
