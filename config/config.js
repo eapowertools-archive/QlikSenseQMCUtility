@@ -8,6 +8,7 @@ var logFile = logPath + 'QMCUtilities.log';
 
 var globalHostname='localhost';
 var friendlyHostname;
+var qrsHostname = 'sense3.112adams.local';
 var certPathBackup = "F:/My Documents/_Git/QlikSenseQMCUtility/certs";
 
 if(certPathBackup !== undefined)
@@ -40,7 +41,7 @@ var config = {
 		pluginPath: path.join(__dirname, '/../plugins/')
     },
 	qrs: {
-		hostname: friendlyHostname !== undefined ? friendlyHostname : globalHostname
+		hostname: qrsHostname !== undefined ? qrsHostname : globalHostname
 	}
 }
 

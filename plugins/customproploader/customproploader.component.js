@@ -1,6 +1,6 @@
 (function(){
     "use strict";
-    var module = angular.module("QMCUtilities");
+    var module = angular.module("QMCUtilities", ["ngFileUpload"]);
 
     function fetchResources($http)
     {
@@ -19,15 +19,36 @@
         });
     }
 
-    function customPropController($http)
+    function createProp($http, name, resources, values)
+    {
+        var body = 
+        {
+            "name" : name,
+            "valueType": "Text",
+            "choiceValues": values,
+            "objectTypes": resources
+        };
+        return $http.post("/customproploader/create", body)
+        .then(function(result)
+        {
+            return result;
+        });
+    }
+
+    function customPropController($http, Upload)
     {
         var model= this;
         model.resources1 = [];
         model.resources2 = [];
-        model.invalidName = false;
+        model.validName = false;
         model.resourceSelected = false;
         model.selectedResources = [];
-
+        model.file = [];
+        model.fileSelected = false;
+        model.propValues = [];
+        model.fileUploaded = false;
+        model.QRSMessage = "";
+        
 
         model.$onInit = function()
         {
@@ -43,11 +64,11 @@
         {
             if(!model.customPropName.match(/^\S\w*$/))
             {
-                model.invalidName = true;
+                model.validName = false;
             }
             else
             {
-                model.invalidName = false;
+                model.validName = true;
             }
         };
 
@@ -63,14 +84,50 @@
                 model.selectedResources.splice(indexx,1);
             }
 
-            if(this.selectedResources.length>0)
+            if(model.selectedResources.length>0)
             {
-                this.resourceSelected = true;
+                model.resourceSelected = true;
             }
             else
             {
-                this.resourceSelected = false;
+                model.resourceSelected = false;
             }
+        };
+
+        model.selectFile = function(files)
+        {
+            model.fileSelected=true;
+            return model.file = files;
+        };
+
+        model.upload = function()
+        {
+            Upload.upload({
+                url:"/customproploader/upload",
+                data:
+                {
+                    file: model.file
+                },
+                arrayKey: ''
+            })
+            .then(function(response)
+            {
+                //expose file to ui
+                model.file = [];
+                model.fileSelected = false;
+                model.fileUploaded = true;
+                console.log(response);
+                return model.propValues = response.data;
+            })
+        };
+
+        model.create = function()
+        {
+            createProp($http, model.customPropName, model.selectedResources, model.propValues)
+            .then(function(result)
+            {
+                model.QRSMessage = result.data;
+            });
         };
 
     }
@@ -83,7 +140,7 @@
             customPropName: "<"
         },
         controllerAs: "model",
-        controller: ["$http", customPropController]
+        controller: ["$http", "Upload", customPropController]
     });
 
     module.component("supportStatement", {

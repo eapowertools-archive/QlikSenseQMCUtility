@@ -27,6 +27,7 @@
     "express": "^4.14.0",
     "fs": "0.0.2",
     "multer": "^1.2.0",
+    "multer-autoreap": "^0.1.2",
     "path": "^0.12.7",
     "qrs-interact": "^1.0.0",
     "winston": "^2.2.0"
