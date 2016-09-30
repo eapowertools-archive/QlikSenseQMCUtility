@@ -33,7 +33,7 @@
             });
     }
 
-    function sheetBodyController($http) {
+    function sheetBodyController($scope, $http) {
         var model = this;
         var colNames = [];
         model.columnNames = [];
@@ -136,7 +136,11 @@
                             });
                         });
                     }
-                });
+                    return;
+                }).then(function() {
+                    $scope.form.$setPristine();
+                    $scope.form.$setUntouched();
+                });;
         };
 
         model.unapprove = function () {
@@ -158,6 +162,10 @@
                             });
                         });
                     }
+                    return;
+                }).then(function() {
+                    $scope.form.$setPristine();
+                    $scope.form.$setUntouched();
                 });
         };
 
@@ -184,7 +192,7 @@
 
         templateUrl: "plugins/sheetapprover/sheet-approver-body.html",
         controllerAs: "model",
-        controller: ["$http", sheetBodyController]
+        controller: ["$scope", "$http", sheetBodyController]
     });
 
     module.filter('highlight', function () {
