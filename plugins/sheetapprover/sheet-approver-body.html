@@ -62,7 +62,7 @@
                     <tr ng-repeat="row in model.tableRows | filter: searchSheets track by $index" >
                         <td class="column">
                             <label class="lui-checkbox">
-                                <input name="name" id="row[7]" class="lui-checkbox__input approveUnapprove" type="checkbox" ng-disabled="!row[3]" ng-model="checkme" ng-click="model.checkme(checkme)" ng-change="model.setValue(checkme, $index, row[7])"/>
+                                <input name="name" id="row[7]" class="lui-checkbox__input approveUnapprove" type="checkbox" ng-disabled="row[3] == 'Not published' ? true : false" ng-model="checkme" ng-click="model.checkme(checkme)" ng-change="model.setValue(checkme, $index, row[7])"/>
                                 <div class="lui-checkbox__check-wrap">
                                     <span class="lui-checkbox__check" ></span>
                                 </div>
