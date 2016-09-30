@@ -60,12 +60,41 @@ router.post('/upload', upload.array('file', 1) , function (req, res)
 
 });
 
-
+router.get("/getProps", function(req,res)
+{
+	qrs.Get("custompropertydefinition/full")
+	.then(function(result)
+	{
+		res.json(result)
+	})
+	.catch(function(error)
+	{
+		res.json(error);
+	})
+})
 
 router.post("/create", function(req,res)
 {
 	var newBody = JSON.parse(JSON.stringify(req.body));
 	qrs.Post("custompropertydefinition",newBody,"json")
+	.then(function(result)
+	{
+		console.log(result);
+		res.json(JSON.stringify(result));
+	})
+	.catch(function(error)
+	{
+		console.error(error);
+		res.json(JSON.stringify(error));
+	});
+});
+
+router.post("/update/:id", function(req, res)
+{
+	var newBody = JSON.parse(JSON.stringify(req.body));
+	console.log(req.params.id)
+	console.log(newBody);
+	qrs.Put("custompropertydefinition/" + req.params.id, newBody)
 	.then(function(result)
 	{
 		console.log(result);

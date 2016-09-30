@@ -26,6 +26,10 @@
     padding-left:15px;
 }
 
+#mandatory {
+    margin-bottom:10px;
+}
+
 #btn-support
 {
     float:right;
