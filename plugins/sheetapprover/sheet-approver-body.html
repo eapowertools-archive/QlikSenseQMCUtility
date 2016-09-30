@@ -78,8 +78,8 @@
     </div>
     <div id="page-content-footer">
         <div id="button-bar">
-            <button id="buttonapprove" class="lui-button" ng-class="model.outputs.length > 0 ? 'lui-button--toolbar-inverse' : 'lui-disabled'" ng-click="model.approve()">Approve Sheet</button>
-            <button id="buttonunapprove" class="lui-button" ng-class="model.outputs.length > 0 ? 'lui-button--toolbar-inverse' : 'lui-disabled'" ng-click="model.unapprove()">Un-Approve Sheet</button>
+            <button id="buttonapprove" class="lui-button" ng-class="model.approveButtonValid() ? 'lui-button--toolbar-inverse' : 'lui-disabled'" ng-click="model.approve()">Approve Sheet</button>
+            <button id="buttonunapprove" class="lui-button" ng-class="model.unapproveButtonValid() ? 'lui-button--toolbar-inverse' : 'lui-disabled'" ng-click="model.unapprove()">Un-Approve Sheet</button>
             <button id="getWidth" class="lui-button" ng-click="model.getWidth()">Get Width</button>
             <button class="lui-button  lui-button--toolbar-inverse" id="dialog" ng-click="goHelp = !goHelp">?</button>
 

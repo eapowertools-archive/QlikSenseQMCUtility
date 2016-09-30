@@ -66,6 +66,32 @@
              })) */
         }
 
+        function rowIdMatch(row) {
+            if (model.outputs.indexOf(row[7]) != -1) {
+                return true;
+            }
+        }
+
+        model.approveButtonValid = function () {
+            var selectedRows = model.tableRows.filter(rowIdMatch);
+            for (var index = 0; index < selectedRows.length; index++) {
+                if (selectedRows[index][2] == "Not approved") {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        model.unapproveButtonValid = function () {
+            var selectedRows = model.tableRows.filter(rowIdMatch);
+            for (var index = 0; index < selectedRows.length; index++) {
+                if (selectedRows[index][2] == "Approved") {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         model.checkme = function (checkme) {
             if (checkme) {
                 return true;
@@ -102,8 +128,7 @@
                                 if (item.id == row[7]) {
                                     if (item.approved == true) {
                                         model.tableRows[index][2] = "Approved";
-                                    }
-                                    else if (item.approved == false) {
+                                    } else if (item.approved == false) {
                                         model.tableRows[index][2] = "Not approved";
                                     }
                                     // model.checkme(false);
@@ -126,8 +151,7 @@
                                 if (item.id == row[7]) {
                                     if (item.approved == true) {
                                         model.tableRows[index][2] = "Approved";
-                                    }
-                                    else if (item.approved == false) {
+                                    } else if (item.approved == false) {
                                         model.tableRows[index][2] = "Not approved";
                                     }
                                 }
