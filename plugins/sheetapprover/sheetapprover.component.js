@@ -49,6 +49,9 @@
                 .then(function () {
                     fetchTableRows($http).then(function (response) {
                         model.tableRows = response.rows;
+                        for (var index = 0; index < model.tableRows.length; index++) {
+                            model.tableRows[index].unshift(false);
+                        }
                     });
                 });
         };
@@ -67,7 +70,7 @@
         }
 
         function rowIdMatch(row) {
-            if (model.outputs.indexOf(row[7]) != -1) {
+            if (model.outputs.indexOf(row[8]) != -1) {
                 return true;
             }
         }
@@ -75,7 +78,7 @@
         model.approveButtonValid = function () {
             var selectedRows = model.tableRows.filter(rowIdMatch);
             for (var index = 0; index < selectedRows.length; index++) {
-                if (selectedRows[index][2] == "Not approved") {
+                if (selectedRows[index][3] == "Not approved") {
                     return true;
                 }
             }
@@ -85,19 +88,11 @@
         model.unapproveButtonValid = function () {
             var selectedRows = model.tableRows.filter(rowIdMatch);
             for (var index = 0; index < selectedRows.length; index++) {
-                if (selectedRows[index][2] == "Approved") {
+                if (selectedRows[index][3] == "Approved") {
                     return true;
                 }
             }
             return false;
-        }
-
-        model.checkme = function (checkme) {
-            if (checkme) {
-                return true;
-            } else {
-                return false;
-            }
         }
 
         model.getWidth = function () {
@@ -106,8 +101,8 @@
             });
         };
 
-        model.setValue = function (checkme, $index, sheetId) {
-            if (checkme) {
+        model.setValue = function (isChecked, sheetId) {
+            if (isChecked) {
                 model.outputs.push(sheetId);
             } else {
                 var index = model.outputs.indexOf(sheetId);
@@ -116,28 +111,31 @@
             console.log(model.outputs);
         };
 
+        function handleApproveUnapproveResponse(response) {
+            console.log(response);
+            if (response.data.success) {
+                model.outputs = [];
+                response.data.items.forEach(function (item) {
+                    model.tableRows.forEach(function (row, index) {
+                        row[0] = false;
+                        if (item.id == row[8]) {
+                            if (item.approved == true) {
+                                model.tableRows[index][3] = "Approved";
+                            } else if (item.approved == false) {
+                                model.tableRows[index][3] = "Not approved";
+                            }
+                        }
+                    });
+                });
+            }
+        }
+
         model.approve = function () {
             approveSheets($http, model.outputs)
                 .then(function (response) {
-                    console.log(response);
-                    if (response.data.success) {
-                        $('.approveUnapprove').prop('checked', false);
-                        model.outputs = [];
-                        response.data.items.forEach(function (item) {
-                            model.tableRows.forEach(function (row, index) {
-                                if (item.id == row[7]) {
-                                    if (item.approved == true) {
-                                        model.tableRows[index][2] = "Approved";
-                                    } else if (item.approved == false) {
-                                        model.tableRows[index][2] = "Not approved";
-                                    }
-                                    // model.checkme(false);
-                                }
-                            });
-                        });
-                    }
+                    handleApproveUnapproveResponse(response);
                     return;
-                }).then(function() {
+                }).then(function () {
                     $scope.form.$setPristine();
                     $scope.form.$setUntouched();
                 });;
@@ -146,29 +144,13 @@
         model.unapprove = function () {
             unapproveSheets($http, model.outputs)
                 .then(function (response) {
-                    console.log(response);
-                    if (response.data.success) {
-                        $('.approveUnapprove').prop('checked', false);
-                        model.outputs = [];
-                        response.data.items.forEach(function (item) {
-                            model.tableRows.forEach(function (row, index) {
-                                if (item.id == row[7]) {
-                                    if (item.approved == true) {
-                                        model.tableRows[index][2] = "Approved";
-                                    } else if (item.approved == false) {
-                                        model.tableRows[index][2] = "Not approved";
-                                    }
-                                }
-                            });
-                        });
-                    }
+                    handleApproveUnapproveResponse(response);
                     return;
-                }).then(function() {
+                }).then(function () {
                     $scope.form.$setPristine();
                     $scope.form.$setUntouched();
                 });
         };
-
     }
 
     function controller() {
@@ -189,7 +171,6 @@
 
     module.component("sheetApproverBody", {
         transclude: true,
-
         templateUrl: "plugins/sheetapprover/sheet-approver-body.html",
         controllerAs: "model",
         controller: ["$scope", "$http", sheetBodyController]
