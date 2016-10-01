@@ -18,15 +18,17 @@
             });
     }
 
-    function approveSheets($http, sheetIds) {
+    function approveSheets($http, sheets) {
         console.log('running approveSheets');
+        var sheetIds = sheets.map(function(sheet) { return sheet['sheetId']; });
         return $http.post('/sheetapprover/approveSheets', sheetIds)
             .then(function (response) {
                 return response;
             });
     }
 
-    function unapproveSheets($http, sheetIds) {
+    function unapproveSheets($http, sheets) {
+        var sheetIds = sheets.map(function(sheet) { return sheet['sheetId']; });
         return $http.post('/sheetapprover/unapproveSheets', sheetIds)
             .then(function (response) {
                 return response;
@@ -69,16 +71,9 @@
              })) */
         }
 
-        function rowIdMatch(row) {
-            if (model.outputs.indexOf(row[8]) != -1) {
-                return true;
-            }
-        }
-
         model.approveButtonValid = function () {
-            var selectedRows = model.tableRows.filter(rowIdMatch);
-            for (var index = 0; index < selectedRows.length; index++) {
-                if (selectedRows[index][3] == "Not approved") {
+            for (var index = 0; index < model.outputs.length; index++) {
+                if (model.outputs[index]['approvedState'] == "Not approved") {
                     return true;
                 }
             }
@@ -86,9 +81,8 @@
         }
 
         model.unapproveButtonValid = function () {
-            var selectedRows = model.tableRows.filter(rowIdMatch);
-            for (var index = 0; index < selectedRows.length; index++) {
-                if (selectedRows[index][3] == "Approved") {
+            for (var index = 0; index < model.outputs.length; index++) {
+                if (model.outputs[index]['approvedState'] == "Approved") {
                     return true;
                 }
             }
@@ -101,11 +95,11 @@
             });
         };
 
-        model.setValue = function (isChecked, sheetId) {
+        model.setValue = function (isChecked, sheetId, approvedState) {
             if (isChecked) {
-                model.outputs.push(sheetId);
+                model.outputs.push({sheetId, approvedState});
             } else {
-                var index = model.outputs.indexOf(sheetId);
+                var index = model.outputs.indexOf({sheetId, approvedState});
                 model.outputs.splice(index, 1);
             }
             console.log(model.outputs);

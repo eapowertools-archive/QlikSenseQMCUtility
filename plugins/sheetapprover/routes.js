@@ -145,20 +145,21 @@ router.route('/unapproveSheets')
         {
             console.log('selectionid: ' + response.id);
             selectionId = response.id;
+
             var putBody = buildBody(false);
 
-            qrs.Put('selection/' + selectionId + '/App/Object/synthetic',putBody,'json')
+            return qrs.Put('selection/' + selectionId + '/App/Object/synthetic',putBody,'json')
             .then(function(response)
             {
                 console.log('Put Response: ' + response);
                 if(response===204)
                 {
                     result.success = true;
-                    qrs.Get('selection/' + selectionId + '/app/object/full')
+                    return qrs.Get('selection/' + selectionId + '/app/object/full')
                     .then(function(response)
                     {
                         result.items = response;
-                        qrs.Delete('selection/' + selectionId)
+                        return qrs.Delete('selection/' + selectionId)
                         .then(function()
                         {
                             console.log('selection deleted');
