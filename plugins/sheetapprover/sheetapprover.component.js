@@ -97,7 +97,7 @@
 
         model.setValue = function (isChecked, sheetId, approvedState) {
             if (isChecked) {
-                model.outputs.push({sheetId, approvedState});
+                model.outputs.push({'sheetId': sheetId, 'approvedState': approvedState});
             } else {
                 var index = model.outputs.indexOf({sheetId, approvedState});
                 model.outputs.splice(index, 1);
