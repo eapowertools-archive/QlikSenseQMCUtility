@@ -99,7 +99,7 @@
             if (isChecked) {
                 model.outputs.push({'sheetId': sheetId, 'approvedState': approvedState});
             } else {
-                var index = model.outputs.indexOf({sheetId, approvedState});
+                var index = model.outputs.indexOf({'sheetId': sheetId, 'approvedState': approvedState});
                 model.outputs.splice(index, 1);
             }
             console.log(model.outputs);
