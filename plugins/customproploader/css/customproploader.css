@@ -1,0 +1,126 @@
+.navbar-fixed-top
+{
+    margin-left:250px;
+}
+
+#page-content-header {
+    background:#404040;
+    top:0;
+    height:69px;
+    width:100%;
+    line-height: 69px;
+    z-index:1000;
+}
+
+#page-content-body {
+    margin-top: 108px;
+    margin-bottom: 50px;
+    margin-right:15px;
+}
+
+.title {
+    color: rgba(255,255,255,0.8);
+    float:left;
+    font-size: 36px;
+    margin-top:15px;
+    padding-left:15px;
+}
+
+#mandatory {
+    margin-bottom:10px;
+}
+
+#btn-support
+{
+    float:right;
+    margin-top: 20px;
+    margin-right:100px;
+}
+
+.help-text
+{
+    line-height: normal;
+}
+
+.panel-heading {
+    background-color: #535D5A;
+    border-color: #535D5A;
+}
+.panel-primary {
+    border-color: #535D5A;
+}
+.panel-primary > .panel-heading {
+  color: #fff;
+  background-color: #535D5A;
+  border-color: #535D5A;
+}
+.panel-primary > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #535D5A;
+}
+.panel-primary > .panel-heading .badge {
+  color: #535D5A;
+  background-color: #fff;
+}
+.panel-primary > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #535D5A;
+}
+
+.ng-invalid {
+    border-left: 5px solid rgb(169, 68, 66);
+}
+
+.ng-valid[required] {
+    border-left: 5px solid rgb(66, 169, 72);
+}
+
+#customPropForm
+{
+    border-left: none;
+}
+.btn[disabled]
+{
+  background-color: #eee;
+  color: #aaa;
+  border-color: #ccc;
+}
+
+ table {
+            width: 100%;
+        }
+
+        thead, tbody, tr, td, th { display: block; }
+
+        tr:after {
+            content: ' ';
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+
+        thead th {
+            height: 30px;
+
+            /*text-align: left;*/
+        }
+
+        tbody {
+            height: 400px;
+            overflow-y: auto;
+        }
+
+        thead {
+            /* fallback */
+        }
+
+/*
+        tbody td, thead th {
+            width: 19.2%;
+            float: left;
+        }
+        
+        */
+
+.success-message
+{
+    word-wrap: break-word;
+}

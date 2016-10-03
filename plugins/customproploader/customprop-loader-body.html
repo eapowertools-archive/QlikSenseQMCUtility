@@ -1,5 +1,134 @@
-<div id="page-content-header">
-    <p>test</p>
+<div class="navbar-fixed-top">
+    <div id="page-content-header">
+        <h1 class="title">Custom Property Bulk Loader</h1>
+        <support-statement></support-statement>
+    </div>
+</div>
+<div id="page-content-body">
+    <div>
+        <form name="form" id="customPropForm" enctype="multipart/form-data" novalidate>
+            <div class="row" style="padding-left: 15px;padding-right: 15px;">
+                <div class="col-md-8">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Create a new custom property or select an existing custom property to edit:
+                        </div>
+                        <div class="form-group" style="padding-top:15px;padding-left:15px;padding-right:15px">
+                            <div style="padding-bottom:15px">
+                                <select name="existingProps" id="existingProps" class="lui-select" ng-change="model.selectProp()" ng-model="model.existingProps"
+                                ng-init="model.initExistingProps()"
+                                ng-options="prop.name for prop in model.existingCustomProps track by prop.id">
+                                </select>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Enter a name for the custom property" ng-model="model.customPropName"
+                                id="customPropName" name="customPropName" ng-change="model.validateName()" ng-required="model.required" ng-show="model.required">
+                            <div ng-show="form.customPropName.$error.required" class="alert alert-danger" id="mandatory">This field is mandatory.</div>
+                            <div ng-show="!model.validName" class="alert alert-danger" id="invalid">This field accepts only letters and numbers.</div>
+                            <div ng-show="model.propExists" class="alert alert-danger" id="propExists">The custom property exists, please pick it from the dropdown list to update.</div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Select Qlik Sense Resources:
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-4">
+                                    <div class="row" ng-repeat="resource in model.resources1">
+                                        <div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="{{resource.definition}}" id="{{resource.definition}}" 
+                                                    ng-click="model.checkedResources(resource.definition)" 
+                                                    >{{resource.name}}      
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row" ng-repeat="resource in model.resources2">
+                                        <div>
+                                            <div class="checkbox">
+                                                <label>
+                            <input type="checkbox" ng-click="model.checkedResources(resource.definition)"
+                            value="{{resource.definition}}" id="{{resource.definition}}" class="checky">{{resource.name}}
+                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <div class="row" style="padding-left:15px;padding-right:15px;">
+                                <p ng-if="!model.selectedResources.length" class="alert alert-danger">Please select at least one resource.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Upload a File:
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-inline">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="uploadButton">Select file to upload:</label>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input class="form-control-file" id="uploadButton" type="file" ngf-select="model.selectFile($file)" name="fileRequested">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div style="padding-left:15px;padding-right:15px;">
+                                        <button type="button" ng-click="model.upload()" class="lui-button  lui-button--success btn-block" ng-class="model.fileSelected ? 'lui-button--success' : 'lui-button--success lui-disabled'">Upload</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <div class="table-responsive">
+                                        <table class="table scroll" ng-if="model.propValues && model.propValues.length">
+                                            <thead>
+                                                <tr>
+                                                    <th>Custom Property Values</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="propValue in model.propValues">
+                                                    <td>{{propValue}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="!model.propValues.length" style="padding-left:15px;padding-right:15px;">
+                                <p class="alert alert-danger">Please upload a file.</p>
+                            </div>
+                            <div class="row" ng-if="model.uploadMessage" style="padding-left:15px;padding-right:15px;">
+                                <p class="alert alert-warning">{{model.uploadMessage}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<h1>{{model.hw}}</h1>    
+            </div>
+            <div class="row" style="padding-left: 15px;padding-right: 15px;">
+                <div class="col-md-12">
+                    <button id="createProp" type="submit" class="lui-button  lui-button--success btn-block" ng-click="model.create()" ng-show="!model.updateProp" ng-class="model.fileUploaded && model.validName && model.resourceSelected && !model.updateProp ? 'lui-button--success' : 'lui-button--success lui-disabled'">Create!</button>
+                    <button id="updateProp" type="submit" class="lui-button  lui-button--success btn-block" ng-click="model.update()" ng-show="model.updateProp" ng-class="model.fileUploaded && model.validName && model.resourceSelected && model.updateProp ? 'lui-button--success' : 'lui-button--success lui-disabled'">Update!</button>
+                </div>
+            </div>
+            <div class="row" style="padding-left: 15px;padding-right: 15px;">
+                <div class="col-md-12">
+                    <div ng-if="model.QRSMessage" class="alert alert-success success-message">{{model.QRSMessage}}</div>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

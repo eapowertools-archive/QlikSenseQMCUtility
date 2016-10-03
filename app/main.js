@@ -14,7 +14,10 @@
       resolve: {
         loadMyCtrl : ['$stateParams','$ocLazyLoad',function($stateParams,$ocLazyLoad)
         {
-          return $ocLazyLoad.load("plugins/" + $stateParams.name + "/" + $stateParams.name + ".component.js")
+          return $ocLazyLoad.load([
+          "plugins/" + $stateParams.name + "/" + $stateParams.name + ".component.js", 
+          "plugins/" + $stateParams.name + "/css/" + $stateParams.name + ".css"
+          ])
           .then(function()
           {
             console.log("loaded")
