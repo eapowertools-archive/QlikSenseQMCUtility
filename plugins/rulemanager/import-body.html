@@ -1,6 +1,16 @@
 <div id="import-body">
+    <div class="rule-search navbar-fixed-top">
+        <div class="lui-bg-inverse">
+            <div class="lui-search lui-search--inverse">
+                <span class="lui-search__search-icon"></span>
+                <input type="text" class="lui-search__input" maxlength="255" spellcheck="false" placeholder="Search" ng-model="searchRules"
+                />
+                <span class="lui-search__clear-icon"></span>
+            </div>
+        </div>
+    </div>
     <!--<h1>I am the import body</h1>-->
-    <upload-body></upload-body>
+    <!--<button type="button" ng-click="importModel.openUpload()">ClickMe</button>-->
     <!--<div class="btn" ngf-select ng-model="file" ngf-multiple="false">Select File</div>
     on file change multiple:
     <div class="btn" ngf-select="upload($files)" ngf-multiple="true">Select File</div>
@@ -14,4 +24,25 @@
     </ul>
     Upload Log:
     <pre>{{log}}</pre>-->
+    <div id="page-content-footer">
+        <div id="button-bar">
+            <button id="uploadRules" class="lui-button" ng-click="importModel.openUpload()">Upload Rules</button>
+            <button id="importRules" class="lui-button" ng-click="importModel.importRules()">Import Rules</button>
+            <button class="lui-button  lui-button--toolbar-inverse" id="dialog" ng-click="goHelp = !goHelp">?</button>
+        </div>
+        <div class="usage-content" ng-show="goHelp">
+            <div class="lui-dialog  lui-dialog--inverse" style="width: 600px;">
+                <div class="lui-dialog__header">
+                    <div class="lui-dialog__title">Usage</div>
+                </div>
+                <div class="lui-dialog__body">
+                    To export rules, select the rules to export and click the Export Rules button. <br /><br /> To import
+                    rules, click the import rules button and select a properly formatted json file.
+                </div>
+                <div class="lui-dialog__footer">
+                    <button class="lui-button  lui-button--inverse  close-button" ng-click="goHelp = !goHelp">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
