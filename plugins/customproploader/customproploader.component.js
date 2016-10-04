@@ -248,7 +248,6 @@
         model.selectFile = function(files)
         {
             model.fileSelected=true;
-            console.log(files);
             return model.file = files;
         };
 

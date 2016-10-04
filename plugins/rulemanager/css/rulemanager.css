@@ -238,7 +238,7 @@ thead
     margin-top:146px;
 }
 
-/*.drop-box {
+.drop-box {
     background: #F8F8F8;
     border: 5px dashed #DDD;
     width: 200px;
@@ -246,45 +246,13 @@ thead
     text-align: center;
     padding-top: 25px;
     margin: 10px;
-}*/
+}
 .dragover {
     border: 5px dashed blue;
 }
 
-.ng-file-upload .dragover {
-    border-color: #aaa;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.08)
-}
-
-.ng-file-upload .dragover * {
-    pointer-events: none;
-    filter: alpha(opacity=30);
-    opacity: .3
-}
-
-@media (max-width:960px)
-{
-    .content
-    {
-        width: 100%;
-    }   
-}
-
 .wizard {
-    width: 100%;
-}
-
-@media (max-width:490px)
-{
-    .dialog-medium
-    {
-        width:100%;    
-    }
-}
-
-.dialog-medium
-{
-    width:450px;
+    width: 100%
 }
 
 .wizard .lui-dialog__body {
@@ -488,39 +456,3 @@ thead
 .ngdialog-close:before {
     content: ""
 }
-
-.ng-file-upload .drop-container {
-    position: relative;
-}
-
-.ng-file-upload .drop-box {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border: 2px dashed #c8cbce;
-    padding: 25px;
-    position: relative;
-    text-align: center;
-    background-color: #fff;
-    margin: 0 auto;
-}
-
-.ng-file-upload .drop-box .text {
-    display: block;
-    text-align: center;
-    width: 100%;
-}
-.ng-file-upload .text {
-    margin: 10px 0;
-    word-wrap: break-word;
-}
-
-.ng-file-upload .drop-box label {
-    display: inline-block;
-    position: relative;
-}
-
-.ng-file-upload .drop-box label input {
-    display: none;
-}
-

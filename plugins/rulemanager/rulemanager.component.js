@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    var module = angular.module("QMCUtilities", ["ngFileUpload", "ngDialog"]);
+    var module = angular.module("QMCUtilities");
 
 
 
@@ -183,58 +183,16 @@
 
     }
 
-    function importBodyController($scope, Upload, ngDialog) 
+    function importBodyController(Upload) 
     {
          var importModel = this;
-         importModel.file = [];
-         importModel.rules = [];
-         importModel.fileUploaded = false;
-         importModel.fileSelected = false;
-         
-        
 
-         importModel.selectFile = function(files)
-        {
-            console.log("FileSelected");
-            console.log(files)
-            importModel.fileSelected=true;
-            return importModel.file = files;
-        };
+    //     importModel.submit = function () {
+    //         if (importModel.form.file.$valid && importModel.file) {
+    //             importModel.upload(importModel.file);
+    //         }
+    //     };
 
-        importModel.upload = function()
-        {
-            console.log("hello world");
-            console.log(Upload);
-            Upload.upload({
-                url:"/rulemanager/uploadRules",
-                data:
-                {
-                    file: importModel.file
-                },
-                arrayKey: ''
-            })
-            .then(function(response)
-            {
-                var newItemCount = 0;
-                //expose file to ui
-                importModel.file = [];
-                importModel.fileSelected = false;
-                importModel.fileUploaded = true;
-
-                console.log(response);
-                return response;
-            });
-        };
-        
-         importModel.openUpload = function()
-         {
-             ngDialog.open({
-                template: "plugins/rulemanager/upload-body.html",
-                className: "wizard-modal",
-                controller: importBodyController,
-                scope: $scope
-            });
-         };
     };
 
     /* module.component("supportStatement", {
@@ -260,17 +218,15 @@
         transclude: true,
         templateUrl: "plugins/rulemanager/import-body.html",
         controllerAs: "importModel",
-        controller: ["$scope", "$http", "ngDialog", "Upload", importBodyController]
+        controller: ["$http", importBodyController]
     });
 
-    // module.component("uploadBody", {
-    //     transclude: true,
-    //     templateUrl: "plugins/rulemanager/upload-body.html",
-    //     controllerAs: "uploadModel",
-    //     // controller
-    // })
-
-    
+    module.component("uploadBody", {
+        transclude: true,
+        templateUrl: "plugins/rulemanager/upload-body.html" //,
+        // controllerAs: "uploadModel",
+        // controller
+    })
 
 
 } ());
