@@ -30,6 +30,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div ng-show="importModel.fileSelected">
+                                    File Selected: {{importModel.file.name}}
+                                </div>
                             </div>
                             <div class="lui-dialog__footer">
                                 <button type="button" id="done-upload-file" class="lui-button ngdialog-close" ng-click="importModel.upload()">Done</button>

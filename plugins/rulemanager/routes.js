@@ -18,8 +18,12 @@ var qrsConfig = {
 
 var qrs = new qrsInteract(qrsConfig);
 
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({extended: true}));
 router.use('/data', express.static(config.thisServer.pluginPath + "/rulemanager/data"));
 router.use('/output', express.static(config.thisServer.pluginPath + "/rulemanager/output"));
+router.use(autoReap);
+autoReap.options.reapOnError= true;
 
 var destDir = path.join(config.thisServer.pluginPath, "rulemanager/uploads/");
 var upload = multer({ dest: destDir});
@@ -112,9 +116,12 @@ router.post('/uploadRules', upload.array('file', 1) , function (req, res)
 		terminal:false
 	});
 
+    var result ="";
+
+
 	var propArray =[];
 	rl.on('line', function(line){
-		propArray.push(line);
+		result += line;
 	});
 
 	rl.on('close', function(){				
@@ -122,7 +129,7 @@ router.post('/uploadRules', upload.array('file', 1) , function (req, res)
 		{
 			console.log('reap file: ' + reapedFile);
 		});
-		res.status(200).json(propArray);
+		res.status(200).json(JSON.parse(result));
 	});
 
 });
