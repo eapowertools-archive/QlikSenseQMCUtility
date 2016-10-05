@@ -22,7 +22,7 @@ var logFile = logPath + 'QMCUtilities.log';
 var globalHostname = "localhost";
 var friendlyHostname;
 var qrsHostname;
-var certPathBackup = 'F:/My Documents/_Git/QlikSenseQMCUtility/certs';
+var certPathBackup;
 
 if(certPathBackup !== undefined)
 {
