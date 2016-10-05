@@ -207,7 +207,7 @@
 
         model.openImport = function () {
             ngDialog.open({
-                template: "plugins/rulemanager/dialog.html",
+                template: "plugins/rulemanager/import-dialog.html",
                 className: "import-dialog",
                 controller: rulesTableBodyController,
                 scope: $scope
