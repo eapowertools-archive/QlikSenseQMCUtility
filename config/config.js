@@ -1,15 +1,24 @@
 var path = require('path');
+var fs = require('fs');
 var extend = require('extend');
+
+var configPath = path.join(__dirname,'/../config/');
+var stats = fs.statSync(path.join(configPath,'installConfig.js'));
+if(stats.isFile())
+{
+	var installConfig = require('./installConfig');
+}
+
+
+
 var certPath = path.join(process.env.programdata, '/Qlik/Sense/Repository/Exported Certificates/.Local Certificates');
-
-
 var logPath = path.join(__dirname,'/../log/');
 var logFile = logPath + 'QMCUtilities.log';
 
-var globalHostname='localhost';
+var globalHostname = "localhost";
 var friendlyHostname;
-var qrsHostname = 'sense3.112adams.local';
-var certPathBackup = "F:/My Documents/_Git/QlikSenseQMCUtility/certs";
+var qrsHostname;
+var certPathBackup;
 
 if(certPathBackup !== undefined)
 {
@@ -45,4 +54,6 @@ var config = {
 	}
 }
 
-module.exports = config;
+var mergedConfig = extend(true, config, installConfig);
+
+module.exports = mergedConfig;

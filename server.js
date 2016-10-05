@@ -1,5 +1,6 @@
 var express = require('express');
 var app = new express();
+var https = require('https');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var path = require('path');
@@ -50,6 +51,27 @@ var routeBuilder = require('./routeBuilder');
   });
 
   fs.writeFileSync(config.thisServer.dataPath + '/menu.json', JSON.stringify(menu));
+
+  var httpsOptions = {}
+
+  if(config.thisServer.certificates.server !== undefined)
+  {
+    //pem files in use
+    httpsOptions.cert = fs.readFileSync(config.thisServer.certificates.server);
+    httpsOptions.key = fs.readFileSync(config.thisServer.certificates.server_key);
+  }
+
+  if(config.thisServer.certificates.pfx !== undefined)
+  {
+    httpsOptions.pfx = fs.readFileSync(config.thisServer.certificates.pfx);
+    httpsOptions.passphrase = config.thisServer.certificates.passphrase;
+  }
+
+  if(config.thisServer.certificates.pfx == undefined && config.thisServer.certificates.server == undefined)
+  {
+    httpsOptions.cert = fs.readFileSync(config.certificates.server),
+    httpsOptions.key = fs.readFileSync(config.certificates.server_key)
+  }
 
   
   app.listen(config.thisServer.port);
