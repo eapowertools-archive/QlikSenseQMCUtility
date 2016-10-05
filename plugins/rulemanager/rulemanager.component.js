@@ -105,6 +105,20 @@
         });
     }
 
+    function splitTime (val) {
+        var splitStr = val.split("T");
+        return splitStr[0] + "\n" + splitStr[1];
+    };
+
+    function splitText (val, delim) {
+        var splitStr = val.split(delim);
+        var result = '';
+        for (var i = 0; i < splitStr.length; i++) {
+            result += splitStr[i] + "\n";
+        }
+        return result;
+    };
+
     function exportBodyController($http) {
         var model = this;
         var colNames = [];
@@ -168,17 +182,11 @@
         };
 
         model.splitTime = function (val) {
-            var splitStr = val.split("T");
-            return splitStr[0] + "\n" + splitStr[1];
+            return splitTime(val);
         };
 
         model.splitText = function (val, delim) {
-            var splitStr = val.split(delim);
-            var result = '';
-            for (var i = 0; i < splitStr.length; i++) {
-                result += splitStr[i] + "\n";
-            }
-            return result;
+            return splitText(val, delim);
         };
 
     }
@@ -237,18 +245,16 @@
             });
         };
 
+        importModel.actionConverter = function (val) {
+            return convertActionBin(val);
+        };
+
         importModel.splitTime = function (val) {
-            var splitStr = val.split("T");
-            return splitStr[0] + "\n" + splitStr[1];
+            return splitTime(val);
         };
 
         importModel.splitText = function (val, delim) {
-            var splitStr = val.split(delim);
-            var result = '';
-            for (var i = 0; i < splitStr.length; i++) {
-                result += splitStr[i] + "\n";
-            }
-            return result;
+            return splitText(val, delim);
         };
 
     };
