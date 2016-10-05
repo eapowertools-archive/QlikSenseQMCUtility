@@ -59,19 +59,6 @@
   padding : 5px 15px;
 }
 
-.export-table {
-    margin-bottom: 50px;
-    overflow-x:hidden;
-    overflow-y:auto;
-    table-layout:fixed;
-}
-
-#export-table-body 
-{
-    margin-top:180px;
-    table-layout:fixed;    
-}
-
 #select-box
 {
     text-align: center;
