@@ -1,45 +1,49 @@
-<div id="upload-box" class="ngdialog wizard-modal">
-    <div class="ngdialog-overlay"></div>
-    <div class="ngdialog-content">
-        <div class="modal">
-            <div class="content">
-                <div class="dialog-content wizard">
-                    <div class="lui-dialog dialog-medium">
-                        <div class="lui-dialog__header">
-                            <div class="lui-dialog__title">
-                                Upload a rule json file
+<form name="form" id="uploadForm" enctype="multipart/form-data">
+    <div id="upload-box" class="ngdialog wizard-modal">
+        <div class="ngdialog-overlay"></div>
+        <div class="ngdialog-content">
+            <div>
+                <div class="content">
+                    <div class="dialog-content wizard">
+                        <div class="lui-dialog dialog-medium">
+                            <div class="lui-dialog__header">
+                                <div class="lui-dialog__title">
+                                    Upload a rule json file
+                                </div>
                             </div>
-                        </div>
-                        <div class="lui-dialog__body">
-                            <div class="option-view">
-                                <div class="ng-file-upload">
-                                    <div class="drop-container">
-                                        <div ngf-drop="checkFiles($files, {app: false})" ngf-model-invalid="rejFiles" class="drop-box" multiple="true" drag-over-class="dragover"
-                                            ngf-pattern=".json">
-                                            <span class="text">
+                            <div class="lui-dialog__body">
+                                <div class="option-view">
+                                    <div class="ng-file-upload">
+                                        <div class="drop-container">
+                                            <div ngf-drop="importModel.selectFile($file)" class="drop-box" drag-over-class="dragover">
+                                                <span class="text">
                                                 <strong>
                                                     Drop files here
                                                 </strong>
                                                 <span>&nbsp;or&nbsp;</span>
                                                 <label class="lui-button lui-button--success" id="uploadTrigger">
                                                 Choose file
-                                                <input id="dataFileInput" ngf-select="checkFiles($files, {app: false})" ngf-model-invalid="rejFiles" multiple="" type="file" accept=".json" ngf-pattern=".json">
+                                                <input id="dataFileInput" ngf-select="importModel.selectFile($file)" type="file" name="fileRequested">
                                                 </label>
-                                            </span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div ng-show="importModel.fileSelected">
+                                    File Selected: {{importModel.file.name}}
+                                </div>
+                            </div>
+                            <div class="lui-dialog__footer">
+                                <button type="button" id="done-upload-file" class="lui-button ngdialog-close" ng-click="importModel.upload()">Done</button>
                             </div>
                         </div>
-                        <div class="lui-dialog__footer">
-                            <button type="button" id="done-upload-file" class="lui-button ngdialog-close">Done</button>
-                        </div>
                     </div>
-                </div>
-                <div class="action-buttons">
+                    <div class="action-buttons">
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>

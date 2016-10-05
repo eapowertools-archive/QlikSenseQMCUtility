@@ -65,7 +65,7 @@ router.get("/getProps", function(req,res)
 	qrs.Get("custompropertydefinition/full")
 	.then(function(result)
 	{
-		res.json(result)
+		res.json(result.body)
 	})
 	.catch(function(error)
 	{
@@ -79,8 +79,8 @@ router.post("/create", function(req,res)
 	qrs.Post("custompropertydefinition",newBody,"json")
 	.then(function(result)
 	{
-		console.log(result);
-		res.json(JSON.stringify(result));
+		console.log(result.body);
+		res.json(JSON.stringify(result.body));
 	})
 	.catch(function(error)
 	{
@@ -97,8 +97,8 @@ router.post("/update/:id", function(req, res)
 	qrs.Put("custompropertydefinition/" + req.params.id, newBody)
 	.then(function(result)
 	{
-		console.log(result);
-		res.json(JSON.stringify(result));
+		console.log(result.body);
+		res.json(JSON.stringify(result.body));
 	})
 	.catch(function(error)
 	{

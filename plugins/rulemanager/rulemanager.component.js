@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    var module = angular.module("QMCUtilities");
+    var module = angular.module("QMCUtilities", ["ngFileUpload", "ngDialog"]);
 
 
 
@@ -117,11 +117,11 @@
             fetchTableHeaders($http).then(function (table) {
                 model.columnNames = table.columns;
             })
-                .then(function () {
-                    fetchTableRows($http).then(function (response) {
-                        model.tableRows = response.rows;
-                    });
+            .then(function () {
+                fetchTableRows($http).then(function (response) {
+                    model.tableRows = response.rows;
                 });
+            });
             setExportColumns();
         };
 
@@ -183,15 +183,73 @@
 
     }
 
-    function importBodyController(Upload) 
-    {
-         var importModel = this;
+    function importBodyController($scope, $http, ngDialog, Upload) {
+        var importModel = this;
+        importModel.file = [];
+        importModel.rules = [];
+        importModel.fileUploaded = false;
+        importModel.fileSelected = false;
+        importModel.columnNames = [];
+        importModel.tableRows = [];
 
-    //     importModel.submit = function () {
-    //         if (importModel.form.file.$valid && importModel.file) {
-    //             importModel.upload(importModel.file);
-    //         }
-    //     };
+
+        importModel.selectFile = function (files) {
+            importModel.fileSelected = true;
+            return importModel.file = files;
+        };
+
+        importModel.upload = function () {
+            Upload.upload({
+                url: "/rulemanager/uploadRules",
+                data:
+                {
+                    file: importModel.file
+                },
+                arrayKey: ''
+            })
+            .then(function (response) {
+                var newItemCount = 0;
+                //expose file to ui
+                importModel.file = [];
+                importModel.fileSelected = false;
+                importModel.fileUploaded = true;
+
+                return importModel.rules = response.data;
+
+            })
+            .then(function(rulesData)
+            {
+                fetchTableHeaders($http).then(function (table) {
+                importModel.columnNames = table.columns;
+                })
+                .then(function () {
+                    importModel.tableRows = rulesData;
+                });
+            });
+        };
+
+        importModel.openUpload = function () {
+            ngDialog.open({
+                template: "plugins/rulemanager/upload-body.html",
+                className: "wizard-modal",
+                controller: importBodyController,
+                scope: $scope
+            });
+        };
+
+        importModel.splitTime = function (val) {
+            var splitStr = val.split("T");
+            return splitStr[0] + "\n" + splitStr[1];
+        };
+
+        importModel.splitText = function (val, delim) {
+            var splitStr = val.split(delim);
+            var result = '';
+            for (var i = 0; i < splitStr.length; i++) {
+                result += splitStr[i] + "\n";
+            }
+            return result;
+        };
 
     };
 
@@ -218,15 +276,17 @@
         transclude: true,
         templateUrl: "plugins/rulemanager/import-body.html",
         controllerAs: "importModel",
-        controller: ["$http", importBodyController]
+        controller: ["$scope", "$http", "ngDialog", "Upload", importBodyController]
     });
 
-    module.component("uploadBody", {
-        transclude: true,
-        templateUrl: "plugins/rulemanager/upload-body.html" //,
-        // controllerAs: "uploadModel",
-        // controller
-    })
+    // module.component("uploadBody", {
+    //     transclude: true,
+    //     templateUrl: "plugins/rulemanager/upload-body.html",
+    //     controllerAs: "uploadModel",
+    //     // controller
+    // })
+
+
 
 
 } ());
