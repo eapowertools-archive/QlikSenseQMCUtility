@@ -40,7 +40,7 @@ router.route('/getRules')
         qrs.Post("systemrule/table?filter=" + filter + "&orderAscending=true&skip=0&sortColumn=name", JSON.parse(tableDef),"json")
         .then(function(result)
         {
-            var s = JSON.stringify(result);
+            var s = JSON.stringify(result.body);
             response.send(s);
         })
         .catch(function(error)
@@ -61,13 +61,13 @@ router.route('/exportRules')
         qrs.Post('selection', selectionBody,"json")
         .then(function(result)
         {
-            console.log('selectionid: ' + result.id);
-            selectionId = result.id;
+            console.log('selectionid: ' + result.body.id);
+            selectionId = result.body.id;
             return qrs.Get('selection/' + selectionId + '/systemrule/full')
             .then(function(result)
             {
                 message.success=true;
-                message.items= result;
+                message.items= result.body;
                 return qrs.Delete('selection/' + selectionId)
                 .then(function()
                 {

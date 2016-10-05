@@ -66,7 +66,7 @@ router.route('/getSheets')
         qrs.Post("app/object/table?filter=" + filter + "&orderAscending=true&skip=0&sortColumn=name", JSON.parse(tableDef),"json")
         .then(function(result)
         {
-            result = updateApprovedPublishedValue(result);
+            result = updateApprovedPublishedValue(result.body);
             var s = JSON.stringify(result);
             response.send(s);
         })
@@ -88,8 +88,8 @@ router.route('/approveSheets')
         qrs.Post('selection', selectionBody,"json")
         .then(function(result)
         {
-            console.log('selectionid: ' + result.id);
-            selectionId = result.id;
+            console.log('selectionid: ' + result.body.id);
+            selectionId = result.body.id;
 
             var putBody = buildBody(true);
 
@@ -97,13 +97,13 @@ router.route('/approveSheets')
             .then(function(result)
             {
                 console.log('Put Response: ' + result);
-                if(result===204)
+                if(result.statusCode===204)
                 {
                     message.success = true;
                     return qrs.Get('selection/' + selectionId + '/app/object/full')
                     .then(function(result)
                     {
-                        message.items = result;
+                        message.items = result.body;
                         return qrs.Delete('selection/' + selectionId)
                         .then(function()
                         {
@@ -143,8 +143,8 @@ router.route('/unapproveSheets')
         qrs.Post('selection', selectionBody,"json")
         .then(function(response)
         {
-            console.log('selectionid: ' + response.id);
-            selectionId = response.id;
+            console.log('selectionid: ' + response.body.id);
+            selectionId = response.body.id;
 
             var putBody = buildBody(false);
 
@@ -158,7 +158,7 @@ router.route('/unapproveSheets')
                     return qrs.Get('selection/' + selectionId + '/app/object/full')
                     .then(function(response)
                     {
-                        result.items = response;
+                        result.items = response.body;
                         return qrs.Delete('selection/' + selectionId)
                         .then(function()
                         {

@@ -29,7 +29,7 @@
     "multer": "^1.2.0",
     "multer-autoreap": "^0.1.2",
     "path": "^0.12.7",
-    "qrs-interact": "^1.0.0",
+    "qrs-interact": "^2.0.0",
     "winston": "^2.2.0"
   }
 }
