@@ -76,5 +76,9 @@ var routeBuilder = require('./routeBuilder');
   }
 
   
-  app.listen(config.thisServer.port);
-
+  
+var server = https.createServer(httpsOptions, app);
+server.listen(config.thisServer.port, function()
+{
+    logger.info('QMCUtilities started',{module:'server'});
+});
