@@ -119,7 +119,7 @@
         return result;
     };
 
-    function exportBodyController($scope, $http, ngDialog, Upload) {
+    function rulesTableBodyController($scope, $http, ngDialog, Upload) {
         var model = this;
         var colNames = [];
         model.columnNames = [];
@@ -200,7 +200,7 @@
             ngDialog.open({
                 template: "plugins/rulemanager/upload-body.html",
                 className: "wizard-modal",
-                controller: exportBodyController,
+                controller: rulesTableBodyController,
                 scope: $scope
             });
         };
@@ -209,7 +209,7 @@
             ngDialog.open({
                 template: "plugins/rulemanager/dialog.html",
                 className: "import-dialog",
-                controller: exportBodyController,
+                controller: rulesTableBodyController,
                 scope: $scope
             });
         };
@@ -262,18 +262,11 @@
         controller: ["$http", ruleBodyController]
     });
 
-    module.component("exportBody", {
+    module.component("rulesTableBody", {
         transclude: true,
-        templateUrl: "plugins/rulemanager/export-body.html",
+        templateUrl: "plugins/rulemanager/rules-table-body.html",
         controllerAs: "model",
-        controller: ["$scope", "$http", "ngDialog", "Upload", exportBodyController]
-    });
-
-    module.component("importBody", {
-        transclude: true,
-        templateUrl: "plugins/rulemanager/import-body.html",
-        controllerAs: "importModel",
-        controller: ["$scope", "$http", "ngDialog", "Upload", importBodyController]
+        controller: ["$scope", "$http", "ngDialog", "Upload", rulesTableBodyController]
     });
 
     // module.component("uploadBody", {
