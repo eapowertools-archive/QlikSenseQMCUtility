@@ -119,13 +119,20 @@
         return result;
     };
 
-    function exportBodyController($http) {
+    function exportBodyController($scope, $http, ngDialog, Upload) {
         var model = this;
         var colNames = [];
         model.columnNames = [];
         model.tableRows = [];
         model.outputs = [];
         model.searchRule = '';
+
+        model.file = [];
+        model.rules = [];
+        model.fileUploaded = false;
+        model.fileSelected = false;
+        model.importColumnNames = [];
+        model.importTableRows = [];
 
         model.$onInit = function () {
             fetchTableHeaders($http).then(function (table) {
@@ -189,76 +196,60 @@
             return splitText(val, delim);
         };
 
-    }
-
-    function importBodyController($scope, $http, ngDialog, Upload) {
-        var importModel = this;
-        importModel.file = [];
-        importModel.rules = [];
-        importModel.fileUploaded = false;
-        importModel.fileSelected = false;
-        importModel.columnNames = [];
-        importModel.tableRows = [];
-
-
-        importModel.selectFile = function (files) {
-            importModel.fileSelected = true;
-            return importModel.file = files;
+        model.openUpload = function () {
+            ngDialog.open({
+                template: "plugins/rulemanager/upload-body.html",
+                className: "wizard-modal",
+                controller: exportBodyController,
+                scope: $scope
+            });
         };
 
-        importModel.upload = function () {
+        model.openImport = function () {
+            ngDialog.open({
+                template: "plugins/rulemanager/dialog.html",
+                className: "import-dialog",
+                controller: exportBodyController,
+                scope: $scope
+            });
+        };
+
+        model.selectFile = function (files) {
+            model.fileSelected = true;
+            return model.file = files;
+        };
+
+        model.upload = function () {
             Upload.upload({
                 url: "/rulemanager/uploadRules",
                 data:
                 {
-                    file: importModel.file
+                    file: model.file
                 },
                 arrayKey: ''
             })
             .then(function (response) {
                 var newItemCount = 0;
                 //expose file to ui
-                importModel.file = [];
-                importModel.fileSelected = false;
-                importModel.fileUploaded = true;
+                model.file = [];
+                model.fileSelected = false;
+                model.fileUploaded = true;
 
-                return importModel.rules = response.data;
+                return model.rules = response.data;
 
             })
             .then(function(rulesData)
             {
                 fetchTableHeaders($http).then(function (table) {
-                importModel.columnNames = table.columns;
+                model.importColumnNames = table.columns;
                 })
                 .then(function () {
-                    importModel.tableRows = rulesData;
+                    model.importTableRows = rulesData;
                 });
             });
         };
 
-        importModel.openUpload = function () {
-            ngDialog.open({
-                template: "plugins/rulemanager/upload-body.html",
-                className: "wizard-modal",
-                controller: importBodyController,
-                scope: $scope
-            });
-        };
-
-        importModel.actionConverter = function (val) {
-            return convertActionBin(val);
-        };
-
-        importModel.splitTime = function (val) {
-            return splitTime(val);
-        };
-
-        importModel.splitText = function (val, delim) {
-            return splitText(val, delim);
-        };
-
-    };
-
+    }
     /* module.component("supportStatement", {
          templateUrl:"plugins/rulemanager/support-statement.component.html" 
      }); */
@@ -275,7 +266,7 @@
         transclude: true,
         templateUrl: "plugins/rulemanager/export-body.html",
         controllerAs: "model",
-        controller: ["$http", exportBodyController]
+        controller: ["$scope", "$http", "ngDialog", "Upload", exportBodyController]
     });
 
     module.component("importBody", {

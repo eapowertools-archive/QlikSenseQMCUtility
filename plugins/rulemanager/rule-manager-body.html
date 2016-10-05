@@ -9,17 +9,11 @@
             <li ng-class="{active:tab.isSet(1)}">
                 <a href ng-click="tab.setTab(1)">Export</a>
             </li>
-            <li ng-class="{active:tab.isSet(2)}">
-                <a href ng-click="tab.setTab(2)">Import</a>
-            </li>
         </ul>
     </div>
 </div>
 <div class="tab-content clearfix">
     <div>
         <export-body ng-show="tab.isSet(1)"></export-body>
-    </div>
-    <div>
-        <import-body ng-show="tab.isSet(2)"></import-body>
     </div>
 </div>

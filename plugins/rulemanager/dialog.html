@@ -1,0 +1,130 @@
+<div class="frame" style="position: relative;top:150px;left:120px;bottom:50px;">
+    <div class="lui-modal-background"></div>
+    <div class="lui-dialog" style="width: 100%;">
+        <div class="lui-dialog__header">
+            <div class="lui-dialog__title">Importable Rules</div>
+        </div>
+        <div class="lui-dialog__body">
+            <div>
+                <table class="table table-bordered">
+                    <colgroup style="width:75px;"></colgroup>
+                    <colgroup style="width:300px;"></colgroup>
+                    <colgroup style="width:100px;"></colgroup>
+                    <colgroup style="width:75px;"></colgroup>
+                    <colgroup style="width:75px;"></colgroup>
+                    <colgroup style="width:75px;"></colgroup>
+                    <colgroup style="width:100px;"></colgroup>
+                    <colgroup style="width:100px;"></colgroup>
+                    <colgroup style="width:100px;"></colgroup>
+                    <colgroup style="width:100px;"></colgroup>
+                    <colgroup style="width:200px;"></colgroup>
+                    <thead>
+                        <!--ng-repeat="column in model.importColumnNames | filter: display=true | orderBy: '+colNum' "> -->
+                        <tr>
+                            <th id="th1">Selected</th>
+                            <th id="th2">Rule</th>
+                            <th id="th3">{{model.importimportColumnNames[2].friendlyName}}</th>
+                            <th id="th4">{{model.importColumnNames[3].friendlyName}}</th>
+                            <th id="th5">
+                                {{model.importColumnNames[4].friendlyName}}
+                            </th>
+                            <th id="th6">
+                                {{model.importColumnNames[5].friendlyName}}
+                            </th>
+                            <th id="th7">
+                                {{model.importColumnNames[6].friendlyName}}
+                            </th>
+                            <th id="th8">
+                                {{model.importColumnNames[7].friendlyName}}
+                            </th>
+                            <th id="th9">
+                                {{model.importColumnNames[8].friendlyName}}
+                            </th>
+                            <th id="th10">
+                                {{model.importColumnNames[9].friendlyName}}
+                            </th>
+                            <th id="th11">
+                                {{model.importColumnNames[10].friendlyName}}
+                            </th>
+
+
+                            <!--   <th class="rule-column" >
+                                {{column.friendlyName}}
+                            </th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="rule-row" ng-repeat="row in model.importTableRows | filter: searchRules track by $index">
+                            <td id="select-box">
+                                <label class="lui-checkbox">
+                                    <input name="name" id="row[10]" class="lui-checkbox__input selectItem" type="checkbox" ng-model="checkme" ng-click="model.checkme(checkme)" ng-change="model.setValue(checkme, $index, row[10])"/>
+                                        <div class="lui-checkbox__check-wrap">
+                                            <span class="lui-checkbox__check" ></span>
+                                        </div>
+                                </label>
+                            </td>
+                            <td>
+                                <h4>{{row.name}}</h4>
+                                <div>
+                                    {{row.comment}}
+                                </div>
+                            </td>
+                            <td class="resource">
+                                <div class="foo">{{row.resourceFilter}}
+                                    <div class="foo2">{{model.splitText(row.resourceFilter,',')}}</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div ng-repeat="action in model.actionConverter(row.actions) track by $index">
+                                    {{action}}
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    {{row.disabled}}
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    {{row.ruleContext==0 ? "Both" : row.ruleContext==1 ? "Hub" : "QMC"}}
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    {{row.type}}
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    {{model.splitTime(row.createdDate)}}
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    {{model.splitTime(row.modifiedDate)}}
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    {{row.modifiedByUserName}}
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    {{row.id}}
+                                </div>
+                            </td>
+                            <!--                    <td class="rule-column" ng-repeat="col in row track by $index">
+                                {{col}}
+                            </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="lui-dialog__footer">
+            <button class="lui-button">Cancel</button>
+            <button class="lui-button  close-button">OK</button>
+        </div>
+    </div>
+</div>

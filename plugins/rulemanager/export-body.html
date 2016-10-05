@@ -128,6 +128,8 @@
 </div>
 <div id="page-content-footer">
     <div id="button-bar">
+        <button id="importRules" class="lui-button  lui-button--toolbar-inverse" ng-click="model.openUpload()">Import Rules</button>
+
         <button id="exportrules" class="lui-button" ng-class="model.outputs.length > 0 ? 'lui-button--toolbar-inverse' : 'lui-disabled'"
             ng-click="model.exportrules()">Export Rules</button>
         <button class="lui-button  lui-button--toolbar-inverse" id="dialog" ng-click="goHelp = !goHelp">?</button>
