@@ -68,54 +68,54 @@
                         </label>
                     </td>
                     <td>
-                        <h4>{{row[0]}}</h4>
+                        <h4>{{row.name}}</h4>
                         <div>
-                            {{row[1]}}
+                            {{row.comment}}
                         </div>
                     </td>
                     <td class="resource">
-                        <div class="foo">{{row[2]}}
-                            <div class="foo2">{{importModel.splitText(row[2],',')}}</div>
+                        <div class="foo">{{row.resourceFilter}}
+                            <div class="foo2">{{importModel.splitText(row.resourceFilter,',')}}</div>
                         </div>
                     </td>
                     <td>
-                        <div ng-repeat="action in model.actionConverter(row[3]) track by $index">
+                        <div ng-repeat="action in model.actionConverter(row.actions) track by $index">
                             {{action}}
                         </div>
                     </td>
                     <td>
                         <div>
-                            {{row[4]}}
+                            {{row.disabled}}
                         </div>
                     </td>
                     <td>
                         <div>
-                            {{row[5]==0 ? "Both" : row[5]==1 ? "Hub" : "QMC"}}
+                            {{row.ruleContext==0 ? "Both" : row.ruleContext==1 ? "Hub" : "QMC"}}
                         </div>
                     </td>
                     <td>
                         <div>
-                            {{row[6]}}
+                            {{row.type}}
                         </div>
                     </td>
                     <td>
                         <div>
-                            {{importModel.splitTime(row[7])}}
+                            {{importModel.splitTime(row.createdDate)}}
                         </div>
                     </td>
                     <td>
                         <div>
-                            {{importModel.splitTime(row[8])}}
+                            {{importModel.splitTime(row.modifiedDate)}}
                         </div>
                     </td>
                     <td>
                         <div>
-                            {{row[9]}}
+                            {{row.modifiedByUserName}}
                         </div>
                     </td>
                     <td>
                         <div>
-                            {{row[10]}}
+                            {{row.id}}
                         </div>
                     </td>
                     <!--                    <td class="rule-column" ng-repeat="col in row track by $index">
