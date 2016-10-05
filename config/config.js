@@ -1,13 +1,17 @@
 var path = require('path');
 var fs = require('fs');
 var extend = require('extend');
+var installConfig;
 
 var configPath = path.join(__dirname,'/../config/');
-var stats = fs.statSync(path.join(configPath,'installConfig.js'));
-if(stats.isFile())
+var dir = fs.readdirSync(configPath);
+dir.forEach(function(file)
 {
-	var installConfig = require('./installConfig');
-}
+    if(file==='installConfig.js')
+    {
+        installConfig = require('./installConfig');
+    }
+})
 
 
 
@@ -18,7 +22,7 @@ var logFile = logPath + 'QMCUtilities.log';
 var globalHostname = "localhost";
 var friendlyHostname;
 var qrsHostname;
-var certPathBackup;
+var certPathBackup = 'F:/My Documents/_Git/QlikSenseQMCUtility/certs';
 
 if(certPathBackup !== undefined)
 {
@@ -54,6 +58,13 @@ var config = {
 	}
 }
 
-var mergedConfig = extend(true, config, installConfig);
+if(installConfig !== undefined)
+{
+	var mergedConfig = extend(true, config, installConfig);
+}
+else
+{
+	var mergedConfig = config;
+}
 
 module.exports = mergedConfig;

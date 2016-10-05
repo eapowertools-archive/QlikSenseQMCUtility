@@ -54,20 +54,22 @@ var routeBuilder = require('./routeBuilder');
 
   var httpsOptions = {}
 
-  if(config.thisServer.certificates.server !== undefined)
+  if(config.thisServer.hasOwnProperty("certificates"))
   {
-    //pem files in use
-    httpsOptions.cert = fs.readFileSync(config.thisServer.certificates.server);
-    httpsOptions.key = fs.readFileSync(config.thisServer.certificates.server_key);
-  }
+      if(config.thisServer.certificates.server !== undefined)
+      {
+        //pem files in use
+        httpsOptions.cert = fs.readFileSync(config.thisServer.certificates.server);
+        httpsOptions.key = fs.readFileSync(config.thisServer.certificates.server_key);
+      }
 
-  if(config.thisServer.certificates.pfx !== undefined)
-  {
-    httpsOptions.pfx = fs.readFileSync(config.thisServer.certificates.pfx);
-    httpsOptions.passphrase = config.thisServer.certificates.passphrase;
+      if(config.thisServer.certificates.pfx !== undefined)
+      {
+        httpsOptions.pfx = fs.readFileSync(config.thisServer.certificates.pfx);
+        httpsOptions.passphrase = config.thisServer.certificates.passphrase;
+      }
   }
-
-  if(config.thisServer.certificates.pfx == undefined && config.thisServer.certificates.server == undefined)
+  else
   {
     httpsOptions.cert = fs.readFileSync(config.certificates.server),
     httpsOptions.key = fs.readFileSync(config.certificates.server_key)
