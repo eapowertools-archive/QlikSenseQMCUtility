@@ -59,19 +59,7 @@
   padding : 5px 15px;
 }
 
-
-#tabs .nav-pills > li > a {
-  border-radius: 0;
-}
-
-#tabs {
-    background-color: white;
-    z-index: 1000;
-    margin-left:0px;
-}
-
-.export-table{
-    
+.export-table {
     margin-bottom: 50px;
     overflow-x:hidden;
     overflow-y:auto;
@@ -91,13 +79,13 @@
 }
 
 .rule-search{
-    margin-top:108px;
+    margin-top:69px;
     
 }
 
-#export-rules-header
+#rules-table-header
 {
-    margin-top:146px;
+    margin-top:107px;
     margin-bottom: 0px;
     border-collapse: collapse;
 }
