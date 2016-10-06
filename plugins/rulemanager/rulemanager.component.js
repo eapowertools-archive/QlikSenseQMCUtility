@@ -2,8 +2,6 @@
     "use strict";
     var module = angular.module("QMCUtilities", ["ngFileUpload", "ngDialog"]);
 
-
-
     function fetchTableHeaders($http) {
         return $http.get("/rulemanager/data/tableDef.json")
             .then(function (response) {
@@ -44,25 +42,13 @@
         var bin = x.toString(2);
         var binArray = bin.split("");
         var strArray = ["Create", "Read", "Update", "Delete", "Export", "Publish",
-            "Change owner", "Change role", "Export data"];
+            "Change owner", "Change role", "Export data"
+        ];
         var resultArray = [];
         for (var i = 0; i < binArray.length; i++) {
             binArray[i] === "1" ? resultArray.push(strArray[i]) : false;
         }
         return resultArray;
-    }
-
-    function ruleBodyController($http) {
-        var tab = this;
-        tab.tab = 1;
-
-        tab.setTab = function (tabId) {
-            tab.tab = tabId;
-        };
-
-        tab.isSet = function (tabId) {
-            return tab.tab === tabId;
-        };
     }
 
     function setExportColumns() {
@@ -86,7 +72,9 @@
 
             i++;
 
-            if (i > totalCols) { i = 1; }
+            if (i > totalCols) {
+                i = 1;
+            }
 
         });
 
@@ -105,12 +93,12 @@
         });
     }
 
-    function splitTime (val) {
+    function splitTime(val) {
         var splitStr = val.split("T");
         return splitStr[0] + "\n" + splitStr[1];
     };
 
-    function splitText (val, delim) {
+    function splitText(val, delim) {
         var splitStr = val.split(delim);
         var result = '';
         for (var i = 0; i < splitStr.length; i++) {
@@ -119,7 +107,7 @@
         return result;
     };
 
-    function rulesTableBodyController($scope, $http, ngDialog, Upload) {
+    function ruleBodyController($scope, $http, ngDialog, Upload) {
         var model = this;
         var colNames = [];
         model.isImported = false;
@@ -138,13 +126,13 @@
 
         model.$onInit = function () {
             fetchTableHeaders($http).then(function (table) {
-                model.columnNames = table.columns;
-            })
-            .then(function () {
-                fetchTableRows($http).then(function (response) {
-                    model.tableRows = response.rows;
+                    model.columnNames = table.columns;
+                })
+                .then(function () {
+                    fetchTableRows($http).then(function (response) {
+                        model.tableRows = response.rows;
+                    });
                 });
-            });
             setExportColumns();
         };
 
@@ -162,22 +150,18 @@
 
         model.setValue = function (isExport, checkme, $index, rule) {
             if (checkme) {
-                if (isExport)
-                {model.outputs.push(rule);}
-                else
-                {
+                if (isExport) {
+                    model.outputs.push(rule);
+                } else {
                     model.imports.push(rule);
                 }
-            }
-            else {
-                if (isExport)
-                {
-                var index = model.outputs.indexOf(rule);
-                model.outputs.splice(index, 1);
-                }
-                else{
+            } else {
+                if (isExport) {
+                    var index = model.outputs.indexOf(rule);
+                    model.outputs.splice(index, 1);
+                } else {
                     var index = model.imports.indexOf(rule);
-                   model.imports.splice(index, 1);
+                    model.imports.splice(index, 1);
                 }
             }
             console.log(model.outputs);
@@ -186,8 +170,7 @@
         model.checkme = function (checkme) {
             if (checkme) {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         }
@@ -214,7 +197,7 @@
             ngDialog.open({
                 template: "plugins/rulemanager/upload-body.html",
                 className: "wizard-modal",
-                controller: rulesTableBodyController,
+                controller: ruleBodyController,
                 scope: $scope
             });
         };
@@ -223,7 +206,7 @@
             ngDialog.open({
                 template: "plugins/rulemanager/import-dialog.html",
                 className: "import-dialog",
-                controller: rulesTableBodyController,
+                controller: ruleBodyController,
                 scope: $scope
             });
         };
@@ -235,54 +218,63 @@
 
         model.upload = function () {
             Upload.upload({
-                url: "/rulemanager/uploadRules",
-                data:
-                {
-                    file: model.file
-                },
-                arrayKey: ''
-            })
-            .then(function (response) {
-                var newItemCount = 0;
-                //expose file to ui
-                model.file = [];
-                model.fileSelected = false;
-                model.fileUploaded = true;
-
-                return model.rules = response.data;
-
-            })
-            .then(function(rulesData)
-            {
-                fetchTableHeaders($http).then(function (table) {
-                model.importColumnNames = table.columns;
+                    url: "/rulemanager/uploadRules",
+                    data: {
+                        file: model.file
+                    },
+                    arrayKey: ''
                 })
-                .then(function () {
-                    model.importTableRows = rulesData;
+                .then(function (response) {
+                    var newItemCount = 0;
+                    //expose file to ui
+                    model.file = [];
+                    model.fileSelected = false;
+                    model.fileUploaded = true;
+
+                    return model.rules = response.data;
+
+                })
+                .then(function (rulesData) {
+                    fetchTableHeaders($http).then(function (table) {
+                            model.importColumnNames = table.columns;
+                        })
+                        .then(function () {
+                            model.importTableRows = rulesData;
+                        });
                 });
-            });
         };
 
-        model.importRules = function() {
+        model.importRules = function () {
             $http.post('/rulemanager/importRules', JSON.stringify(model.imports))
-            .then(function (mapResult) {
-                model.imports.forEach(function(element) {
-                    var state = mapResult.data.filter(function(result) {return result.id == element.id})[0].state;
-                    element.importStatus = state;
-                }, this);
-                model.importTableRows = model.imports;
-                model.isImported = true;
-                fetchTableRows($http).then(function (response) {
-                    model.tableRows = response.rows;
+                .then(function (mapResult) {
+                    model.imports.forEach(function (element) {
+                        var state = mapResult.data.filter(function (result) {
+                            return result.id == element.id
+                        })[0].state;
+                        element.importStatus = state;
+                    }, this);
+                    model.importTableRows = model.imports;
+                    model.isImported = true;
+                    fetchTableRows($http).then(function (response) {
+                        model.tableRows = response.rows;
+                    });
+                    setExportColumns();
+                })
+                .catch(function (error) {
+                    console.log(error);
                 });
-                setExportColumns();
-            })
-            .catch(function (error) {
-                console.log(error);
+        };
+
+        model.openHelp = function () {
+            ngDialog.open({
+                template: "plugins/rulemanager/help-dialog.html",
+                className: "help-dialog",
+                controller: ruleBodyController,
+                scope: $scope
             });
         };
 
-        model.closeDialog = function() {
+        model.closeDialog = function () {
             ngDialog.closeAll();
             model.imports = [];
             model.importTableRows = [];
@@ -292,34 +284,15 @@
         };
 
     }
-    /* module.component("supportStatement", {
-         templateUrl:"plugins/rulemanager/support-statement.component.html" 
-     }); */
 
     module.component("ruleManagerBody", {
         transclude: true,
-
         templateUrl: "plugins/rulemanager/rule-manager-body.html",
-        controllerAs: "tab",
-        controller: ["$http", ruleBodyController]
-    });
-
-    module.component("rulesTableBody", {
-        transclude: true,
-        templateUrl: "plugins/rulemanager/rules-table-body.html",
         controllerAs: "model",
-        controller: ["$scope", "$http", "ngDialog", "Upload", rulesTableBodyController]
+        controller: ["$scope", "$http", "ngDialog", "Upload", ruleBodyController]
     });
-
-    // module.component("uploadBody", {
-    //     transclude: true,
-    //     templateUrl: "plugins/rulemanager/upload-body.html",
-    //     controllerAs: "uploadModel",
-    //     // controller
-    // })
 
     module.filter('highlight', function () {
-        console.log("I am trying to HIGHLIGHT.");
         return function (text, search) {
             if (text && search) {
                 text = text.toString();
@@ -330,7 +303,4 @@
             }
         }
     });
-
-
-
-} ());
+}());

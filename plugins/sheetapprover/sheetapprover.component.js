@@ -1,7 +1,6 @@
 (function () {
     "use strict";
-    var module = angular.module("QMCUtilities")
-
+    var module = angular.module("QMCUtilities", ["ngDialog"])
 
     function fetchTableHeaders($http) {
         return $http.get("/sheetapprover/data/tableDef.json")
@@ -35,7 +34,7 @@
             });
     }
 
-    function sheetBodyController($scope, $http) {
+    function sheetBodyController($scope, $http, ngDialog) {
         var model = this;
         var colNames = [];
         model.columnNames = [];
@@ -139,29 +138,22 @@
                     $scope.form.$setUntouched();
                 });
         };
-    }
 
-    function controller() {
-        var model = this;
-
-        model.supportClick = function () {
-            alert("I'm a button!");
-        };
-
-        model.$onInit = function () {
-            model.message = "I AM THE SHEET APPROVER";
+        model.openHelp = function () {
+            ngDialog.open({
+                template: "plugins/sheetapprover/help-dialog.html",
+                className: "help-dialog",
+                controller: sheetBodyController,
+                scope: $scope
+            });
         };
     }
-
-    module.component("supportStatement", {
-        templateUrl: "plugins/sheetapprover/support-statement.component.html"
-    });
 
     module.component("sheetApproverBody", {
         transclude: true,
         templateUrl: "plugins/sheetapprover/sheet-approver-body.html",
         controllerAs: "model",
-        controller: ["$scope", "$http", sheetBodyController]
+        controller: ["$scope", "$http", "ngDialog", sheetBodyController]
     });
 
     module.filter('highlight', function () {

@@ -116,77 +116,6 @@ th{
   box-sizing: border-box;
 }
 
-/*
-thead
-{
-    position:fixed;
-    background-color: white;
-    z-index:1040;
-    left:250px;
-    top:146px;
-}
-
-#th1
-{
-    width:85px;
-}
-
-#th2
-{
-    width:401px;
-}
-
-#th3
-{
-    width:134px;
-}
-
-#th4
-{
-    width:114px;
-}
-
-#th5
-{
-    width:86px;
-}
-
-#th6
-{
-    width:86px;
-}
-
-#th7
-{
-    width:114px;
-}
-
-#th8
-{
-    width:143px;
-}
-
-#th9
-{
-    width:143px;
-}
-
-#th10
-{
-    width:115px;
-}
-
-#th11
-{
-    width:231px;
-}
-/*
-.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-    padding: 3px;
-}
-
-*/
-
 .foo2 {
     visibility:hidden;
     position:absolute;
@@ -206,11 +135,6 @@ thead
 .foo:hover .foo2{
     
     visibility:visible;
-}
-
-#import-body
-{
-    margin-top:146px;
 }
 
 /*.drop-box {
@@ -392,7 +316,6 @@ thead
 .ngdialog.ngdialog-theme-plain .ngdialog-content {
     font-family: 'QlikView Sans', sans-serif
 }
-
 
 .ngdialog {
     position: fixed;
