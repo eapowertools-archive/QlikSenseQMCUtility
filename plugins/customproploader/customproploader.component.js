@@ -1,6 +1,6 @@
 (function(){
     "use strict";
-    var module = angular.module("QMCUtilities", ["ngFileUpload"]);
+    var module = angular.module("QMCUtilities", ["ngFileUpload", "ngDialog"]);
 
     function fetchResources($http)
     {
@@ -128,7 +128,7 @@
 
     };
 
-    function customPropController($scope, $http, $timeout, Upload)
+    function customPropController($scope, $http, $timeout, ngDialog, Upload)
     {
         var model= this;
         model.resources1 = [];
@@ -334,6 +334,14 @@
             });
         }
 
+        model.openHelp = function() {
+            ngDialog.open({
+                template: "plugins/customproploader/support-statement.component.html",
+                className: "help-dialog",
+                controller: customPropController,
+                scope: $scope
+            });
+        };
     }
 
     module.component("custompropLoaderBody",
@@ -345,11 +353,7 @@
             existingProps: "<"
         },
         controllerAs: "model",
-        controller: ["$scope","$http", "$timeout", "Upload", customPropController]
-    });
-
-    module.component("supportStatement", {
-        templateUrl:"plugins/customproploader/support-statement.component.html" 
+        controller: ["$scope","$http", "$timeout", "ngDialog", "Upload", customPropController]
     });
 
 }());

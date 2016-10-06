@@ -1,16 +1,15 @@
-<button id="btn-support" class="lui-button  lui-button--toolbar-inverse support" ng-click="goSupport = !goSupport">?</button>
-<div class="dialog-content" ng-show="goSupport">
-    <div class="lui-dialog  lui-dialog--inverse" style="width: 600px;">
-        <div class="lui-dialog__header">
-            <div class="lui-dialog__title">About Qlik Sense QMC Utility</div>
-        </div>
-        <div class="lui-dialog__body">
+<div class="frame lui-bg-inverse">
+	<div class="lui-modal-background"></div>
+	<div class="lui-dialog  lui-dialog--inverse" style="width: 600px;position:fixed;left: 0;right: 0;margin: 10% auto;">
+		<div class="lui-dialog__header">
+			<div class="lui-dialog__title">About Qlik Sense QMC Utility</div>
+		</div>
+		<div class="lui-dialog__body">
             <p class="help-text">The custom property bulk loader enables you to create custom properties and import custom property values from a comma separated value (csv) file.</p>
             <p class="help-text">Enter a name for the custom property you want to create, select the resources that will use the custom property, and upload the csv file.</p>
-            <p class="help-text">Click the submit button and watch magic happen!</p>
-        </div>
-        <div class="lui-dialog__footer">
-            <button class="lui-button  lui-button--inverse  close-button" style="margin-top: -40px;" ng-click="goSupport = !goSupport">OK</button>
-        </div>
-    </div>
+            <p class="help-text">Click the submit button and watch magic happen!</p>		</div>
+		<div class="lui-dialog__footer">
+			<button class="lui-button  lui-button--inverse  close-button" ng-click="closeThisDialog()">OK</button>
+		</div>
+	</div>
 </div>
