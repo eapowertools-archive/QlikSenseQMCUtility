@@ -24,6 +24,9 @@ For a walkthrough of the installation process, please have a look at the install
 
 QMC Utilities may be installed by downloading the source from GitHub and running npm install.  However, some manual configuration of the config.js configuration file will be required before running if installed using this method.  **No documentation is provided for this method.**
 
+##Usage
+After installing QMC Utilities, fire up a web browser and navigate to the hostname and port number specified in the install.  For example, if the Qlik Sense hostname is _sense3.112adams.local_, in the browser address bar enter **https://sense3.112adams.local:9945**.
+
 ##Plugins!
 QMC Utilities uses a plugin architecture to instantiate the tools in the menu framework.
 
