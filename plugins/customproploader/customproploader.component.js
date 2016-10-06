@@ -336,7 +336,7 @@
 
         model.openHelp = function() {
             ngDialog.open({
-                template: "plugins/customproploader/support-statement.component.html",
+                template: "plugins/customproploader/help-dialog.html",
                 className: "help-dialog",
                 controller: customPropController,
                 scope: $scope
