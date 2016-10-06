@@ -89,12 +89,6 @@
             return false;
         }
 
-        model.getWidth = function () {
-            $(".th-column").each(function () {
-                console.log($(this).css('width'));
-            });
-        };
-
         model.setValue = function (isChecked, sheetId, approvedState) {
             if (isChecked) {
                 model.outputs.push({'sheetId': sheetId, 'approvedState': approvedState});
