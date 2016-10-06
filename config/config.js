@@ -59,7 +59,7 @@ var config = {
 }
 
 
-if(friendlyHostName !==undefined || qrsHostName !== undefined || certPathBackup !== undefined)
+if(friendlyHostname !==undefined || qrsHostname !== undefined || certPathBackup !== undefined)
 {
 	var mergedConfig = config;
 }
