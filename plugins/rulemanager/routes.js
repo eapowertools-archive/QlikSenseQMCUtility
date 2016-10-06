@@ -9,6 +9,7 @@ var qrsInteract = require('qrs-interact');
 var config = require('./config');
 var multer = require('multer');
 var autoReap = require('multer-autoreap');
+var promise = require('bluebird');
 
 
 var qrsConfig = {
@@ -100,6 +101,53 @@ router.route('/exportRules')
             message.success = false;
             console.log(error);
             res.json(message);
+        });
+    });
+
+router.route('/importRules')
+    .post(parseUrlencoded, function(request, response)
+    {
+        return promise.map(request.body, function(rule) {
+            return qrs.Get('systemrule/full?filter=id eq ' + rule.id + " or name eq '" + rule.name + "'")
+            .then(function (result) {
+                    var localResult = result.body;
+                    if (localResult.length == 0) {
+                        var systemRuleToAdd = rule;
+                        delete systemRuleToAdd.createdDate;
+                        delete systemRuleToAdd.modifiedByUserName;
+                        delete systemRuleToAdd.modifiedDate;
+                        return qrs.Post(
+                            'systemrule',
+                            rule,
+                            'json'
+                        ).then(function (postResponse, reject) {
+                            return postResponse.body;
+                        });
+                    } else if (localResult.length == 1) {
+                        var systemRuleToUpdate = rule;
+                        systemRuleToUpdate.id = localResult[0].id;
+                        systemRuleToUpdate.createdDate = localResult[0].createdDate;
+                        systemRuleToUpdate.modifiedByUserName = localResult[0].modifiedByUserName;
+                        systemRuleToUpdate.modifiedDate = localResult[0].modifiedDate;
+                        var existingID = localResult[0].id;
+                        return qrs.Put(
+                            'systemrule/' + existingID,
+                            systemRuleToUpdate
+                        ).then(function (putResponse) {
+                            return putResponse.body;
+                        }).catch(function (reject) {
+                            console.log(reject);
+                        });
+
+                    } else {
+                        return "Did not add or update any rules. More than 1 rule found matching this ID or Name.";
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }).then(function (mapResult) {
+            response.send(mapResult);
         });
     });
 

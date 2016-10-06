@@ -125,6 +125,7 @@
         model.columnNames = [];
         model.tableRows = [];
         model.outputs = [];
+        model.imports = [];
         model.searchRule = '';
 
         model.file = [];
@@ -158,13 +159,25 @@
                 });
         }
 
-        model.setValue = function (checkme, $index, ruleId) {
+        model.setValue = function (isExport, checkme, $index, rule) {
             if (checkme) {
-                model.outputs.push(ruleId);
+                if (isExport)
+                {model.outputs.push(rule);}
+                else
+                {
+                    model.imports.push(rule);
+                }
             }
             else {
-                var index = model.outputs.indexOf(ruleId);
+                if (isExport)
+                {
+                var index = model.outputs.indexOf(rule);
                 model.outputs.splice(index, 1);
+                }
+                else{
+                    var index = model.imports.indexOf(rule);
+                   model.imports.splice(index, 1);
+                }
             }
             console.log(model.outputs);
         };
@@ -246,6 +259,16 @@
                 .then(function () {
                     model.importTableRows = rulesData;
                 });
+            });
+        };
+
+        model.importRules = function() {
+            $http.post('/rulemanager/importRules', JSON.stringify(model.imports))
+            .then(function (mapResult) {
+                console.log(mapResult);
+            })
+            .catch(function (error) {
+                console.log(error);
             });
         };
 
