@@ -1,5 +1,5 @@
 {
-    "title":"Security Rule Import/Export",
+    "title":"Security Rule Manager",
     "pluginDir": "rulemanager",
-    "stage": "alpha"
+    "stage": "beta"
 }

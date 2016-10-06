@@ -1,4 +1,5 @@
 {
     "title":"Custom Property Bulk Loader",
-    "pluginDir":"customproploader"
+    "pluginDir":"customproploader",
+    "stage":"beta"
 }
