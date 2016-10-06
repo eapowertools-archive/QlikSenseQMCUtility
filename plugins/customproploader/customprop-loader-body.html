@@ -1,10 +1,10 @@
 <div class="navbar-fixed-top">
-    <div id="page-content-header">
-        <h1 class="title">Custom Property Bulk Loader</h1>
+    <div id="page-content-header-cp">
+        <h1 class="title-cp">Custom Property Bulk Loader</h1>
         <button style="float:right;margin-right:20px;margin-top:20px;" class="lui-button  lui-button--toolbar-inverse" id="help-dialog" ng-click="model.openHelp()">?</button>
     </div>
 </div>
-<div id="page-content-body">
+<div id="page-content-body-cp">
     <div>
         <form name="form" id="customPropForm" enctype="multipart/form-data" novalidate>
             <div class="row" style="padding-left: 15px;padding-right: 15px;">
@@ -92,15 +92,15 @@
                             <div class="row">
                                 <div>
                                     <div class="table-responsive">
-                                        <table class="table scroll" ng-if="model.propValues && model.propValues.length">
-                                            <thead>
-                                                <tr>
-                                                    <th>Custom Property Values</th>
+                                        <table id="cptable" class="table scroll" ng-if="model.propValues && model.propValues.length">
+                                            <thead id="cphead">
+                                                <tr class="cprow">
+                                                    <th class="cpheaddata">Custom Property Values</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr ng-repeat="propValue in model.propValues">
-                                                    <td>{{propValue}}</td>
+                                            <tbody id="cpbody">
+                                                <tr class="cprow" ng-repeat="propValue in model.propValues">
+                                                    <td class="cpdata">{{propValue}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
