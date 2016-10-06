@@ -123,6 +123,8 @@ router.route('/importRules')
                             'json'
                         ).then(function (postResponse, reject) {
                             return {"id":localId, "state":"Added"};
+                        }).catch(function(error) {
+                            return {"id":localId, "state":"Failed. " + error};
                         });
                     } else if (localResult.length == 1) {
                         var systemRuleToUpdate = rule;
@@ -137,7 +139,7 @@ router.route('/importRules')
                         ).then(function (putResponse) {
                             return {"id":localId, "state":"Updated"};
                         }).catch(function (reject) {
-                            console.log(reject);
+                            return {"id":localId, "state":"Failed. " + error};
                         });
 
                     } else {

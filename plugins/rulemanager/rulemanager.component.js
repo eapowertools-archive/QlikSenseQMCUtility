@@ -272,6 +272,10 @@
                 }, this);
                 model.importTableRows = model.imports;
                 model.isImported = true;
+                fetchTableRows($http).then(function (response) {
+                    model.tableRows = response.rows;
+                });
+                setExportColumns();
             })
             .catch(function (error) {
                 console.log(error);
@@ -281,7 +285,10 @@
         model.closeDialog = function() {
             ngDialog.closeAll();
             model.imports = [];
+            model.importTableRows = [];
             model.isImported = false;
+            $scope.form.$setPristine();
+            $scope.form.$setUntouched();
         };
 
     }
