@@ -21,8 +21,8 @@ var logFile = logPath + 'QMCUtilities.log';
 
 var globalHostname = "localhost";
 var friendlyHostname;
-var qrsHostname ="sense3.112adams.local";
-var certPathBackup = "f:/my documents/_git/qliksenseqmcutility/certs";
+var qrsHostname;
+var certPathBackup;
 
 if(certPathBackup !== undefined)
 {
@@ -58,7 +58,12 @@ var config = {
 	}
 }
 
-if(installConfig !== undefined)
+
+if(friendlyHostname !==undefined || qrsHostname !== undefined || certPathBackup !== undefined)
+{
+	var mergedConfig = config;
+}
+else if(installConfig !== undefined)
 {
 	var mergedConfig = extend(true, config, installConfig);
 }

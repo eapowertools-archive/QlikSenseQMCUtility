@@ -292,4 +292,15 @@
         controller: ["$scope", "$http", "ngDialog", "Upload", ruleBodyController]
     });
 
+    module.filter('highlight', function () {
+        return function (text, search) {
+            if (text && search) {
+                text = text.toString();
+                search = search.toString();
+                return text.replace(new RegExp(search, 'gi'), '<span class="lui-texthighlight">$&</span>');
+            } else {
+                return text;
+            }
+        }
+    });
 }());
