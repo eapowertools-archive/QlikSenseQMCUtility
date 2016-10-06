@@ -1,6 +1,6 @@
-<div class="frame" style="position: relative;top:100px;left:120px;bottom:50px;">
+<div class="frame" style="position: fixed;top:120px;left:270px;bottom:70px;right:20px;overflow-y: auto;">
     <div class="lui-modal-background"></div>
-    <div class="lui-dialog" style="width: 100%;">
+    <div class="lui-dialog" style="width: 100%;height:100%;overflow-y: auto;">
         <div class="lui-dialog__header">
             <div class="lui-dialog__title">Importable Rules</div>
         </div>
@@ -57,7 +57,7 @@
                         <tr class="rule-row" ng-repeat="row in model.importTableRows | filter: searchRules track by $index">
                             <td id="select-box">
                                 <label class="lui-checkbox">
-                                    <input name="name" id="row[10]" class="lui-checkbox__input selectItem" type="checkbox" ng-model="checkme" ng-click="model.checkme(checkme)" ng-change="model.setValue(checkme, $index, row[10])"/>
+                                    <input name="name" id="row[10]" class="lui-checkbox__input selectItem" type="checkbox" ng-model="checkme" ng-click="model.checkme(checkme)" ng-change="model.setValue(false, checkme, $index, row)"/>
                                         <div class="lui-checkbox__check-wrap">
                                             <span class="lui-checkbox__check" ></span>
                                         </div>
@@ -123,8 +123,8 @@
             </div>
         </div>
         <div class="lui-dialog__footer">
-            <button class="lui-button">Cancel</button>
-            <button class="lui-button  close-button">OK</button>
+            <button class="lui-button" ng-click="closeThisDialog()">Cancel</button>
+            <button id="importrules" class="lui-button" ng-class="model.imports.length > 0 ? 'lui-button' : 'lui-disabled'" ng-click="model.importRules()">Import {{model.imports.length}} Rule(s)</button>
         </div>
     </div>
 </div>
