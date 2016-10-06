@@ -14,7 +14,7 @@
     z-index:1000;
 }
 
-#page-content-search {
+#page-content-search-sa {
     top:70px;
     height: 38px;
     z-index:1000;
@@ -22,7 +22,7 @@
 }
 
 
-#page-content-body {
+#page-content-body-sa {
     margin-top: 107px;
     margin-bottom: 50px;
 }
@@ -54,15 +54,6 @@
     font-size: 36px;
     margin-top:15px;
     padding-left:15px;
-}
-
-.dialog-content {
-    position: absolute;
-    width:600px;
-    height: 250px;
-    top:70%;
-    margin-left:20%;
-    margin-top:10%;
 }
 
 .usage-content {
@@ -118,4 +109,78 @@ tbody tr:hover, tr.alt:hover {
 
 .highlightedText {
     background:yellow;
+}
+
+.ngdialog.ngdialog-theme-plain .ngdialog-content {
+    font-family: 'QlikView Sans', sans-serif
+}
+
+.ngdialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: opacity 200ms ease-out;
+    opacity: 1.0;
+    z-index: 10;
+    overflow: initial;
+    overflow-y: auto
+}
+
+.ngdialog-content {
+    position: relative;
+    border-radius: 3px;
+    margin: auto;
+    min-width: 250px;
+    max-height: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-direction: column;
+    color: #595959;
+    background-color: transparent;
+    -webkit-animation: ngdialog-flyin .5s;
+    animation: ngdialog-flyin .5s
+}
+
+.ngdialog-content .description {
+    margin-bottom: 10px
+}
+
+.ngdialog-close:before {
+    content: ""
 }

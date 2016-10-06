@@ -12,18 +12,12 @@
     z-index:1000;
 }
 
-#page-content-search {
+#page-content-search-rm {
     top:70px;
     height: 38px;
     z-index:1000;
 
 }
-
-#page-content-body {
-    margin-top: 108px;
-    margin-bottom: 50px;
-}
-
 
 #page-content-footer {
    position:fixed;
