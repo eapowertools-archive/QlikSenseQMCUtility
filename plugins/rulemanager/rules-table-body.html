@@ -68,53 +68,53 @@
                         </label>
                     </td>
                     <td>
-                        <h4>{{row[0]}}</h4>
-                        <div>
+                        <h4 ng-bind-html="row[0] | highlight:searchRules">{{row[0]}}</h4>
+                        <div ng-bind-html="row[1] | highlight:searchRules">
                             {{row[1]}}
                         </div>
                     </td>
                     <td class="resource">
-                        <div class="foo">{{row[2]}}
+                        <div class="foo" ng-bind-html="row[2] | highlight:searchRules">{{row[2]}}
                             <div class="foo2">{{model.splitText(row[2],',')}}</div>
                         </div>
                     </td>
                     <td>
-                        <div ng-repeat="action in model.actionConverter(row[3]) track by $index">
+                        <div ng-repeat="action in model.actionConverter(row[3]) track by $index" ng-bind-html="action | highlight:searchRules">
                             {{action}}
                         </div>
                     </td>
                     <td>
-                        <div>
+                        <div ng-bind-html="row[4] | highlight:searchRules">
                             {{row[4]}}
                         </div>
                     </td>
                     <td>
-                        <div>
+                        <div ng-bind-html="row[5]==0 ? 'Both' : row[5]==1 ? 'Hub' : 'QMC' | highlight:searchRules">
                             {{row[5]==0 ? "Both" : row[5]==1 ? "Hub" : "QMC"}}
                         </div>
                     </td>
                     <td>
-                        <div>
+                        <div ng-bind-html="row[6] | highlight:searchRules">
                             {{row[6]}}
                         </div>
                     </td>
                     <td>
-                        <div>
+                        <div ng-bind-html="row[7] | highlight:searchRules">
                             {{model.splitTime(row[7])}}
                         </div>
                     </td>
                     <td>
-                        <div>
+                        <div ng-bind-html="row[8] | highlight:searchRules">
                             {{model.splitTime(row[8])}}
                         </div>
                     </td>
                     <td>
-                        <div>
+                        <div ng-bind-html="row[9] | highlight:searchRules">
                             {{row[9]}}
                         </div>
                     </td>
                     <td>
-                        <div>
+                        <div ng-bind-html="row[10] | highlight:searchRules">
                             {{row[10]}}
                         </div>
                     </td>
