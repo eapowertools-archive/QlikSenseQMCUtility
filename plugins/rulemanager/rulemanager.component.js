@@ -318,6 +318,18 @@
     //     // controller
     // })
 
+    module.filter('highlight', function () {
+        console.log("I am trying to HIGHLIGHT.");
+        return function (text, search) {
+            if (text && search) {
+                text = text.toString();
+                search = search.toString();
+                return text.replace(new RegExp(search, 'gi'), '<span class="lui-texthighlight">$&</span>');
+            } else {
+                return text;
+            }
+        }
+    });
 
 
 
