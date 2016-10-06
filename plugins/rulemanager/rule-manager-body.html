@@ -1,7 +1,8 @@
 <div class="navbar-fixed-top">
     <div id="page-content-header">
         <h1 class="title">Rule Manager</h1>
-        <button style="float:right;margin-right:20px;margin-top:20px;" class="lui-button  lui-button--toolbar-inverse" id="help-dialog" ng-click="model.openHelp()">?</button>
+        <button style="float:right;margin-right:20px;margin-top:20px;" class="lui-button  lui-button--toolbar-inverse" id="help-dialog"
+            ng-click="model.openHelp()">?</button>
     </div>
 </div>
 <div id="export-body">
@@ -130,7 +131,7 @@
                 </tr>
             </tbody>
         </table>
-        
+
     </div>
 </div>
 <div id="page-content-footer">
@@ -139,8 +140,6 @@
 
         <button id="exportrules" class="lui-button" ng-class="model.outputs.length > 0 ? 'lui-button--toolbar-inverse' : 'lui-disabled'"
             ng-click="model.exportrules()">Export {{model.outputs.length}} Rule(s)</button>
-        <button class="lui-button  lui-button--toolbar-inverse" id="help-dialog" ng-click="model.openHelp()">?</button>
-
     </div>
 </div>
 </div>
