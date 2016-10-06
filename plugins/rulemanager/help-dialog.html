@@ -5,7 +5,11 @@
 			<div class="lui-dialog__title">Security Rule Manager</div>
 		</div>
 		<div class="lui-dialog__body">
-			Bacon ipsum dolor amet ham hock pork short loin, cow bacon doner jerky pork loin hamburger. Pork chop biltong chuck turkey, cow meatloaf corned beef fatback pancetta drumstick landjaeger jowl.
+			<p class="help-text">The security rule manager allows you to import and export security rules from your Qlik Sense environment. They can be
+				exported to a JSON file, then re-imported to any environment.</p>
+			<p class="help-text">Rules with matching names or IDs on import will be overwritten, if more than 1 rule matches a name and/or ID, the rule
+				will fail to import. Rules will also fail to import if they have previously been imported, then deleted, as the ID will
+				already exist as a deleted item in the database.</p>
 		</div>
 		<div class="lui-dialog__footer">
 			<button class="lui-button  lui-button--inverse  close-button" ng-click="closeThisDialog()">OK</button>
