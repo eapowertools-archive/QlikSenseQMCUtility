@@ -1,3 +1,9 @@
+<div class="navbar-fixed-top">
+    <div id="page-content-header">
+        <h1 class="title">Rule Manager</h1>
+        <button style="float:right;margin-right:20px;margin-top:20px;" class="lui-button  lui-button--toolbar-inverse" id="help-dialog" ng-click="model.openHelp()">?</button>
+    </div>
+</div>
 <div id="export-body">
     <div class="rule-search navbar-fixed-top">
         <div class="lui-bg-inverse">
@@ -124,6 +130,7 @@
                 </tr>
             </tbody>
         </table>
+        
     </div>
 </div>
 <div id="page-content-footer">
@@ -132,22 +139,8 @@
 
         <button id="exportrules" class="lui-button" ng-class="model.outputs.length > 0 ? 'lui-button--toolbar-inverse' : 'lui-disabled'"
             ng-click="model.exportrules()">Export {{model.outputs.length}} Rule(s)</button>
-        <button class="lui-button  lui-button--toolbar-inverse" id="dialog" ng-click="goHelp = !goHelp">?</button>
+        <button class="lui-button  lui-button--toolbar-inverse" id="help-dialog" ng-click="model.openHelp()">?</button>
 
-    </div>
-    <div class="usage-content" ng-show="goHelp">
-        <div class="lui-dialog  lui-dialog--inverse" style="width: 600px;">
-            <div class="lui-dialog__header">
-                <div class="lui-dialog__title">Usage</div>
-            </div>
-            <div class="lui-dialog__body">
-                To export rules, select the rules to export and click the Export Rules button. <br /><br /> To import rules,
-                click the import rules button and select a properly formatted json file.
-            </div>
-            <div class="lui-dialog__footer">
-                <button class="lui-button  lui-button--inverse  close-button" ng-click="goHelp = !goHelp">OK</button>
-            </div>
-        </div>
     </div>
 </div>
 </div>

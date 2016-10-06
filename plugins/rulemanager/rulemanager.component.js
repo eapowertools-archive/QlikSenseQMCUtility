@@ -282,6 +282,15 @@
             });
         };
 
+        model.openHelp = function() {
+            ngDialog.open({
+                template: "plugins/rulemanager/help-dialog.html",
+                className: "help-dialog",
+                controller: rulesTableBodyController,
+                scope: $scope
+            });
+        };
+
         model.closeDialog = function() {
             ngDialog.closeAll();
             model.imports = [];
@@ -292,16 +301,12 @@
         };
 
     }
-    /* module.component("supportStatement", {
-         templateUrl:"plugins/rulemanager/support-statement.component.html" 
-     }); */
 
     module.component("ruleManagerBody", {
         transclude: true,
-
         templateUrl: "plugins/rulemanager/rule-manager-body.html",
         controllerAs: "tab",
-        controller: ["$http", ruleBodyController]
+        controller: ["$scope", "$http", "ngDialog", ruleBodyController]
     });
 
     module.component("rulesTableBody", {
