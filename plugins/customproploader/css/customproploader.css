@@ -3,7 +3,7 @@
     margin-left:250px;
 }
 
-#page-content-header {
+#page-content-header-cp {
     background:#404040;
     top:0;
     height:69px;
@@ -12,13 +12,13 @@
     z-index:1000;
 }
 
-#page-content-body {
+#page-content-body-cp {
     margin-top: 108px;
     margin-bottom: 50px;
     margin-right:15px;
 }
 
-.title {
+.title-cp {
     color: rgba(255,255,255,0.8);
     float:left;
     font-size: 36px;
@@ -84,41 +84,34 @@
   border-color: #ccc;
 }
 
- table {
+ #cptable {
             width: 100%;
         }
 
-        thead, tbody, tr, td, th { display: block; }
+        #cphead, #cpbody, .cprow, .cpdata, .cpheaddata { display: block; }
 
-        tr:after {
+        .cprow:after {
             content: ' ';
             display: block;
             visibility: hidden;
             clear: both;
         }
 
-        thead th {
+        #cphead .cpheaddata {
             height: 30px;
 
             /*text-align: left;*/
         }
 
-        tbody {
+        #cpbody {
             height: 400px;
             overflow-y: auto;
         }
 
-        thead {
+        #cphead {
             /* fallback */
         }
 
-/*
-        tbody td, thead th {
-            width: 19.2%;
-            float: left;
-        }
-        
-        */
 
 .success-message
 {

@@ -92,15 +92,15 @@
                             <div class="row">
                                 <div>
                                     <div class="table-responsive">
-                                        <table class="table scroll" ng-if="model.propValues && model.propValues.length">
-                                            <thead>
-                                                <tr>
-                                                    <th>Custom Property Values</th>
+                                        <table id="cptable" class="table scroll" ng-if="model.propValues && model.propValues.length">
+                                            <thead id="cphead">
+                                                <tr class="cprow">
+                                                    <th class="cpheaddata">Custom Property Values</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr ng-repeat="propValue in model.propValues">
-                                                    <td>{{propValue}}</td>
+                                            <tbody id="cpbody">
+                                                <tr class="cprow" ng-repeat="propValue in model.propValues">
+                                                    <td class="cpdata">{{propValue}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
