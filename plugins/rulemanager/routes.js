@@ -108,6 +108,7 @@ router.route('/importRules')
     .post(parseUrlencoded, function(request, response)
     {
         return promise.map(request.body, function(rule) {
+            var localId = rule.id;
             return qrs.Get('systemrule/full?filter=id eq ' + rule.id + " or name eq '" + rule.name + "'")
             .then(function (result) {
                     var localResult = result.body;
@@ -121,7 +122,9 @@ router.route('/importRules')
                             rule,
                             'json'
                         ).then(function (postResponse, reject) {
-                            return postResponse.body;
+                            return {"id":localId, "state":"Added"};
+                        }).catch(function(error) {
+                            return {"id":localId, "state":"Failed. " + error};
                         });
                     } else if (localResult.length == 1) {
                         var systemRuleToUpdate = rule;
@@ -134,13 +137,13 @@ router.route('/importRules')
                             'systemrule/' + existingID,
                             systemRuleToUpdate
                         ).then(function (putResponse) {
-                            return putResponse.body;
+                            return {"id":localId, "state":"Updated"};
                         }).catch(function (reject) {
-                            console.log(reject);
+                            return {"id":localId, "state":"Failed. " + error};
                         });
 
                     } else {
-                        return "Did not add or update any rules. More than 1 rule found matching this ID or Name.";
+                        return {"id":localId, "state":"Failed. More than 1 rule found matching this ID or Name."};
                     }
                 })
                 .catch(function (error) {

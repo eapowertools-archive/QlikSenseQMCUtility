@@ -122,6 +122,7 @@
     function rulesTableBodyController($scope, $http, ngDialog, Upload) {
         var model = this;
         var colNames = [];
+        model.isImported = false;
         model.columnNames = [];
         model.tableRows = [];
         model.outputs = [];
@@ -265,11 +266,29 @@
         model.importRules = function() {
             $http.post('/rulemanager/importRules', JSON.stringify(model.imports))
             .then(function (mapResult) {
-                console.log(mapResult);
+                model.imports.forEach(function(element) {
+                    var state = mapResult.data.filter(function(result) {return result.id == element.id})[0].state;
+                    element.importStatus = state;
+                }, this);
+                model.importTableRows = model.imports;
+                model.isImported = true;
+                fetchTableRows($http).then(function (response) {
+                    model.tableRows = response.rows;
+                });
+                setExportColumns();
             })
             .catch(function (error) {
                 console.log(error);
             });
+        };
+
+        model.closeDialog = function() {
+            ngDialog.closeAll();
+            model.imports = [];
+            model.importTableRows = [];
+            model.isImported = false;
+            $scope.form.$setPristine();
+            $scope.form.$setUntouched();
         };
 
     }
