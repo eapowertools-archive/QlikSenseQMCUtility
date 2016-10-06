@@ -21,8 +21,8 @@ var logFile = logPath + 'QMCUtilities.log';
 
 var globalHostname = "localhost";
 var friendlyHostname;
-var qrsHostname = "sense3.112adams.local";
-var certPathBackup ="f:/my documents/_git/qliksenseqmcutility/certs";
+var qrsHostname;
+var certPathBackup;
 
 if(certPathBackup !== undefined)
 {
