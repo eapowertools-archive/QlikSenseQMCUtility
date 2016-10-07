@@ -152,7 +152,7 @@ router.route('/unapproveSheets')
             .then(function(response)
             {
                 console.log('Put Response: ' + response);
-                if(response===204)
+                if(response.statusCode===204)
                 {
                     result.success = true;
                     return qrs.Get('selection/' + selectionId + '/app/object/full')
