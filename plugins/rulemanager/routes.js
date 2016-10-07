@@ -82,7 +82,7 @@ router.route('/exportRules')
                         console.log(file);
                         response.setHeader('Content-disposition', 'attachment; filename=rules.json');
                         response.setHeader('Content-type', 'application/json');
-                        return response.download('./plugins/rulemanager/output/rules.json', 'rules.json', function(error)
+                        return response.download(file, 'rules.json', function(error)
                         {
                             if(!error)
                             {
