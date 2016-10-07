@@ -1,4 +1,4 @@
-#If you downloaded QMCUtilities on 10/06/2016, please go to this web site and take action.  **[Critical Error Requires Your Attention](https://github.com/eapowertools/QlikSenseQMCUtility/wiki/Critical-Issue-with-QMC-Utilities-1.0.0.0-Requires-Immediate-Attention)**
+#If you downloaded QMCUtilities on 10/06/2016, **[please go to this web site and take action (https://github.com/eapowertools/QlikSenseQMCUtility/wiki/Critical-Issue-with-QMC-Utilities-1.0.0.0-Requires-Immediate-Attention)**.
 
 #QlikSenseQMCUtility    
 A collection of management console utilities for use with Qlik Sense.
