@@ -1,1 +1,1 @@
-net stop QlikEAPowerToolsServiceDispatcher
+net stop QlikSenseServiceDispatcher

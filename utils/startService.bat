@@ -1,1 +1,1 @@
-net start QlikEAPowerToolsServiceDispatcher
+net start QlikSenseServiceDispatcher
