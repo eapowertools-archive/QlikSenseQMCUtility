@@ -20,21 +20,26 @@
     function exportRules($http, ruleIds) {
         return $http.post('/rulemanager/exportRules', ruleIds)
             .success(function (data, status, headers, config) {
-                var anchor = angular.element('<a/>');
-                anchor.attr({
-                    href: 'data:attachment/octet-stream;charset=utf-8,' + encodeURI(JSON.stringify(data, null, '\t')),
-                    target: '_self',
-                    download: 'rules.json'
-                })[0].click();
+                var jsonBlob = new Blob([JSON.stringify(data)], {
+                        type: "application/json;charset=utf-8;"
+                    });
+                var fileName = "exported-rules.json";
+                if (window.navigator.msSaveOrOpenBlob) {
+                    // IE hack; see http://msdn.microsoft.com/en-us/library/ie/hh779016.aspx
+                    window.navigator.msSaveBlob(jsonBlob, fileName);
+                } else {
+                    var url = URL.createObjectURL(jsonBlob);
+                    var link = document.createElement('a');
+                    document.body.appendChild(link);
+                    link.href = url;
+                    link.download = fileName;
+                    link.target = '_blank';
+                    link.click();
+                }
             })
             .error(function (data, status, headers, config) {
                 console.log(status);
             });
-        /*        return $http.post('/rulemanager/exportRules', ruleIds)
-                .then(function(response)
-                {
-                    return response;
-                }); */
     }
 
     function convertActionBin(val) {
