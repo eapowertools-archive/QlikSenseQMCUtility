@@ -1,5 +1,3 @@
-#If you downloaded QMCUtilities on 10/06/2016, [please go here and take action](https://github.com/eapowertools/QlikSenseQMCUtility/wiki/Critical-Issue-with-QMC-Utilities-1.0.0.0-Requires-Immediate-Attention).
-
 #QlikSenseQMCUtility    
 A collection of management console utilities for use with Qlik Sense.
 
