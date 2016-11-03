@@ -1,6 +1,8 @@
 #QlikSenseQMCUtility    
 A collection of management console utilities for use with Qlik Sense.
 
+**[Latest Release Notes](https://github.com/eapowertools/QlikSenseQMCUtility/releases/latest)**
+
 -----
 
 ##Introduction
