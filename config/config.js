@@ -15,14 +15,16 @@ dir.forEach(function(file)
 
 
 
-var certPath = path.join(process.env.programdata, '/Qlik/Sense/Repository/Exported Certificates/.Local Certificates');
+var certPath = "";
+//path.join(process.env.programdata, '/Qlik/Sense/Repository/Exported Certificates/.Local Certificates');
+
 var logPath = path.join(__dirname,'/../log/');
 var logFile = logPath + 'QMCUtilities.log';
 
 var globalHostname = "localhost";
 var friendlyHostname;
 var qrsHostname;
-var certPathBackup;
+var certPathBackup = "/Users/jparis/Documents/GitHub/global-metrics-app/certs";
 
 if(certPathBackup !== undefined)
 {
