@@ -1,6 +1,6 @@
 (function(){
   "use strict";
-  var module = angular.module("QMCUtilities",["ui.router","oc.lazyLoad","ngSanitize"]);
+  var module = angular.module("QMCUtilities",["ui.router","oc.lazyLoad","ngSanitize","localytics.directives"]);
   module.config(function($stateProvider, $urlRouterProvider)
   {
     $stateProvider.state

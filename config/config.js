@@ -2,6 +2,7 @@ var path = require('path');
 var fs = require('fs');
 var extend = require('extend');
 var installConfig;
+var testConfig;
 
 var configPath = path.join(__dirname,'/../config/');
 var dir = fs.readdirSync(configPath);
@@ -10,6 +11,11 @@ dir.forEach(function(file)
     if(file==='installConfig.js')
     {
         installConfig = require('./installConfig');
+    }
+
+	if(file==='testConfig.js')
+    {
+        testConfig = require('./testConfig');
     }
 })
 
@@ -66,6 +72,10 @@ if(friendlyHostname !==undefined || qrsHostname !== undefined || certPathBackup 
 else if(installConfig !== undefined)
 {
 	var mergedConfig = extend(true, config, installConfig);
+}
+else if(testConfig !== undefined)
+{
+	var mergedConfig = extend(true, config, testConfig);
 }
 else
 {
