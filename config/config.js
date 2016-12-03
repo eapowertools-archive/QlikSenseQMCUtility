@@ -21,7 +21,8 @@ dir.forEach(function(file)
 
 
 
-var certPath = path.join(process.env.programdata, '/Qlik/Sense/Repository/Exported Certificates/.Local Certificates');
+var certPath = "";
+
 var logPath = path.join(__dirname,'/../log/');
 var logFile = logPath + 'QMCUtilities.log';
 
@@ -33,6 +34,10 @@ var certPathBackup;
 if(certPathBackup !== undefined)
 {
 	certPath = certPathBackup;
+}
+else
+{
+	certPath = path.join(process.env.programdata, '/Qlik/Sense/Repository/Exported Certificates/.Local Certificates');
 }
 
 var config = {
