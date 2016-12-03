@@ -35,6 +35,9 @@
     "oclazyload": "^1.0.9",
     "ng-dialog": "^0.6.4",
     "angular-ui-router": "^0.3.2",
+    "angular-sanitize": "^1.5.8",
+    "chosen": "^1.6.2",
+    "angular-chosen-localytics": "^1.5.1"
     "angular-sanitize": "^1.5.8"
   }
 }
