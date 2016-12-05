@@ -38,7 +38,11 @@ router.route('/')
         })
     });
 
-
+router.route("/getversion")
+.get(function(request, response)
+{
+    response.send(config.version);
+});
 
 module.exports = router;
 

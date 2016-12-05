@@ -11,6 +11,15 @@
         });
     }
 
+    function getVersion($http)
+    {
+        return $http.get("/version")
+        .then(function(result)
+        {
+            return result.data
+        });
+    }
+
 
     function hWorldController($http)
     {
@@ -20,6 +29,11 @@
         model.$onInit = function()
         {
                 model.response ="Argghhhh";
+                getVersion($http)
+                .then(function(result)
+                {
+                    model.version = result;
+                });
         }
 
         model.clickMe = function()

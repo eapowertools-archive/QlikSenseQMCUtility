@@ -13,10 +13,10 @@ dir.forEach(function(file)
         installConfig = require('./installConfig');
     }
 
-	if(file==='testConfig.js')
-    {
-        testConfig = require('./testConfig');
-    }
+	// if(file==='testConfig.js')
+    // {
+    //     testConfig = require('./testConfig');
+    // }
 })
 
 
@@ -66,7 +66,8 @@ var config = {
     },
 	qrs: {
 		hostname: qrsHostname !== undefined ? qrsHostname : globalHostname
-	}
+	},
+	version: "2.0.0"
 }
 
 
