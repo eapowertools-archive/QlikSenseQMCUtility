@@ -68,7 +68,7 @@ var config = {
 		host: qsocksHostname !== undefined ? qsocksHostname : globalHostname,
 		port: 4747,
 		isSecure: true,
-		origin: "http://" + qsocksHostname !== undefined ? qsocksHostname : globalHostname
+		origin: "https://" + qsocksHostname !== undefined ? qsocksHostname : globalHostname
 	},
 	qrs: {
 		hostname: qrsHostname !== undefined ? qrsHostname : globalHostname
