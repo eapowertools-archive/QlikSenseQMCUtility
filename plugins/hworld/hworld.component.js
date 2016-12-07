@@ -13,7 +13,7 @@
 
     function getVersion($http)
     {
-        return $http.get("/getversion")
+        return $http.get("/version")
         .then(function(result)
         {
             return result.data
