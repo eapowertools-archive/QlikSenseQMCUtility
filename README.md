@@ -76,7 +76,7 @@ QMC Utilities is designed and developed by the EA Team at Qlik as part of the Po
 
 ##License
 
-**[MIT](https://github.com/eapowertools/QlikSenseQMCUtility/LICENSE)**
+**[MIT](https://github.com/eapowertools/QlikSenseQMCUtility/blob/master/LICENSE)**
 
 For more information, please visit the **[EA Powertools](https://community.qlik.com/community/qlik-sense/ea-powertools)** space on Qlik Community.
 
