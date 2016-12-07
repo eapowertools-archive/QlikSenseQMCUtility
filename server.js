@@ -6,6 +6,7 @@ var fs = require('fs');
 var path = require('path');
 var config = require('./config/config');
 var winston = require('winston');
+require('winston-daily-rotate-file');
 var routeBuilder = require('./routeBuilder');
 
 //set up logging
@@ -13,7 +14,7 @@ var routeBuilder = require('./routeBuilder');
     level: config.logging.logLevel,
     transports: [
         new (winston.transports.Console)(),
-        new (winston.transports.File)({ filename: config.logging.logFile})
+        new (winston.transports.DailyRotateFile)({ filename: config.logging.logFile, prepend:true})
       ]
   });
 

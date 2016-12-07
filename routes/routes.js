@@ -38,7 +38,7 @@ router.route('/')
         })
     });
 
-router.route("/getversion")
+router.route("/version")
 .get(function(request, response)
 {
     response.send(config.version);
