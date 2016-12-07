@@ -75,7 +75,8 @@ Select a custom property or provide a name, select the resources the custom prop
 QMC Utilities is designed and developed by the EA Team at Qlik as part of the Powertools initiative. To learn more about EA Powertools and all the solutions we are building to enhance Qlik Sense, please visit the **[EA Powertools](https://community.qlik.com/community/qlik-sense/ea-powertools)** space on Qlik Community.
 
 ##License
-EA Power Tools are a collection of software programs and methodologies for Qlik products. EA Power Tools and QMC Utilities are provided free of charge and are not supported by Qlik. EA Power Tools and QMC Utilities use Qlik APIs, but are open source solutions provided without warranty. Use of EA Power Tools and QMC Utilities is at your own risk.
+
+**[MIT](https://github.com/eapowertools/QlikSenseQMCUtility/LICENSE)**
 
 For more information, please visit the **[EA Powertools](https://community.qlik.com/community/qlik-sense/ea-powertools)** space on Qlik Community.
 
