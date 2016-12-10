@@ -22,7 +22,7 @@ QMC Utilities requires the following environment to function properly:
 
 The ***preferred*** method for installing QMC Utilities is the installer found here: **[QMCUtilities.exe](https://s3.amazonaws.com/eapowertools/qmcutilities/QMCUtilities.exe)**.  The installer includes includes all node and bower modules and does not require the use of npm to install software.
 
-For a walkthrough of the installation process, please have a look at the install documentation here: **[Install Document](https://linktoInstallDocument)**
+For a walkthrough of the installation process, please have a look at the install documentation here: **[Install Document](https://github.com/eapowertools/QlikSenseQMCUtility/wiki/Installing-QMC-Utilities)**
 
 QMC Utilities may be installed by downloading the source from GitHub and running npm install.  However, some manual configuration of the config.js configuration file will be required before running if installed using this method.  **No documentation is provided for this method.**
 
