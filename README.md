@@ -30,46 +30,17 @@ QMC Utilities may be installed by downloading the source from GitHub and running
 After installing QMC Utilities, fire up a web browser and navigate to the hostname and port number specified in the install.  For example, if the Qlik Sense hostname is _sense3.112adams.local_, in the browser address bar enter **https://sense3.112adams.local:9945**.
 
 ##Plugins!
-QMC Utilities uses a plugin architecture to instantiate the tools in the menu framework.
+QMC Utilities uses a plugin architecture to instantiate the tools in the menu framework.  The following plugins have been developed by the EAPowertools team for use with QMC Utilities:
 
-The initial release includes the following tools:
+**[Sheet Approver](https://github.com/eapowertools/qmcu-sheet-approver#qmcu-sheet-approver)**: The Sheet Approver enables users to approve published sheets in an app, thus, making them base sheets of the Qlik Sense application.  In addition, it's possible to un-approve sheets as well and push them back to the community.
 
-###Sheet Approver
-The Sheet Approver enables users to approve published sheets in an app, thus, making them base sheets of the Qlik Sense application.  In addition, it's possible to un-approve sheets as well and push them back to the community.
+**[Rule Manager](https://github.com/eapowertools/qmcu-rule-manager#qmcu-rule-manager)**: The Rule Manager allows a Qlik Sense administrator to export and import security rules from the Qlik Sense repository.
 
-![Sheet Approver](https://s3.amazonaws.com/eapowertools/qmcutilities/SheetApproverScreen.png)
+**[Custom Property Bulk Loader](https://github.com/eapowertools/qmcu-custom-prop-loader#qmcu-custom-prop-loader)**: The Custom Property Bulk Loader enables administrators to upload a list of values for managing custom properties without having to enter values manually.
 
-To approve or un-approve sheets, qualifying items will have a clear checkbox.  Click the checkbox to activate and then select the appropriate approve or un-approve button that is relevant to the selections made.
+**[App Mover](https://github.com/eapowertools/qmcu-app-mover#qmcu-app-mover)**: This QMC Utilities plugin will allow users to export apps out of an environment and move them to other Qlik Sense environments.
 
------
-
-###Rule Manager
-![Rule Manager](https://s3.amazonaws.com/eapowertools/qmcutilities/RuleManagerScreen.png)
-
-The Rule Manager allows a Qlik Sense administrator to export and import security rules from the Qlik Sense repository.
-
-To export rules, use the checkboxes to select the rules and click the Export button to create a formatted json file containing the rule information.
-
-To import rules, click the import button to select a file and upload. 
-
-![uploadFile](https://s3.amazonaws.com/eapowertools/qmcutilities/importRuleFile.png)
-
-Then select the rules from the file to import into the repository.
-
-![uploadedFile](https://s3.amazonaws.com/eapowertools/qmcutilities/uploadedRuleFile.png)
-
------
-
-###Custom Property Bulk Loader
-The Custom Property Bulk Loader enables administrators to upload a list of values for managing custom properties without having to enter values manually.
-
-![CustomPropLoader](https://s3.amazonaws.com/eapowertools/qmcutilities/CustomPropScreen.png)
-
-The bulk loader is able to update existing custom properties, or create new custom properties for a Qlik Sense deployment.
-
-Select a custom property or provide a name, select the resources the custom property will apply to, and upload a csv file with a single column list of values.  Once that's done click the Create or Update button and to add or modify the custom property.
-
------
+**[Source Control Assistant](https://github.com/eapowertools/qmcu-sclite#qmcu-sclite)**: The Source Control Assistant is an application backup and restore solution for Qlik Sense.
 
 ##Promotion
 QMC Utilities is designed and developed by the EA Team at Qlik as part of the Powertools initiative. To learn more about EA Powertools and all the solutions we are building to enhance Qlik Sense, please visit the **[EA Powertools](https://community.qlik.com/community/qlik-sense/ea-powertools)** space on Qlik Community.
