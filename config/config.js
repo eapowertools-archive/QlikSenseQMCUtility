@@ -74,7 +74,7 @@ var config = {
 	qrs: {
 		hostname: qrsHostname !== undefined ? qrsHostname : globalHostname
 	},
-	version: "2.0.0"
+	version: "2.0.1"
 }
 
 
