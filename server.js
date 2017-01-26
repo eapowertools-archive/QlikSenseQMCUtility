@@ -89,9 +89,11 @@ server.listen(config.thisServer.port, function () {
 var io = new socketio(server);
 
 io.on('connection', function (socket) {
-  console.log('a user connected');
-
-  socket.on("appMetaFetcher", function (msg) {
-    console.log(msg);
+  routeBuilder.forEach(function (route, index) {
+    if (route.useSocketIO) {
+      socket.on(route.name, function (msg) {
+        console.log(route.name + "::" + msg);
+      });
+    }
   });
 });
