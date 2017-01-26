@@ -92,7 +92,7 @@ io.on('connection', function (socket) {
     if (route.useSocketIO) {
       socket.on(route.name, function (msg) {
         console.log(route.name + "::" + msg);
-        socket.emit(route.name, msg);
+        io.emit(route.name, msg);
       });
     }
   });
