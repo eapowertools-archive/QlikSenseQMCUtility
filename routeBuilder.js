@@ -23,7 +23,8 @@ results.forEach(function(result)
                         name: content.pluginDir,
                         path: "./plugins/" + content.pluginDir + "/routes",
                         title: content.title,
-                        stage: content.stage
+                        stage: content.stage,
+                        useSocketIO: (content.useSocketIO == undefined) ? false : content.useSocketIO
                     };
                     routes.push(obj);
                 }
