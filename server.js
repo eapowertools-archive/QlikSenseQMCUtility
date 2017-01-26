@@ -32,6 +32,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use('/public', express.static(config.thisServer.publicPath));
 app.use('/bower_components', express.static(config.thisServer.bowerPath));
+app.use('/node_modules', express.static(config.thisServer.nodeModulesPath));
 app.use('/data', express.static(config.thisServer.dataPath));
 app.use('/app', express.static(config.thisServer.appPath));
 app.use('/plugins', express.static(config.thisServer.pluginPath));
@@ -76,8 +77,6 @@ if (config.thisServer.hasOwnProperty("certificates")) {
   httpsOptions.cert = fs.readFileSync(config.certificates.server),
     httpsOptions.key = fs.readFileSync(config.certificates.server_key)
 }
-
-
 
 var server = https.createServer(httpsOptions, app);
 server.listen(config.thisServer.port, function () {
