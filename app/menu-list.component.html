@@ -1,8 +1,15 @@
 <div id="sidebar-wrapper">
   <ol class="sidebar-nav">
     <li class="sidebar-brand">
-      <a  href="#">QMC Utilities</a><img style="position:fixed;top:5px;left:175px;" src="app/powertoolsWhite.svg" height="60px" width="56px"/>        
-        
+      <a href="#">QMC Utilities</a><img style="position:fixed;top:5px;left:175px;" src="app/powertoolsWhite.svg" height="60px"
+        width="56px" />
+    </li>
+    <li class="cert-management">
+      <select style="position:relative;top:0px;left:0px;padding-top: 0px;margin-top:0px;" class="lui-select  lui-select--gradient">
+        <option value="1" selected>First</option>
+        <option value="2">Second</option>
+        <option value="3">Third</option>
+      </select>
     </li>
     <li ng-repeat="menu in model.menuItems">
       <a href="#{{menu.templateUrl}}">{{menu.title}}<span style="color:lightgreen;font-size:10px;">     {{menu.stage}}</span></a>

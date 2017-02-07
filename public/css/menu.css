@@ -6,24 +6,28 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'QlikView Sans';
   src: url(../fonts/qlikview-sans-bold.ttf) format('truetype');
   font-weight: bold;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'QlikView Sans';
   src: url(../fonts/qlikview-sans-italic.ttf) format('truetype');
   font-weight: normal;
   font-style: italic;
 }
+
 @font-face {
   font-family: 'QlikView Sans';
   src: url(../fonts/qlikview-sans-bold-italic.ttf) format('truetype');
   font-weight: bold;
   font-style: italic;
 }
+
 @font-face {
   font-family: 'LUI icons';
   src: url(../fonts/lui-icons.ttf) format('truetype');
@@ -31,96 +35,92 @@
   font-style: normal;
 }
 
-.container-fluid
-{
-    margin-left: 250px;
-    padding-left:0px;
-    padding-right:0px;
+.container-fluid {
+  margin-left: 250px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 body {
-    font-family: 'QlikView Sans', Fallback, Arial, Helvetica, sans-serif;
- }
-
-
-#sidebar-wrapper
-{
-  left:0px;
-  z-index:1000;
-  position:fixed;
-  width:250px;
-  overflow-y:auto;
-  height:100%;
-  background:#404040;
+  font-family: 'QlikView Sans', Fallback, Arial, Helvetica, sans-serif;
 }
 
-#sidebar-header
-{
-
+#sidebar-wrapper {
+  left: 0px;
+  z-index: 1000;
   position: fixed;
-  left:250px;
-  width:250px;
-  margin-left:-250px;
-  background:#404040;
-  height:100%;
+  width: 250px;
+  overflow-y: auto;
+  height: 100%;
+  background: #404040;
+}
+
+#sidebar-header {
+  position: fixed;
+  left: 250px;
+  width: 250px;
+  margin-left: -250px;
+  background: #404040;
+  height: 100%;
   padding: 10px;
 }
 
-
-
-
-.header
-{
-  color:white;
+.header {
+  color: white;
   text-indent: 7px;
   margin: 1px 0px 1px 0px;
 }
 
-
-
 .sidebar-nav {
-    position: absolute;
-    top:0px;
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    margin-top: 2px;
-    color:rgba(255,255,255,0.8);
+  position: absolute;
+  top: 0px;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.8);
 }
- 
-.sidebar-nav li {
-    font-size: 16px;
-    text-indent: 10px;
-    line-height: 50px;
-    background:#595959;
-    color:rgba(255,255,255,0.8);
-    border-left: orange 4px solid;
-    margin: 1px 0px 1px 0px;
-}
- 
-.sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color:rgba(255,255,255,0.8);
-}
- 
-.sidebar-nav li a:hover {
-    text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.2);
 
+.sidebar-nav li {
+  font-size: 16px;
+  text-indent: 10px;
+  line-height: 50px;
+  background: #595959;
+  color: rgba(255, 255, 255, 0.8);
+  border-left: orange 4px solid;
+  margin: 1px 0px 1px 0px;
 }
- 
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.sidebar-nav > .sidebar-brand {
-	    height: 65px;
-	    font-size: 24px;
-	    line-height: 60px;
-        border-left: none;
-        background: #404040;
-	}
+.sidebar-nav>.sidebar-brand {
+  height: 65px;
+  font-size: 24px;
+  line-height: 60px;
+  border-left: none;
+  background: #404040;
+}
+
+.sidebar-nav>.cert-management {
+  height: 40px;
+  font-size: 24px;
+  line-height: 60px;
+  border-left: none;
+  background: #404040;
+}
