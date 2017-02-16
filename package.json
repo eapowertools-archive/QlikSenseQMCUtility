@@ -30,6 +30,7 @@
     "extend": "^3.0.0",
     "fs": "0.0.2",
     "https": "^1.0.0",
+    "leonardo-ui": "^1.0.2",
     "multer": "^1.2.0",
     "multer-autoreap": "^0.1.2",
     "path": "^0.12.7",
