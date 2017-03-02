@@ -8,6 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <meta http-equiv="cleartype" content="on">
     <meta charset="UTF-8">
+    <script>
+        document.write('<base href="' + document.location.href + '"/>');
+        console.log(document.location.href);
+    </script>
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/ng-dialog/css/ngDialog.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/chosen/chosen.css">
@@ -15,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/prism.css">
     <link rel="stylesheet" type="text/css" href="public/css/menu.css">
     <link rel="image_src" type="img/png" href="bower_components/chosen/chosen-sprite.png">
+
     <script src="public/js/leonardo-ui.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -30,8 +35,11 @@
     <script src="bower_components/angular-socket-io/socket.min.js"></script>
     <script src="node_modules/socket.io-client/dist/socket.io.min.js"></script>
     <script src="node_modules/leonardo-ui/dist/leonardo-ui.min.js"></script>
+
+
     <script src="app/main.js"></script>
     <script src="app/menu-list.component.js"></script>
+    <script src="app/services/state.service.js"></script>
 
 </head>
 
@@ -43,7 +51,9 @@
         <!--Page-content Wrapper-->
         <div class="container-fluid">
             <!-- <ng-view></ng-view> -->
-            <ui-view></ui-view>
+            <ui-view>
+                    <ui-view></ui-view>
+                </ui-view>
         </div>
     </div>
 
