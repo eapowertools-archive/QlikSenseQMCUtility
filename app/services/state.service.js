@@ -11,7 +11,7 @@ angular.module("QMCUtilities")
         $stateProviderRef = $stateProvider;
         $urlRouterProviderRef = $urlRouterProvider;
     })
-    .run(['$q', '$rootScope', '$http', '$state', '$urlRouter', 'qlikConfig', 'menuItems', 'qmcuWindowLocationService', function($q, $rootScope, $http, $state, $urlRouter, qlikConfig, menuItems,qmcuWindowLocationService) {
+    .run(['$q', '$rootScope', '$http', '$state', '$urlRouter', 'qlikConfig', 'menuItems', 'qmcuWindowLocationService', function($q, $rootScope, $http, $state, $urlRouter, qlikConfig, menuItems, qmcuWindowLocationService) {
         console.log(qmcuWindowLocationService)
         $rootScope.$on('$stateChangeStart',
             function(event, toState, toStateParams, fromState, fromParams, options) {
@@ -126,7 +126,14 @@ angular.module("QMCUtilities")
 
             });
 
-            //$urlRouterProviderRef.otherwise('/');
+            //default home route
+            $stateProviderRef.state("home", {
+                parent: 'site',
+                url: "/home",
+                templateUrl: "plugins/home/index.html",
+            });
+
+            $urlRouterProviderRef.otherwise('/home');
             $urlRouter.sync();
             $urlRouter.listen();
         });

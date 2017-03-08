@@ -7,6 +7,7 @@
     var module = angular.module("QMCUtilities", ["ui.router", "oc.lazyLoad", "ngSanitize", "localytics.directives"]);
 
     module.service('qmcuWindowLocationService', ['$location', function qmcuWindowLocationService($location) {
+        var host = $location.host();
         var windowLocation = $location.absUrl().toLowerCase(),
             indexEndBaseUrl = windowLocation.indexOf('/qmcu/'),
             resourceBaseUrl = indexEndBaseUrl > 0 ? windowLocation.substr(0, indexEndBaseUrl) : windowLocation,
@@ -24,6 +25,7 @@
         proxyPath = pos > -1 ? resourceBaseUrl.substr(pos) : '';
 
         return {
+            host: host,
             basePath: "/qmcu",
             baseUrl: resourceBaseUrl,
             virtualProxyPath: proxyPath

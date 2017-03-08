@@ -22,7 +22,19 @@ router.use(function(req, res, next) {
     next();
 });
 
-router.route('/')
+
+
+router.route('/api/menu')
+    .get(function(request, response) {
+        response.send(response.locals.menu);
+    });
+
+router.route("/version")
+    .get(function(request, response) {
+        response.send(config.version);
+    });
+
+router.route('*')
     .get(function(request, response) {
         var options = {
             root: config.thisServer.appPath
@@ -35,15 +47,5 @@ router.route('/')
         })
     });
 
-
-router.route('/api/menu')
-    .get(function(request, response) {
-        response.send(response.locals.menu);
-    });
-
-router.route("/version")
-    .get(function(request, response) {
-        response.send(config.version);
-    });
 
 module.exports = router;

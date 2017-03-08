@@ -17,9 +17,9 @@
     <link rel="stylesheet" type="text/css" href="bower_components/chosen/chosen.css">
     <link rel="stylesheet" type="text/css" href="node_modules/leonardo-ui/dist/leonardo-ui.css">
     <link rel="stylesheet" type="text/css" href="public/css/prism.css">
-    <link rel="stylesheet" type="text/css" href="public/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="public/css/menu2.css">
     <link rel="image_src" type="img/png" href="bower_components/chosen/chosen-sprite.png">
-
+    <link rel="shortcut icon" href="public/favicon.ico">
     <script src="public/js/leonardo-ui.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -37,25 +37,46 @@
     <script src="node_modules/leonardo-ui/dist/leonardo-ui.min.js"></script>
 
 
+
+
+
     <script src="app/main.js"></script>
     <script src="app/menu-list.component.js"></script>
     <script src="app/services/state.service.js"></script>
 
+    <script src="app/toggle.js">
+    </script>
+
 </head>
 
 <body>
-    <div>
+    <div id="qmcu-navbar" class="navbar navbar-fixed-top">
+        <div class="navbar-header">
+
+            <button id="menu-toggle" type="button" class="navbar-brand"><img  src="app/powertoolsWhite.svg" height="40px" width="37px" /></button>
+            <div id="title">QMC Utiltities</div>
+        </div>
+    </div>
+    <!--/.navbar -->
+
+    <div id="wrapper">
         <!-- Sidebar -->
         <menu-list></menu-list>
         <!-- Sidebar -->
         <!--Page-content Wrapper-->
-        <div class="container-fluid">
-            <!-- <ng-view></ng-view> -->
-            <ui-view>
-                    <ui-view></ui-view>
-                </ui-view>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <ui-view>
+                        <ui-view></ui-view>
+                    </ui-view>
+                </div>
+            </div>
+
         </div>
     </div>
+
 
 </body>
 

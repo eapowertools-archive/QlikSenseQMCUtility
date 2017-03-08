@@ -1,126 +1,201 @@
-/* Put your css in here */
-
 @font-face {
-  font-family: 'QlikView Sans';
-  src: url(../fonts/qlikview-sans.ttf) format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'QlikView Sans';
-  src: url(../fonts/qlikview-sans-bold.ttf) format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'QlikView Sans';
-  src: url(../fonts/qlikview-sans-italic.ttf) format('truetype');
-  font-weight: normal;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'QlikView Sans';
-  src: url(../fonts/qlikview-sans-bold-italic.ttf) format('truetype');
-  font-weight: bold;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'LUI icons';
-  src: url(../fonts/lui-icons.ttf) format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'QlikView Sans';
+    src: url(../fonts/qlikview-sans.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.container-fluid
-{
-    margin-left: 250px;
-    padding-left:0px;
-    padding-right:0px;
+@font-face {
+    font-family: 'QlikView Sans';
+    src: url(../fonts/qlikview-sans-bold.ttf) format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'QlikView Sans';
+    src: url(../fonts/qlikview-sans-italic.ttf) format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'QlikView Sans';
+    src: url(../fonts/qlikview-sans-bold-italic.ttf) format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'LUI icons';
+    src: url(../fonts/lui-icons.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
+    padding-top: 60px;
     font-family: 'QlikView Sans', Fallback, Arial, Helvetica, sans-serif;
- }
-
-
-#sidebar-wrapper
-{
-  left:0px;
-  z-index:1000;
-  position:fixed;
-  width:250px;
-  overflow-y:auto;
-  height:100%;
-  background:#404040;
 }
 
-#sidebar-header
-{
+#qmcu-navbar {
+    background-color: #404040;
+    margin-bottom: 0px;
+    border-bottom-width: 0px;
+}
 
-  position: fixed;
-  left:250px;
-  width:250px;
-  margin-left:-250px;
-  background:#404040;
-  height:100%;
-  padding: 10px;
+#title {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
+    height: 60px;
+    padding-left: 5px;
+    float: right;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 20px;
+}
+
+.navbar-brand {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 60px;
+    width: 67px;
+    background-color: #404040;
+    border: none;
+}
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #404040;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    /*padding: 15px;*/
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
 }
 
 
-
-
-.header
-{
-  color:white;
-  text-indent: 7px;
-  margin: 1px 0px 1px 0px;
-}
-
-
+/* Sidebar Styles */
 
 .sidebar-nav {
     position: absolute;
-    top:0px;
+    top: 0;
     width: 250px;
     margin: 0;
     padding: 0;
     list-style: none;
     margin-top: 2px;
-    color:rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
- 
+
 .sidebar-nav li {
     font-size: 16px;
     text-indent: 10px;
     line-height: 50px;
-    background:#595959;
-    color:rgba(255,255,255,0.8);
+    background: #595959;
+    color: rgba(255, 255, 255, 0.8);
     border-left: orange 4px solid;
     margin: 1px 0px 1px 0px;
 }
- 
+
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color:rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
+    ;
 }
- 
+
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: rgba(255,255,255,0.2);
-
+    background: rgba(255, 255, 255, 0.2);
 }
- 
+
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
     text-decoration: none;
 }
 
-.sidebar-nav > .sidebar-brand {
-	    height: 65px;
-	    font-size: 24px;
-	    line-height: 60px;
-        border-left: none;
-        background: #404040;
-	}
+.sidebar-nav>.sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav>.sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav>.sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 0;
+    }
+    #wrapper.toggled {
+        padding-left: 250px;
+    }
+    #sidebar-wrapper {
+        width: 0;
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        width: 250px;
+    }
+    #page-content-wrapper {
+        /*padding: 20px;*/
+        position: relative;
+    }
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+    .lui-search__clear-icon {
+        margin-right: 0px;
+    }
+    #wrapper.toggled .lui-search__clear-icon {
+        margin-right: 250px;
+    }
+}
+
+.lui-search__clear-icon {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    margin-right: 0px;
+}
