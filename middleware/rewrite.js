@@ -27,6 +27,11 @@ module.exports = function(options) {
         req.proxyPath = proxyPath;
         req.redirectUrl = fullUrl;
 
+        if (req.url.includes("model.qmcUrl")) {
+            req.url = req.protocol + "://" + req.headers.host + (req.proxyPath.length > 0 ? req.proxyPath : "") + "/qmcu/";
+            req.path = (req.proxyPath.length > 0 ? req.proxyPath : "") + "/qmcu/";
+        }
+
 
         next();
     }
