@@ -26,8 +26,8 @@ var logFile = logPath + 'QMCUtilities.log';
 
 var globalHostname = "localhost";
 var friendlyHostname;
-var qrsHostname; // = "sense32.112adams.local";
-var certPathBackup; // = "f:/my documents/certfiles/sense32.112adams.local";
+var qrsHostname;
+var certPathBackup;
 var qsocksHostname;
 if (certPathBackup !== undefined) {
     certPath = certPathBackup;
@@ -70,7 +70,7 @@ var config = {
     qrs: {
         hostname: qrsHostname !== undefined ? qrsHostname : globalHostname
     },
-    version: "3.0.0 Beta 2"
+    version: "3.0.0"
 }
 
 
