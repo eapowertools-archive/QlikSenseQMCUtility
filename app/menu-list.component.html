@@ -1,11 +1,11 @@
 <div id="sidebar-wrapper">
-  <ol class="sidebar-nav">
-    <li class="sidebar-brand">
-      <a  href="#">QMC Utilities</a><img style="position:fixed;top:5px;left:175px;" src="app/powertoolsWhite.svg" height="60px" width="56px"/>        
-        
-    </li>
-    <li ng-repeat="menu in model.menuItems">
-      <a href="#{{menu.templateUrl}}">{{menu.title}}<span style="color:lightgreen;font-size:10px;">     {{menu.stage}}</span></a>
-    </li>
-  </ol>
+    <ol class="sidebar-nav">
+        <li ng-repeat="menu in model.menuItems">
+            <a ng-click="model.goToState(menu.stateName)">
+                {{menu.title}}
+                <span style="color:lightgreen;font-size:10px;">     {{menu.stage}}</span></a>
+        </li>
+    </ol>
 </div>
+
+<!--ng-class="{'menu-active': model.$state.current.name === menu.stateName || mode.$state.current.data.pluginDir === menu.pluginDir}" -->

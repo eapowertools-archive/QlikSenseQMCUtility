@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Login</title>
+</head>
+
+<body>
+    <script>
+        <!-- ******Replace the url in the goto variable with the url to the html file to render.****** -->
+
+        function getVP(path) {
+            var splitPath = path.split("/");
+            if (splitPath[1].toLowerCase() == "content") {
+                return "";
+            }
+            return splitPath[1];
+        }
+
+        document.cookie = "vp=" + getVP(window.location.pathname) + ";path=/;secure=true;";
+
+        var goto = window.location.protocol + "//" + window.location.hostname + ":9945/";
+        console.log(goto);
+        window.open(goto, '_self');
+    </script>
+</body>
+
+</html>

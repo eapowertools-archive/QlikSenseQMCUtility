@@ -1,102 +1,82 @@
-(function(){
-  "use strict";
-  var module = angular.module("QMCUtilities",["ui.router","oc.lazyLoad","ngSanitize","localytics.directives"]);
-  module.config(function($stateProvider, $urlRouterProvider)
-  {
-    $stateProvider.state
-    ('route', {
-      url:"/:name",
-      templateUrl: function($stateParams)
-      {
-        console.log($stateParams.name);
-         return "plugins/" + $stateParams.name + "/index.html";
-      },
-      resolve: {
-        loadMyCtrl : ['$stateParams','$ocLazyLoad',function($stateParams,$ocLazyLoad)
-        {
-          return $ocLazyLoad.load([
-          "plugins/" + $stateParams.name + "/" + $stateParams.name + ".component.js", 
-          "plugins/" + $stateParams.name + "/css/" + $stateParams.name + ".css"
-          ])
-          .then(function()
-          {
-            console.log("loaded")
-          })
-          .catch(function(error)
-          {
-            console.log(error)
-          });
-        }]
-      }
-    });
+(function() {
+    "use strict";
 
-    // var helloState = {
-    //   name:'hello',
-    //   url:"/hworld",
-    //   templateUrl: "plugins/hworld/index.html",
-      
-    //   resolve: {
-    //     loadMyCtrl : ['$ocLazyLoad',function($ocLazyLoad)
-    //     {
-    //       return $ocLazyLoad.load("plugins/hworld/hello-world.component.js");
-    //     }]
-    //   }
-    // };
-    // $stateProvider.state(helloState);
-    $urlRouterProvider.otherwise('/home');
-  })
-  .config(["$ocLazyLoadProvider", function($ocLazyLoadProvider)
-  {
-    $ocLazyLoadProvider.config(
-      {
-        debug: true
+    var $stateProviderRef = null,
+        $urlRouterProviderRef = null;
 
-      })
-  }]);
+    var module = angular.module("QMCUtilities", ["ui.router", "oc.lazyLoad", "ngSanitize", "localytics.directives"]);
 
+    module.service('qmcuWindowLocationService', ['$location', function qmcuWindowLocationService($location) {
+        var host = $location.host();
+        var windowLocation = $location.absUrl().toLowerCase(),
+            indexEndBaseUrl = windowLocation.indexOf('/qmcu/'),
+            resourceBaseUrl = indexEndBaseUrl > 0 ? windowLocation.substr(0, indexEndBaseUrl) : windowLocation,
+            proxyPath,
+            pos;
 
-}());
+        console.log("Hello World");
+        console.log("windowLocation: " + windowLocation);
 
-
-
-/*(function() {
-  "use strict";
-   var module = angular.module("QMCUtilities",["ngRoute"]);
-  
-  module.config(['$routeProvider',function($routeProvider){
-    $routeProvider
-      .when("/:name*", {
-        templateUrl: function(urlAttr) 
-        {
-          return "plugins/" + urlAttr.name + "/index.html";
+        if (resourceBaseUrl.slice(-1) === '/') {
+            resourceBaseUrl = resourceBaseUrl.slice(0, resourceBaseUrl.length - 1);
         }
-        // ,
-        // resolve: {
-        //   deps: ['$ocLazyLoad', function($ocLazyLoad)
-        //     {
-        //       return $ocLazyLoad.load({
-        //         name:"hworld",
-        //         files: ["plugins/hworld/hello-world.component.js"]
-        //       })
-        //       .then(function()
-        //       {
-        //         console.log("I Loaded")
-        //       },
-        //       function(err)
-        //       {
-        //         console.log(err);
-        //       });
-        //     }]
-        //   } 
-      })
-      .otherwise({ redirectTo:"/home"});
-  }])
-  // .config(['$ocLazyLoadProvider', function($ocLazyLoadProvider)
-  // {
-  //   $ocLazyLoadProvider.config({
-  //     asyncLoader:$script
-  //   });
-  // }]);
+
+        pos = resourceBaseUrl.indexOf('/', 9);
+        proxyPath = pos > -1 ? resourceBaseUrl.substr(pos) : '';
+
+        return {
+            host: host,
+            basePath: "/qmcu",
+            baseUrl: resourceBaseUrl,
+            virtualProxyPath: proxyPath
+        };
+
+
+    }]);
+
+    module
+        .factory('qlikConfig', ['$q', '$http', 'menuItems', function($q, $http, menuItems) {
+            var context = {};
+            menuItems.then(function(menu) {
+                context.menuItems = menu;
+            });
+
+            return context;
+        }])
+
+    module.config(["$ocLazyLoadProvider", function($ocLazyLoadProvider) {
+        $ocLazyLoadProvider.config({
+            debug: true
+
+        })
+    }]);
+
+
 }());
 
-*/
+//Interceptor code
+var interceptor = function(qmcuWindowLocationService) {
+    return {
+        // request: function(config) {
+        //     console.log(config);
+        //     return config;
+        // }
+
+        'request': function(config) {
+            console.log(config);
+            console.log("url: " + config.url);
+            console.log("baseUrl: " + qmcuWindowLocationService.baseUrl)
+            console.log("proxyPath: " + qmcuWindowLocationService.virtualProxyPath);
+
+            //Prefix with virtual proxy path if not an absolute address
+            if (!(/:\/\//).test(config.url)) {
+                config.url = qmcuWindowLocationService.virtualProxyPath + qmcuWindowLocationService.basePath + "/" + config.url;
+                console.log(config.url);
+            }
+            // console.log("config");
+            // console.log(config);
+            return config;
+        }
+
+    }
+};
