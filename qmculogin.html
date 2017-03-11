@@ -33,6 +33,20 @@
         if (existsRedirect(fullUrl, "redirectUrl")) {
             var destination = getParameterByName("redirectUrl");
             window.open(destination, '_self');
+        } else {
+            var indexEndBaseUrl = fullUrl.indexOf("/content/");
+            var resourceBaseUrl = indexEndBaseUrl > 0 ? fullUrl.substr(0, indexEndBaseUrl) : fullUrl;
+            if (resourceBaseUrl.slice(-1) === '/') {
+                resourceBaseUrl = resourceBaseUrl.slice(0, resourceBaseUrl.length - 1);
+            }
+
+            var pos = resourceBaseUrl.indexOf('/', 9);
+            var proxyPath = pos > -1 ? resourceBaseUrl.substr(pos) : '';
+
+            var protocol = window.location.href.split("//");
+            var destination = protocol[0] + "//" + window.location.hostname + ":9945" + proxyPath + "/qmcu/";
+            window.open(destination, '_self');
+
         }
     </script>
 </body>
