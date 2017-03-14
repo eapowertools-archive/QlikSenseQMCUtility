@@ -1,5 +1,6 @@
 <div id="sidebar-wrapper">
     <ol class="sidebar-nav">
+        <li>Welcome {{model.user}}</li>
         <li ng-repeat="menu in model.menuItems">
             <a ng-click="model.goToState(menu.stateName)">
                 {{menu.title}}

@@ -77,6 +77,7 @@ module.exports = function(options) {
                         //set the qrs session information for the session.
                         req.qrsInstance = setQRSInstance(req.proxyPath, cookies[0])
                         req.qsocksInstance = setQSocksInstance(req.proxyPath, cookies[0]);
+                        req.userId = body.userId;
                         console.log("userId " + body.userId + " is logged in.");
                         next();
                     }

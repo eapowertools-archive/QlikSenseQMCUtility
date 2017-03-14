@@ -22,7 +22,10 @@ router.use(function(req, res, next) {
     next();
 });
 
-
+router.route('/whoareyou')
+    .get(function(request, response) {
+        response.send(request.userId);
+    });
 
 router.route('/api/menu')
     .get(function(request, response) {
