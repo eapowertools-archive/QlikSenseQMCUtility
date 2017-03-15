@@ -32,7 +32,8 @@ results.forEach(function(result) {
                         inMenu: _.get(e, 'inMenu', true),
                         clientFiles: e.clientFiles || [],
                         templateUrl: e.templateUrl || "plugins/" + e.pluginDir + "/index.html",
-                        url: e.url || "/" + (e.componentName || e.pluginDir)
+                        url: e.url || "/" + (e.componentName || e.pluginDir),
+                        useSocketIO: e.useSocketIO ? true : false
                     };
                     if ((content.hasOwnProperty('disabled') && content.disabled !== true) || !(content.hasOwnProperty('disabled'))) routes.push(obj);
                 })
