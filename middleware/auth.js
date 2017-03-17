@@ -28,7 +28,7 @@ module.exports = function(options) {
 
         var proxyServer = options.proxyServer || config.qrs.hostname;
         var proxyPath = req.proxyPath;
-        var uri = "https://" + config.qrs.hostname + (proxyPath.length > 0 ? proxyPath : "") + "/qps/user?xrfkey=abcdefghijklmnop";
+        var uri = "https://" + req.hostname + (proxyPath.length > 0 ? proxyPath : "") + "/qps/user?xrfkey=abcdefghijklmnop";
         //console.log(uri);
 
         var sessionName = getSessionName(req.proxyPath.replace("/", ""), req.virtualProxies)
@@ -66,7 +66,7 @@ module.exports = function(options) {
                         // console.log(body.session);
                         if (body.session == "inactive") {
                             console.log("redirect to login page");
-                            var authUrl = "https://" + config.qrs.hostname + (proxyPath.length > 0 ? proxyPath : "") + "/content/Default/qmculogin.html"
+                            var authUrl = "https://" + req.hostname + (proxyPath.length > 0 ? proxyPath : "") + "/content/Default/qmculogin.html"
                             var redirectUrl = encodeURI(req.redirectUrl);
                             res.redirect(authUrl + "?redirectUrl=" + redirectUrl);
                         } else {
