@@ -1,6 +1,8 @@
 #QlikSenseQMCUtility    
 A collection of management console utilities for use with Qlik Sense.
 
+## Read the Release Notes for the latest information regarding QMC Utilities.  Updates will not always be reflected in this readme.
+
 ## Latest Release is [3.0.3](https://github.com/eapowertools/QlikSenseQMCUtility/releases/latest)
 
 **[Latest Release Notes](https://github.com/eapowertools/QlikSenseQMCUtility/releases/latest)**
