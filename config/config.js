@@ -11,8 +11,7 @@ dir.forEach(function(file) {
         installConfig = require('./installConfig');
     }
 
-    // if(file==='testConfig.js')
-    // {
+    // if (file === 'testConfig.js') {
     //     testConfig = require('./testConfig');
     // }
 })
@@ -50,6 +49,7 @@ var config = {
         logLevel: 'info'
     },
     thisServer: {
+        devMode: false,
         port: 9945,
         hostname: friendlyHostname !== undefined ? friendlyHostname : globalHostname,
         routePath: path.join(__dirname, '/../routes/'),
@@ -67,10 +67,16 @@ var config = {
         origin: "https://" + (qsocksHostname !== undefined ? qsocksHostname : globalHostname),
         rejectUnauthorized: false
     },
+    engine: {
+        hostname: qsocksHostname !== undefined ? qsocksHostname : globalHostname,
+        port: 4747,
+        userDirectory: "INTERNAL",
+        userId: "sa_repository"
+    },
     qrs: {
         hostname: qrsHostname !== undefined ? qrsHostname : globalHostname
     },
-    version: "3.0.3"
+    version: "3.0.4"
 }
 
 

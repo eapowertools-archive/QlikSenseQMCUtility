@@ -10,9 +10,7 @@ var winston = require('winston');
 require('winston-daily-rotate-file');
 var routeBuilder = require('./routeBuilder');
 var socketio = require('socket.io');
-var rewrite = require("./middleware/rewrite");
-var auth = require('./middleware/auth');
-var vpList = require('./middleware/vpList');
+
 
 //set up logging
 var logger = new(winston.Logger)({
@@ -35,9 +33,16 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(vpList());
-app.use(rewrite());
-app.use(auth());
+
+if (!config.thisServer.devMode) {
+    var rewrite = require("./middleware/rewrite");
+    var auth = require('./middleware/auth');
+    var vpList = require('./middleware/vpList');
+    app.use(vpList());
+    app.use(rewrite());
+    app.use(auth());
+}
+
 app.use('/qmcu/public', express.static(config.thisServer.publicPath));
 app.use('/qmcu/bower_components', express.static(config.thisServer.bowerPath));
 app.use('/qmcu/node_modules', express.static(config.thisServer.nodeModulesPath));
