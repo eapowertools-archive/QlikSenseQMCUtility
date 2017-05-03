@@ -67,6 +67,12 @@ var config = {
         origin: "https://" + (qsocksHostname !== undefined ? qsocksHostname : globalHostname),
         rejectUnauthorized: false
     },
+    engine: {
+        hostname: qsocksHostname !== undefined ? qsocksHostname : globalHostname,
+        port: 4747,
+        userDirectory: "INTERNAL",
+        userId: "sa_repository"
+    },
     qrs: {
         hostname: qrsHostname !== undefined ? qrsHostname : globalHostname
     },
