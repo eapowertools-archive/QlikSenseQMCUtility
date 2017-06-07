@@ -37,10 +37,15 @@ After installing QMC Utilities, fire up a web browser and navigate to the hostna
 QMC Utilities uses a plugin architecture to instantiate the tools in the menu framework.  The following plugins have been developed by the EAPowertools team for use with QMC Utilities:
 
 **[App Mover](https://github.com/eapowertools/qmcu-app-mover#qmcu-app-mover)**
+
 **[App Meta Fetcher](https://github.com/eapowertools/qmcu-app-meta-fetcher)**
+
 **[AppObject Approver](https://github.com/eapowertools/qmcu-appobject-approver)**
+
 **[Custom Property Bulk Loader](https://github.com/eapowertools/qmcu-custom-prop-loader#qmcu-custom-prop-loader)**
+
 **[Source Control Assistant](https://github.com/eapowertools/qmcu-sclite#qmcu-sclite)**
+
 **[Rule Manager](https://github.com/eapowertools/qmcu-rule-manager#qmcu-rule-manager)**
 
 
