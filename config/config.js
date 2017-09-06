@@ -54,7 +54,7 @@ var config = {
         logLevel: 'info'
     },
     thisServer: {
-        devMode: false,
+        devMode: true,
         port: 9945,
         hostname: friendlyHostname !== undefined ? friendlyHostname : globalHostname,
         routePath: path.join(__dirname, '/../routes/'),

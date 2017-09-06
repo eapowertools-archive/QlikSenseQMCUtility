@@ -1,17 +1,10 @@
-(function() {
+(function () {
     "use strict";
     var module = angular.module("QMCUtilities");
 
-    function doSomething($http) {
-        return $http.get("./hworld/hworld")
-            .then(function(result) {
-                return result.data;
-            });
-    }
-
     function getVersion($http) {
         return $http.get("./version")
-            .then(function(result) {
+            .then(function (result) {
                 return result.data
             });
     }
@@ -21,20 +14,12 @@
         var model = this;
         model.response = "";
 
-        model.$onInit = function() {
-            model.response = "Argghhhh";
+        model.$onInit = function () {
             getVersion($http)
-                .then(function(result) {
+                .then(function (result) {
                     model.version = result;
                 });
         }
-
-        model.clickMe = function() {
-            doSomething($http)
-                .then(function(result) {
-                    model.response = result;
-                });
-        };
     }
 
     module.component("helloWorld", {
