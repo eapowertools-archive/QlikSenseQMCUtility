@@ -6,7 +6,7 @@ var testConfig;
 
 var configPath = path.join(__dirname, '/../config/');
 var dir = fs.readdirSync(configPath);
-dir.forEach(function(file) {
+dir.forEach(function (file) {
     if (file === 'installConfig.js') {
         installConfig = require('./installConfig');
     }
@@ -28,11 +28,16 @@ var friendlyHostname;
 var qrsHostname;
 var certPathBackup;
 var qsocksHostname;
-if (certPathBackup !== undefined) {
-    certPath = certPathBackup;
+if (process.platform == "darwin") {
+    certPath = path.join(process.env.HOME, '/Documents/Certificates/');
 } else {
-    certPath = path.join(process.env.programdata, '/Qlik/Sense/Repository/Exported Certificates/.Local Certificates');
+    if (certPathBackup !== undefined) {
+        certPath = certPathBackup;
+    } else {
+        certPath = path.join(process.env.programdata, '/Qlik/Sense/Repository/Exported Certificates/.Local Certificates');
+    }
 }
+
 
 var config = {
     certificates: {
