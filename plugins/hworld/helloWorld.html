@@ -13,6 +13,33 @@
 <br>
 <hr>
 <br>
-<div>
+<div id="examplesDiv">
     <h3>Examples</h3>
+
+    <div id="innerExamplesDiv">
+        <h4>Example 1</h4>
+        <div id="exampleContent">
+            <button id="getInfoButton" class="lui-button" ng-click="model.getAboutInfo()">Get info about Qlik Sense {{model.version}}</button>
+            <textarea readonly class="lui-textarea" id="example1textarea" ng-model="model.example1About" />
+
+        </div>
+
+        <h4>Example 2</h4>
+        <div id="exampleContent">
+            <button id="addTagButtom" class="lui-button" ng-click="model.addNewTag()">Click to add a new tag with the name: '{{model.tagName}}'</button>
+            <input class="lui-input" id="inputExample2" ng-model="model.tagName" />
+        </div>
+
+        <h4>Example 3</h4>
+        <div id="exampleContent">
+            <button id="getInfo" class="lui-button" ng-click="model.getAboutInfo()">Get info about Qlik Sense {{model.version}}</button>
+            <div class="panel-body">
+                <div class="frame  lui-bg-default">
+                    <textarea readonly class="lui-textarea" id="example1textarea" ng-model="model.example1About" />
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<br>
+<br>

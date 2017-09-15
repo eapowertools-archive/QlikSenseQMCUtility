@@ -23,7 +23,7 @@ var certPath = "";
 var logPath = path.join(__dirname, '/../log/');
 var logFile = logPath + 'QMCUtilities.log';
 
-var globalHostname = "localhost";
+var globalHostname = "192.168.228.147";
 var friendlyHostname;
 var qrsHostname;
 var certPathBackup;
