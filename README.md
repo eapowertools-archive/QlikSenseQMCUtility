@@ -16,7 +16,7 @@ QMC Utilities is an Express, AngularJs, and Node application for presenting mana
 QMC Utilities requires the following environment to function properly:
 
 * QMC Utilities ***must*** be installed on a server running Qlik Sense server software.
-* Qlik Sense Enterprise 3.0 and higher **or** Qlik Analytics Platform 3.0 and higher.
+* Qlik Sense Enterprise 3.2 and higher **or** Qlik Analytics Platform 3.2 and higher.
 * Qlik Sense service account for running the EAPowerTools service dispatcher.
 * Ability to make requests to the Qlik Repository Service API on the Central Node using port 4242.
 * An available port (by default port 9945) to connect to the QMC Utilities user interface.
